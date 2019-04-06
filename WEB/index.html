@@ -3,6 +3,7 @@
 <head>
 	<title>Spott'IMAC</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
 </head>
 
 <body>
@@ -21,12 +22,11 @@
 		<header>
 			<h2 id="titrecategorie">Titre catégorie
 			<select id="trier" name="trier"></select>
-
 		</header>
 
 		<!-- Barre latérale fixe : menu de sélection -->
 		<aside>
-			<img src="logo"><br>
+			<img src="logo" id="logo"><br>
 			<button id="newpubli"><a href="#publier"> Nouvelle publication</a></button>
 			<ul id="choixcategorie">
 				<li id="categorie"><a href=""><!-- ¿ LIEN CATEGORIE en PHP ?--> Categorie 1</a></li>
@@ -43,7 +43,7 @@
 
 	<!-- Fenêtre pop up : écrire une nouvelle publication  -->
 	<div id="publier">
-		<form action="addpublication" method="post">
+		<form action="addpublication" method="post" id="form">
 			<input type="text" id="titre" name="titre" placeholder="Titre de la publication" required><br>
 			<select id="publicategorie" name="publicategorie" size="0" required></select><br>
 			<textarea id="contenu" name="contenu" placeholder="Contenu de la publication" required></textarea><br>
