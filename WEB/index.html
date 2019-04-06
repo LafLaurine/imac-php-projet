@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Spott'IMAC</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<!-- Page accueil full screen et scrollable pour acceder à la suite -->
+	<div id="accueil">
+		<h1>Spott'IMAC</h1>
+		<p>Blabla présentation <br>
+			sur plusieurs ligne <br>
+			et toute la page </p>
+		<p>Cliquez sur <a href="#actu">ce lien</a> pour continuer </p>
+	</div>
+	
+	<!-- Page scrollable avec les publication récentes : fil d'actualités -->
+	<div id="actu">
+		<!-- En tête fixe : sticky bar -->
+		<header>
+			<h2 id="titrecategorie">Titre catégorie
+			<button id="trier">Trier</button></h2>
+		</header>
+
+		<!-- Barre latérale fixe : menu de sélection -->
+		<aside>
+			<img src="logo"><br>
+			<button id="newpubli"><a href="#publier"> Nouvelle publication</a></button>
+			<ul id="choixcategorie">
+				<li id="categorie"><a href=""><!-- ¿ LIEN CATEGORIE en PHP ?--> Categorie 1</a></li>
+			</ul>
+		</aside>
+
+		<!-- Contenu principal de la page : fil d'actualités scrollable -->
+		<article>
+			<div id="publication"></div>
+			<p><a href="publication.html">Voir plus</a></p>
+		</article>
+	</div>
+
+	<!-- Fenêtre pop up : écrire une nouvelle publication  -->
+	<div id="publier">
+		<form action="addpublication" method="post">
+			<input type="text" id="titre" name="titre" placeholder="Titre de la publication" required><br>
+			<select id="publicategorie" name="publicategorie" size="0" required></select><br>
+			<textarea id="contenu" name="contenu" placeholder="Contenu de la publication" required></textarea><br>
+			<label for="file">Ajouter un fichier</label>
+			<input type="file" id="file" name="file" multiple accept=""><!-- Choisir les extensions qu'on accepte --><br>
+			<button type="submit" id="validerpubli">Publier</button>
+		</form>
+	</div>
+
+</body>
+</html>
