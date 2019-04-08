@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `topic`  (
   REFERENCES categorie(id_categorie)
 );
 
-DROP TABLE IF EXISTS `publication`
+DROP TABLE IF EXISTS `publication`;
 CREATE TABLE IF NOT EXISTS `publication` (
   `id_publication` int(15) NOT NULL AUTO_INCREMENT,
   `titre_publication` varchar(150) NOT NULL,
@@ -26,21 +26,49 @@ CREATE TABLE IF NOT EXISTS `publication` (
   REFERENCES topic(id_topic)
 );
 
-DROP TABLE IF EXISTS `type`
-CREATE TABLE IF NOT EXISTS `type` (
-  `id_type` int(15) NOT NULL AUTO_INCREMENT,
-  `nom_type` varchar(50) NOT NULL,
-  CONSTRAINT pk_type PRIMARY KEY (id_type)
-);
-
-DROP TABLE IF EXISTS `type_publication`
-CREATE TABLE IF NOT EXISTS `type_publication` (
+DROP TABLE IF EXISTS `image`;
+CREATE TABLE IF NOT EXISTS `image` (
+  `id_image` int(15) NOT NULL,
   `id_publication` int(15) NOT NULL,
-  `id_type` int(15) NOT NULL,
-  CONSTRAINT pk_type_publication PRIMARY KEY (id_publication, id_type)
+  `nom_image` varchar(150) NOT NULL,
+  `taille_image` INT NOT NULL,
+  `type_image` varchar(50) NOT NULL,
+  `desc_image` varchar(200) NOT NULL,
+  `blob_image` TEXT NOT NULL,
+  CONSTRAINT pk_image PRIMARY KEY (id_image),
+  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
+  REFERENCES publication(id_publication)
 );
 
-DROP TABLE IF EXISTS `commentaire`
+DROP TABLE IF EXISTS `son`;
+CREATE TABLE IF NOT EXISTS `son` (
+  `id_son` int(15) NOT NULL,
+  `id_publication` int(15) NOT NULL,
+  `nom_son` varchar(150) NOT NULL,
+  `taille_son` INT NOT NULL,
+  `type_son` varchar(50) NOT NULL,
+  `desc_son` varchar(200) NOT NULL,
+  `blob_son` TEXT NOT NULL,
+  CONSTRAINT pk_son PRIMARY KEY (id_son),
+  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
+  REFERENCES publication(id_publication)
+);
+
+DROP TABLE IF EXISTS `video`;
+CREATE TABLE IF NOT EXISTS `video` (
+  `id_video` int(15) NOT NULL,
+  `id_publication` int(15) NOT NULL,
+  `nom_video` varchar(150) NOT NULL,
+  `taille_video` INT NOT NULL,
+  `type_video` varchar(50) NOT NULL,
+  `desc_video` varchar(200) NOT NULL,
+  `blob_video` TEXT NOT NULL,
+  CONSTRAINT pk_video PRIMARY KEY (id_video),
+  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
+  REFERENCES publication(id_publication)
+);
+
+DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_commentaire` int(15) NOT NULL AUTO_INCREMENT,
   `date_commentaire` DATE NOT NULL,
@@ -72,8 +100,3 @@ INSERT INTO `topic` (`id_topic`, `nom_topic`,`id_categorie`) VALUES
 (13, 'sport',4),
 (14, 'divers',4),
 (15, 'jeux_vidéos',4);
-
-INSERT INTO `type` (`id_type`, `nom_style`) VALUES
-(1, 'image'),
-(2, 'vidéo'),
-(3, 'son');
