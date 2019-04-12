@@ -82,7 +82,8 @@ INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (1, 'imac'),
 (2, 'projets_perso'),
 (3, 'aide'),
-(4, 'interets');
+(4, 'interets'),
+(5, 'divers');
 
 INSERT INTO `topic` (`id_topic`, `nom_topic`,`id_categorie`) VALUES
 (1, 'profs',1),
