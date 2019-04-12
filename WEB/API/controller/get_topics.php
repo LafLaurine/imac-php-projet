@@ -19,17 +19,18 @@ http_response_code(200);
 
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM categories;
+	FROM topic
+	WHERE categories.id_categorie = topic.id_categorie
 SQL
 );
 
 $stmt->execute();
-$cat = [];
+$topic = [];
 
 while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($cat,$row['nom_categorie']); 
+	array_push($topic,$row['nom_topic']); 
 }
 sort($cat);
-echo json_encode($cat);
+echo json_encode($topic);
 exit();
 ?>
