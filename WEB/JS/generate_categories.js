@@ -14,12 +14,12 @@ document.ready( () => {
 	fetch("./API/controller/get_categories.php")
 		.then( response => response.json() )
 		.then( data => {
-            let categories = document.getElementById('choixcategorie');
+            let categories = document.getElementById('trier');
 			data.forEach( categorie => {
-                let li  = document.createElement("li");
-                li.innerHTML = categorie;
-                li.classList.add("categorie");
-                categories.appendChild(li);
+                let option  = document.createElement("option");
+                option.innerHTML = categorie;
+                option.classList.add("categorie");
+                categories.appendChild(option);
 			});
 		})
 		.catch(error => { console.log(error) });
