@@ -78,6 +78,16 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   REFERENCES publication(id_publication)
 );
 
+DROP TABLE IF EXISTS `like`;
+CREATE TABLE IF NOT EXISTS `like` (
+  `id_like` int(15) NOT NULL AUTO_INCREMENT,
+  `id_publication` int(15) NOT NULL,
+  `count_like` INT,
+  CONSTRAINT pk_like PRIMARY KEY (id_like),
+  CONSTRAINT fk_publi FOREIGN KEY (id_publication)
+  REFERENCES publication(id_publication)
+);
+
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (1, 'imac'),
 (2, 'projets_perso'),
