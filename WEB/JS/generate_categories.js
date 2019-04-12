@@ -9,7 +9,7 @@ Document.prototype.ready = callback => {
 	}
 };
 
-// fill genres from data_genres.php
+// fill genres from generate_categories.php
 document.ready( () => {
 	fetch("./API/controller/get_categories.php")
 		.then( response => response.json() )
