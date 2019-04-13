@@ -18,14 +18,18 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 
 (Nous ne sommes en rien responsables des abus et mauvaises utilisations du site)</p>
 		<p>Cliquez sur <a href="#actu">ce lien</a> pour continuer </p>
+		<p>Consultez le site de <a href="https://www.ingenieur-imac.fr/">l'IMAC</a></p>
 	</div>
 	
 	<!-- Page scrollable avec les publication récentes : fil d'actualités -->
 	<div id="actu">
 		<!-- En tête fixe : sticky bar -->
 		<header>
-			<h2 id="titrecategorie">Titre catégorie
-			<select id="trier" name="trier"></select>
+			<h2 id="titrecategorie">Titre catégorie (cat actuelle)
+			<select id="trier" name="trier">
+				<option id="tri_date" name="tri_date">Plus récent</option>
+				<option id="tri_like" name="tri_like">Plus populaire</option>
+			</select>
 		</header>
 
 		<!-- Barre latérale fixe : menu de sélection -->
@@ -33,7 +37,8 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 			<img src="logo" id="logo"><br>
 			<button id="newpubli"><a href="#publier"> Nouvelle publication</a></button>
 			<ul id="choixcategorie">
-				choix catégorie
+			</ul>
+			<ul id="choixtopic">
 			</ul>
 		</aside>
 
@@ -57,6 +62,6 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 			<button type="submit" id="validerpubli">Publier</button>
 		</form>
 	</div>
-	<script src="JS/generate_categories.js"></script>
+	<script src="JS/generate_objects.js"></script>
 </body>
 </html>
