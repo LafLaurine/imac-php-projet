@@ -1,3 +1,19 @@
+
+@font-face {
+    font-family: 'FuturaExtended';
+    src: url('./FONTS/FuturaExtended.ttf');
+}
+
+@font-face {
+    font-family: 'amatic';
+    src: url('./FONTS/AmaticSC-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'amaticB';
+    src: url('./FONTS/AmaticSC-Bold.ttf');
+}
+
 /* Style accueil*/
 #accueil {
 
@@ -84,26 +100,39 @@ li {
     width: 100%;
     top: 0px;
     left: 0px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 #closed_cross {
     width: 3%; height: auto;
-    align-self: end;
+    position: absolute;
+    left : 1010px;
+    top : 20px;
 }
 
 #modalContainer{
     position: fixed;
-    height: 400px;
-    width: 800px;
-    top:170px;
-    left: 350px;
+    height: 80%;
+    width: 70%;
+    top: 75px;
+    left: 380px;
     background: white;
-    padding: 20px;
-    padding-right: 70px;
-    color: #ed4f5b;
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px black;
+    color: #FFBCB3;
+    outline-style: solid;
+    outline-color: #B1F3E3;
+    outline-width: 8px;
+}
+
+#nvPub{
+    font-family: amaticB;
+    color: black;
+    font-size: 2em;
+}
+
+#nvPub2{
+    font-family: amaticB;
+    color: black;
+    font-size: 2em;
 }
 
 #form {
@@ -111,27 +140,66 @@ li {
 }
 
 #titre {
+    border: 1.5px solid #FFBCB3;
+    border-radius: 5px;
+    color: #FFBCB3;
+    position: absolute;
+    left: 350px;
+    top: 50px;
+    width: 30%;
+    height: 10%
+}
+
+#select-icon{
+    width: 15px;
+    height: 11px;
+    margin-left: -30px;
 
 }
 
-#publicategori {
-
+#publicategorie {
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    position: absolute;
+    left: 350px;
+    top: 120px
 }
 
 #publitopic {
-
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    position: absolute;
+    left: 350px;
+    top: 170px
 }
 
 #contenu {
-
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    color: #CECECE;
+    position: absolute;
+    left: 80px;
+    top: 200px;
+    width: 78%;
+    height: 60%
 }
 
 #file {
-
+    position: absolute;
+    top: 28%;
+    left: 76.5%;
 }
 
 #validerpubli {
+    position: absolute;
+    top: 93%;
+    right: 2.4%;
+}
 
+label{
+    position: absolute;
+    top : 28%;
+    right: 25%;
 }
 
 #grayBack 

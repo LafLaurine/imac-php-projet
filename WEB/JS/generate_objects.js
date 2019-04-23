@@ -60,3 +60,9 @@ function popupClose()
 {
 	document.getElementById("publier").style.display = "none";
 }
+
+//active warning new publication
+function noFile()
+{
+	document.getElementById("publier").style.display = "block";
+}
