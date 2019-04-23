@@ -35,7 +35,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 		<!-- Barre latérale fixe : menu de sélection -->
 		<aside>
 			<img src="logo" id="logo"><br>
-			<button id="newpubli" onclick="popupAppear(publier)"><a href="#publier"> Nouvelle publication</a></button>
+			<button id="newpubli" onclick="popupAppear()"><a href="#publier"> Nouvelle publication</a></button>
 			<ul id="choixcategorie">
 			</ul>
 			<ul id="choixtopic">
@@ -53,14 +53,15 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 	<!-- Fenêtre pop up : écrire une nouvelle publication  -->
 	<div id="publier">
 		<form action="addpublication" method="post" id="form">
-			<div id="fond_fenetre"></div>
+			<div id="fond_fenetre">
 			<input type="text" id="titre" name="titre" placeholder="Titre de la publication" required><br>
 			<select id="publicategorie" name="publicategorie" size="0" required></select><br>
 			<select id="publitopic" name="publitopic" size="0" required></select><br>
 			<textarea id="contenu" name="contenu" placeholder="Contenu de la publication" required></textarea><br>
 			<label for="file">Ajouter un fichier</label>
 			<input type="file" id="file" name="file" multiple accept=""><!-- Choisir les extensions qu'on accepte --><br>
-			<button type="submit" id="validerpubli" onclick="popupClose(#publier)">Publier</button>
+			<button type="submit" id="validerpubli" onclick="popupClose()">Publier</button>
+		</div>
 		</form>
 	</div>
 	<script src="JS/generate_objects.js"></script>

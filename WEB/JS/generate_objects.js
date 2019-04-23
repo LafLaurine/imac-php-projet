@@ -50,13 +50,13 @@ document.ready( () => {
 });
 
 //pop up new publication
-popupAppear(idElement)
+function popupAppear()
 {
-	document.getElementById("idElement").style.display = "block";
+	document.getElementById("publier").style.display = "block";
 }
 
 //ferme pop up new publication
-popupClose(idElement)
+function popupClose()
 {
-	document.getElementById("idElement").style.display = "none";
+	document.getElementById("publier").style.display = "none";
 }
