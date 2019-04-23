@@ -87,6 +87,25 @@ li {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+#closed_cross {
+    width: 3%; height: auto;
+    align-self: end;
+}
+
+#modalContainer{
+    position: fixed;
+    height: 400px;
+    width: 800px;
+    top:170px;
+    left: 350px;
+    background: white;
+    padding: 20px;
+    padding-right: 70px;
+    color: #ed4f5b;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
 #form {
 
 }
