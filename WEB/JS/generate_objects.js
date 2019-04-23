@@ -11,7 +11,7 @@ Document.prototype.ready = callback => {
 
 // get categories
 document.ready( () => {
-	fetch("./API/controller/get_categories.php")
+	fetch("./API/controller/get_categories.php", {mode:'cors'})
 		.then( response => response.json() )
 		.then( data => {
 			let categories = document.getElementById('choixcategorie');
@@ -31,7 +31,7 @@ document.ready( () => {
 
 //get topics
 document.ready( () => {
-	fetch("./API/controller/get_topics.php")
+	fetch("./API/controller/get_topics.php",{mode:'cors'})
 		.then( response => response.json() )
 		.then( data => {
 			let topics = document.getElementById('choixtopic');
