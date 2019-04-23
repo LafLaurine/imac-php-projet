@@ -74,10 +74,20 @@ li {
 
 /* Stype pop up publication*/
 #publier {
-
+	display: none;
+	position: fixed;
 }
 
-#forme {
+#fond_fenetre {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#form {
 
 }
 
@@ -103,6 +113,18 @@ li {
 
 #validerpubli {
 
+}
+
+#grayBack 
+{
+    /* position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: black;
+     z-index: 1999;
+     opacity: 0.5;*/
 }
 
 /* Style publication full screen*/

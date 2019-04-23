@@ -11,7 +11,7 @@ Document.prototype.ready = callback => {
 
 // get categories
 document.ready( () => {
-	fetch("./API/controller/get_categories.php", {mode:'cors'})
+	fetch("./API/controller/get_categories.php")
 		.then( response => response.json() )
 		.then( data => {
 			let categories = document.getElementById('choixcategorie');
@@ -31,7 +31,7 @@ document.ready( () => {
 
 //get topics
 document.ready( () => {
-	fetch("./API/controller/get_topics.php",{mode:'cors'})
+	fetch("./API/controller/get_topics.php")
 		.then( response => response.json() )
 		.then( data => {
 			let topics = document.getElementById('choixtopic');
@@ -48,3 +48,15 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 });
+
+//pop up new publication
+popupAppear(idElement)
+{
+	document.getElementById("idElement").style.display = "block";
+}
+
+//ferme pop up new publication
+popupClose(idElement)
+{
+	document.getElementById("idElement").style.display = "none";
+}
