@@ -5,13 +5,13 @@
 }
 
 @font-face {
-    font-family: 'amatic';
-    src: url('./FONTS/AmaticSC-Regular.ttf');
+    font-family: 'Amatic';
+    src: url('../FONTS/AmaticSC-Regular.ttf');
 }
 
 @font-face {
-    font-family: 'amaticB';
-    src: url('./FONTS/AmaticSC-Bold.ttf');
+    font-family: 'AmaticB';
+    src: url('../FONTS/AmaticSC-Bold.ttf');
 }
 
 /* Style accueil*/
@@ -92,6 +92,7 @@ li {
 #publier {
 	display: none;
 	position: fixed;
+    font-family: 'FuturaExtended';
 }
 
 #fond_fenetre {
@@ -102,6 +103,7 @@ li {
     left: 0px;
     background-color: rgba(255, 255, 255, 0.8);
 }
+/*Mettre img de fond en opacité réduite et #fondfenetre à 100%*/
 
 #closed_cross {
     width: 3%; height: auto;
@@ -124,15 +126,20 @@ li {
 }
 
 #nvPub{
-    font-family: amaticB;
-    color: black;
-    font-size: 2em;
+    font-family: 'AmaticB';
+    color: #303030;
+    font-size: 4.5em;
+    position: absolute;
+    left: 11%;
 }
 
 #nvPub2{
-    font-family: amaticB;
-    color: black;
-    font-size: 2em;
+    font-family: 'AmaticB';
+    color: #303030;
+    font-size: 4.5em;
+    position: absolute;
+    left: 13%;
+    top: 8.5%;
 }
 
 #form {
@@ -140,36 +147,58 @@ li {
 }
 
 #titre {
-    border: 1.5px solid #FFBCB3;
+    /*border: 1.5px solid #FFBCB3;
     border-radius: 5px;
-    color: #FFBCB3;
+    color: #FFBCB3;*/
     position: absolute;
     left: 350px;
     top: 50px;
     width: 30%;
-    height: 10%
+    height: 6%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1.5px solid #CECECE;
+}
+
+#titrePub {
+    position: absolute;
+    top: 23px;
+    left: 270px;
+    font-size: 1.8em;
 }
 
 #select-icon{
     width: 15px;
     height: 11px;
     margin-left: -30px;
+}
 
+#listCat {
+    position: absolute;
+    top: 122px;
+    left: 350px;
 }
 
 #publicategorie {
     border: 1.5px solid #CECECE;
     border-radius: 5px;
     position: absolute;
+    left: 430px;
+    top: 142px
+}
+
+#listTopic {
+    position: absolute;
+    top: 150px;
     left: 350px;
-    top: 120px
 }
 
 #publitopic {
     border: 1.5px solid #CECECE;
     border-radius: 5px;
     position: absolute;
-    left: 350px;
+    left: 400px;
     top: 170px
 }
 
