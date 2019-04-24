@@ -105,6 +105,20 @@ li {
 }
 /*Mettre img de fond en opacité réduite et #fondfenetre à 100%*/
 
+#decorPop{
+    position: absolute;
+    width: 40%; height: auto;
+    left: -145px;
+    top: 290px;
+}
+
+#decorPop2{
+    position: absolute;
+    width: 20%; height: auto;
+    right: -70px;
+    top: -60px;
+}
+
 #closed_cross {
     width: 3%; height: auto;
     position: absolute;
