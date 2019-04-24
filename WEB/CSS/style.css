@@ -389,12 +389,12 @@ label{
 
 /* Style publication full screen*/
 #fullpublication {
-    width: 60%;
+    width: 50%;
     height: 150%;
     background: black;
     opacity: 0.5;
     position: absolute;
-    left: 300px;
+    left: 375px;
     top: -5px;
 }
 
@@ -412,7 +412,7 @@ label{
     width: 80%;
     height: 500px;
     position: relative;
-    left: 95px;
+    left: 85px;
     top: -10px;
     background: white;
     border: 1.5px solid #CECECE;
@@ -438,4 +438,28 @@ label{
     color: red;
     position: relative;
     left: 30px;
+}
+
+#page1 {
+    width: 15%;
+    height: auto;
+    position: fixed;
+    top: -36px;
+    left: -48px;
+}
+
+#page2 {
+    width: 50%;
+    height: auto;
+    position: fixed;
+    left: -355px;
+    top: 200px;
+}
+
+#page3 {
+    width: 40%;
+    height: auto;
+    position: fixed;
+    right: -265px;
+    top: 60px;
 }
