@@ -389,25 +389,53 @@ label{
 
 /* Style publication full screen*/
 #fullpublication {
-
+    width: 60%;
+    height: 150%;
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    left: 300px;
+    top: -5px;
 }
 
 #titrepubli {
-
+    font-family: 'AmaticB';
+    color: #FFBCB3;
+    font-size: 4.5em;
+    text-align: center;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 40px;
 }
 
 #content {
-
+    width: 80%;
+    height: 500px;
+    position: relative;
+    left: 95px;
+    top: -10px;
+    background: white;
+    border: 1.5px solid #CECECE;
 }
 
 #publicontent {
-
+    font-family: 'FuturaExtended';
+    font-size: 0.8em;
+    color: #CECECE;
 }
 
 #commentaire {
-
+    font-family: 'FuturaExtended';
+    font-size: 1.1em;
+    color: red;
+    position: relative;
+    left: 30px;
 }
 
 #reaction {
-
+    font-family: 'FuturaExtended';
+    font-size: 1.1em;
+    color: red;
+    position: relative;
+    left: 30px;
 }
