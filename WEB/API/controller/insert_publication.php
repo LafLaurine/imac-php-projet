@@ -36,7 +36,7 @@ $stmt = MyPDO::getInstance()->prepare(<<<SQL
 SQL
 );
 
-$insertion = $stmt->execute();
+$insertion = $stmt->execute($valeurs);
 
 if ($insertion){
 	$message = 'Operation enregistree avec succes';
