@@ -5,6 +5,11 @@
 }
 
 @font-face {
+    font-family: 'FuturaLight';
+    src: url('../FONTS/Futura-Light.ttf');
+}
+
+@font-face {
     font-family: 'Amatic';
     src: url('../FONTS/AmaticSC-Regular.ttf');
 }
@@ -110,10 +115,6 @@ h1 {
     top: 759px;
 }
 
-#actu.header {
-
-}
-
 #titrecategorie {
     font-family: 'AmaticB';
     font-size: 3.5em;
@@ -128,10 +129,6 @@ h1 {
     background-color: #CECECE;
 }
 
-#actu.aside {
-    
-}
-
 #logo {
     width: 12%;
     position: relative;
@@ -142,26 +139,63 @@ h1 {
 #newpubli {
     position: relative;
     margin-top: 100px;
-    margin-left: 50px;
+    margin-left: 30px;
+    border: 10px solid #FFE1DD;
+    background-color: rgba(255,188,179,0.45);
+}
+
+#newPubText {
+    text-decoration:none;
+    color: #303030;
+    font-family: 'FuturaExtended';
+    font-size: 1.3em;
 }
 
 #choixcategorie {
+    font-family: 'FuturaLight';
     position: relative;
     margin-left: 50px;
 }
 
 #choixtopic {
+    font-family: 'FuturaLight';
+    font-size: 1em;
     position: relative;
     margin-left: 50px;
 }
 
 #rectVert2 {
     background-color: #B1F3E3;
+    opacity: 0.5;
     position: absolute;
     top: 909px;
     left: 260px;
     width: 6px;
-    height: 680px
+    height: 750px
+}
+
+#voirPlus {
+    text-decoration:none;
+    color: #303030;
+    font-family: 'FuturaExtended';
+    font-size: 1.2em;
+    position: absolute;
+    top: 1600px;
+    left: 1300px;
+}
+
+#zoom1 {
+    width: 50%; height: auto;
+    position: absolute;
+    top: 662px;
+    left: 1025px;
+}
+
+#zoom2 {
+    width: 30%; height: auto;
+    position: absolute;
+    top: 1480px;
+    left: 210px;
 }
 
 .categorie {

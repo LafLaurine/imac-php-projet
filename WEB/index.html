@@ -43,7 +43,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 		<aside>
 			<div id="rectVert2"></div>
 			<img src="SRC/logobw.png" id="logo"><br>
-			<button id="newpubli" onclick="popupAppear()"><a href="#publier"> Nouvelle publication</a></button>
+			<button id="newpubli" onclick="popupAppear()"><a href="#publier" id="newPubText"> Nouvelle publication</a></button>
 			<ul id="choixcategorie">
 			</ul>
 			<ul id="choixtopic">
@@ -52,9 +52,11 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 
 		<!-- Contenu principal de la page : fil d'actualités scrollable -->
 		<article>
+			<img id="zoom1" alt="decor fond" src="SRC/zoom1.png"/>
+			<img id="zoom2" alt="decor fond 2" src="SRC/zoom2.png"/>
 			<div id="publication"></div>
 			<!-- Lien pour afficher une publication en entière : redirection vers une autre page -->
-			<p><a href="publication.html">Voir plus</a></p>
+			<p><a href="publication.html" id="voirPlus">→ Voir plus</a></p>
 		</article>
 	</div>
 
