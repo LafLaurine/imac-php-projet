@@ -104,7 +104,7 @@ h1 {
     background-color: #B1F3E3;
     opacity: 0.5;
     width: 1920px;
-    height: 180px;
+    height: 150px;
     position: absolute;
     left: -5px;
     top: 759px;
@@ -119,7 +119,7 @@ h1 {
     font-size: 3.5em;
     position: absolute;
     left: 450px;
-    top: 765px;
+    top: 750px;
 }
 
 #trier {
@@ -128,20 +128,40 @@ h1 {
     background-color: #CECECE;
 }
 
-#actu.asside {
-
+#actu.aside {
+    
 }
 
 #logo {
-
+    width: 12%;
+    position: relative;
+    left: 30px;
+    top: 165px;
 }
 
 #newpubli {
-
+    position: relative;
+    margin-top: 100px;
+    margin-left: 50px;
 }
 
 #choixcategorie {
+    position: relative;
+    margin-left: 50px;
+}
 
+#choixtopic {
+    position: relative;
+    margin-left: 50px;
+}
+
+#rectVert2 {
+    background-color: #B1F3E3;
+    position: absolute;
+    top: 909px;
+    left: 260px;
+    width: 6px;
+    height: 680px
 }
 
 .categorie {
