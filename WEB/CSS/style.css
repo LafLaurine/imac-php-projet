@@ -17,7 +17,7 @@
 /* Style accueil*/
 #accueil {
     text-align: center;
-    margin-bottom: 280px;
+    margin-bottom: 200px;
 }
 
 li {
@@ -97,19 +97,35 @@ h1 {
 
 /* Style publication*/
 #actu {
+    border-bottom: 80px;
+}
 
+#rectVert{
+    background-color: #B1F3E3;
+    opacity: 0.5;
+    width: 1920px;
+    height: 180px;
+    position: absolute;
+    left: -5px;
+    top: 759px;
 }
 
 #actu.header {
 
 }
 
-#titrecatogorie {
-
+#titrecategorie {
+    font-family: 'AmaticB';
+    font-size: 3.5em;
+    position: absolute;
+    left: 450px;
+    top: 765px;
 }
 
 #trier {
-
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    background-color: #CECECE;
 }
 
 #actu.asside {
