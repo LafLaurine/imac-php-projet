@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `titre_publication` varchar(150) NOT NULL,
   `date_publication` DATE NOT NULL,
   `id_topic` int(15) NOT NULL,
+  `content` varchar(1500) NOT NULL,
   CONSTRAINT pk_publication PRIMARY KEY (id_publication),
   CONSTRAINT fk_topic FOREIGN KEY (id_topic)
   REFERENCES topic(id_topic)
@@ -39,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   CONSTRAINT fk_publication FOREIGN KEY (id_publication)
   REFERENCES publication(id_publication)
 );
+
 
 DROP TABLE IF EXISTS `son`;
 CREATE TABLE IF NOT EXISTS `son` (
@@ -73,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_commentaire` int(15) NOT NULL AUTO_INCREMENT,
   `date_commentaire` DATE NOT NULL,
   `id_publication` int(15) NOT NULL,
+  `content_com` varchar(1500) NOT NULL,
   CONSTRAINT pk_commentaire PRIMARY KEY (id_commentaire),
   CONSTRAINT fk_publi FOREIGN KEY (id_publication)
   REFERENCES publication(id_publication)

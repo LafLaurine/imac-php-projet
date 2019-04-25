@@ -16,23 +16,25 @@ include_once "../data/MyPDO.spottimac.include.php";
 
 // response status
 http_response_code(200);
-$valeurs = ['titre'=>'', 'datepub'=>'', 'topic'=>''];
+$valeurs = ['titre'=>'', 'datepub'=>'', 'topic'=>'', 'content' =>''];
 if(!empty($_GET)){
 	if(isset($_GET['titre']) && !empty($_GET['titre'])){
 		$valeurs['titre'] = $_GET['titre'];			
 	}
-	if(isset($_GET['datepub']) && !empty($_GET['datepub'])){
-		$valeurs['datepub'] = $_GET['datepub'];			
-	}
 	if(isset($_GET['topic']) && !empty($_GET['topic'])){
 		$valeurs['topic'] = $_GET['topic'];			
-	}	
-
+	}
+	if(isset($_GET['content']) && !empty($_GET['content'])){
+		$valeurs['content'] = $_GET['content'];			
+	}
 }
 
+$date = date('Y-m-d');
+$valeurs['datepub'] = $date ;
+
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO publication(titre_publication, date_publication, id_topic)
-	VALUES (:titre, :datepub, :topic)
+	INSERT INTO publication(titre_publication, date_publication, id_topic, content)
+	VALUES (:titre, :datepub, :topic, :content)
 SQL
 );
 
