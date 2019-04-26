@@ -20,6 +20,7 @@ http_response_code(200);
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
 	FROM topic
+	ORDER BY nom_topic
 SQL
 );
 
@@ -27,7 +28,7 @@ $stmt->execute();
 $topic = [];
 
 while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($topic,$row['nom_topic']); 
+	array_push($topic,$row); 
 }
 
 //allow us to get topic from categories (need to put it under categories)
@@ -45,7 +46,7 @@ while (($row_2 = $stmt_topic_cat->fetch(PDO::FETCH_ASSOC))) {
 	array_push($topic_cat,$row['nom_topic']); 
 }*/
 
-sort($topic);
+//sort($topic);
 echo json_encode($topic,JSON_UNESCAPED_UNICODE);
 exit();
 ?>

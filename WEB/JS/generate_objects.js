@@ -15,7 +15,7 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			let categories = document.getElementById('choixcategorie');
-			let cat_publi = document.getElementById('publicategorie');
+			//let cat_publi = document.getElementById('publicategorie');
 			data.forEach( categorie => {
 				let choix_cat  = document.createElement("li");
 				choix_cat.innerHTML = categorie;
@@ -23,7 +23,7 @@ document.ready( () => {
                 option_pub.innerHTML = categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
-				cat_publi.appendChild(option_pub);
+				//cat_publi.appendChild(option_pub);
 			});
 		})
 		.catch(error => { console.log(error) });
@@ -38,9 +38,10 @@ document.ready( () => {
 			let cat_topic = document.getElementById('publitopic');
 			data.forEach( topic => {
 				let choix_topic  = document.createElement("li");
-				choix_topic.innerHTML = topic;
-                let option_pub  = document.createElement("option");
-                option_pub.innerHTML = topic;
+				choix_topic.innerHTML = topic.nom_topic;
+				let option_pub  = document.createElement("option");
+				option_pub.value=topic.id_topic;
+                option_pub.innerHTML = topic.nom_topic;
 				option_pub.classList.add("topic");
 				topics.appendChild(choix_topic);
 				cat_topic.appendChild(option_pub);
@@ -73,7 +74,7 @@ function pubClose()
 	document.location.href="index.html"; 
 }
 
-button.onclick = event => {
+document.getElementById("validerpubli").onclick = event => {
     event.preventDefault();
     const form = document.querySelector('#form');
     let params = {};
@@ -100,6 +101,6 @@ button.onclick = event => {
 			console.log("Erreur");
 		}
 	}
-    request.open("GET", "http://localhost/imac-php-projet/WEB/API/controller/insert_publication.php",true);
+    request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_publication.php",true);
     request.send(body);
 };
