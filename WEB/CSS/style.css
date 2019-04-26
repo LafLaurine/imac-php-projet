@@ -19,6 +19,11 @@
     src: url('../FONTS/AmaticSC-Bold.ttf');
 }
 
+html
+{
+    overflow-x: hidden;
+}
+
 /* Style accueil*/
 #accueil {
     text-align: center;
