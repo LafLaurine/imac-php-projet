@@ -72,3 +72,34 @@ function pubClose()
 {
 	document.location.href="index.html"; 
 }
+
+button.onclick = event => {
+    event.preventDefault();
+    const form = document.querySelector('#form');
+    let params = {};
+    if(form.titre.value)
+        params ['titre'] = form.titre.value;
+    if(form.publitopic.value)
+        params['topic'] = form.publitopic.value;
+    if(form.contenu.value)
+		params['content'] = form.contenu.value;
+	var body = JSON.stringify(params);
+	var request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if(request.readyState == 4) {
+            if(request.status == 200)
+            {
+				Array.prototype = true;
+				console.log(request);
+				var response = JSON.parse(request.responseText);
+				console.log(response);
+			}
+
+		}
+		else {
+			console.log("Erreur");
+		}
+	}
+    request.open("GET", "http://localhost/imac-php-projet/WEB/API/controller/insert_publication.php",true);
+    request.send(body);
+};
