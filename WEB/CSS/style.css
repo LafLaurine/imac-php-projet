@@ -95,7 +95,7 @@ h1 {
 
 #go {
     text-decoration: none;
-    color: #B1F3E3;
+    color: #BBE4D7;
     font-size: 1.8em;
     margin-top: 450px;
 }
@@ -391,11 +391,17 @@ label{
 #fullpublication {
     width: 50%;
     height: 150%;
-    background: black;
-    opacity: 0.5;
     position: absolute;
     left: 375px;
     top: -5px;
+}
+
+#fondPub {
+    background: #F5FFFA;
+    opacity: 0.7;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 #titrepubli {
@@ -414,8 +420,9 @@ label{
     position: relative;
     left: 85px;
     top: -10px;
-    background: white;
-    border: 1.5px solid #CECECE;
+   /* background: white;
+    border: 1.5px solid #CECECE;*/
+    /* ZONE DE CONTENU DE LA PUBLICATION */
 }
 
 #publicontent {
@@ -427,7 +434,7 @@ label{
 #commentaire {
     font-family: 'FuturaExtended';
     font-size: 1.1em;
-    color: red;
+    color: #FFBCB3;
     position: relative;
     left: 30px;
 }
@@ -435,7 +442,7 @@ label{
 #reaction {
     font-family: 'FuturaExtended';
     font-size: 1.1em;
-    color: red;
+    color: #FFBCB3;
     position: relative;
     left: 30px;
 }
@@ -462,4 +469,30 @@ label{
     position: fixed;
     right: -265px;
     top: 60px;
+}
+
+#rectVertPub {
+    width: 10px;
+    height: 600px;
+    position: absolute;
+    top: 250px;
+    left: 370px;
+    background: #B1F3E3;
+}
+
+#rectVertPub2 {
+    width: 10px;
+    height: 460px;
+    position: absolute;
+    top: -30px;
+    right: 380px;
+    background: #B1F3E3;
+}
+
+#closed_cross2 {
+    width: 4%; height: auto;
+    position: absolute;
+    right: 40px;
+    top : 30px;
+    opacity: 0.6;
 }
