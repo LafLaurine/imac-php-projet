@@ -22,7 +22,16 @@ if(!empty($_GET)){
 		$valeurs['titre'] = $_GET['titre'];			
 	}
 	if(isset($_GET['topic']) && !empty($_GET['topic'])){
-		$valeurs['topic'] = $_GET['topic'];			
+		$req_id = MyPDO::getInstance()->prepare(<<<SQL
+	SELECT *
+	FROM topic
+	WHERE nom_topic = $_GET['topic']	
+SQL
+);
+		$req_id->execute();
+		while (($row = $req_id->fetch()) !== false) {
+			$valeurs['topic'] = $row['id_topic'];
+		}	
 	}
 	if(isset($_GET['content']) && !empty($_GET['content'])){
 		$valeurs['content'] = $_GET['content'];			
