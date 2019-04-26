@@ -74,7 +74,7 @@ if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
 			move_uploaded_file($_FILES['file']['tmp_name'],$chemin);
 
 			$insertImg = MyPDO::getInstance()->prepare(<<<SQL
-			INSERT INTO publication(id_publication, nom_image, taille_image, type_image, desc_image,blob_image)
+			INSERT INTO image(id_publication, nom_image, taille_image, type_image, desc_image,blob_image)
 			VALUES (:idPub, :nom, :taille, :type, :description, :blob_image)
 SQL
 );
