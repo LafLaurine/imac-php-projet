@@ -66,3 +66,9 @@ function noFile()
 {
 	document.getElementById("publier").style.display = "block";
 }
+
+//ferme pop up new publication
+function pubClose()
+{
+	document.location.href="index.html"; 
+}
