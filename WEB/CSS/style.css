@@ -179,14 +179,14 @@ h1 {
     height: 750px
 }
 
-#voirPlus {
+.voirPlus {
     text-decoration:none;
     color: #303030;
     font-family: 'FuturaExtended';
     font-size: 1.2em;
-    position: absolute;
+    /*position: absolute;
     top: 1600px;
-    left: 1300px;
+    left: 1300px;*/
 }
 
 #zoom1 {

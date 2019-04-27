@@ -64,8 +64,6 @@ SQL
 	
 	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_topic" => $id_topic, "content" => $content);
 	echo json_encode($resp);
-
-
 }
 exit();
 ?>

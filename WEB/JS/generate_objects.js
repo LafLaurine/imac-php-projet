@@ -62,16 +62,28 @@ document.ready( () => {
 				title.setAttribute('class','titrepubli');
 				public.appendChild(title);
 				title.innerHTML = data[i].titre_publication;
+
 				var date_publi = document.createElement('h3');
 				date_publi.setAttribute('class','date_publi');
 				public.appendChild(date_publi);
 				date_publi.innerHTML = data[i].date_publication;
+
 				var reac_div = document.createElement('div');
 				reac_div.setAttribute('class','reaction');
 				var reac = document.createElement('h3');
 				reac.innerHTML = "Réactions :";
 				public.appendChild(reac_div);
 				reac_div.appendChild(reac);
+
+				var para = document.createElement('p');
+				var link = document.createElement('a');
+				link.setAttribute("href", "publication.html?="+data[i].id_publication);
+				link.setAttribute("class", "voirPlus");
+				link.setAttribute("id", data[i].id_publication);
+				link.innerHTML = "→ Voir plus";
+				public.appendChild(para);
+				para.appendChild(link);
+
 			}
 		})
 		.catch(error => { console.log(error) });
