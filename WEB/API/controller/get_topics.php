@@ -27,9 +27,15 @@ SQL
 $stmt->execute();
 $topic = [];
 
-while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($topic,$row); 
 }
+
+if(empty($topic)) {
+	echo json_encode(array("error" => "Missing topic"));
+	http_response_code(422);
+}
+echo json_encode($topic,JSON_UNESCAPED_UNICODE);
 
 //allow us to get topic from categories (need to put it under categories)
 
@@ -46,7 +52,6 @@ while (($row_2 = $stmt_topic_cat->fetch(PDO::FETCH_ASSOC))) {
 	array_push($topic_cat,$row['nom_topic']); 
 }*/
 
-//sort($topic);
-echo json_encode($topic,JSON_UNESCAPED_UNICODE);
+
 exit();
 ?>

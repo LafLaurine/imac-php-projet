@@ -18,9 +18,10 @@ document.ready( () => {
 			//let cat_publi = document.getElementById('publicategorie');
 			data.forEach( categorie => {
 				let choix_cat  = document.createElement("li");
-				choix_cat.innerHTML = categorie;
+				choix_cat.innerHTML = categorie.nom_categorie;
                 let option_pub  = document.createElement("option");
-                option_pub.innerHTML = categorie;
+				option_pub.innerHTML = categorie.nom_categorie;
+				option_pub.value=categorie.id_categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
 				//cat_publi.appendChild(option_pub);
@@ -46,6 +47,32 @@ document.ready( () => {
 				topics.appendChild(choix_topic);
 				cat_topic.appendChild(option_pub);
 			});
+		})
+		.catch(error => { console.log(error) });
+});
+
+
+document.ready( () => {
+	fetch("./API/controller/get_publications.php")
+		.then( response => response.json() )
+		.then( data => {
+			let public = document.getElementById("publication");
+			for(var i =0; i<data.length; i++) {
+				var title = document.createElement('h2');
+				title.setAttribute('class','titrepubli');
+				public.appendChild(title);
+				title.innerHTML = data[i].titre_publication;
+				var date_publi = document.createElement('h3');
+				date_publi.setAttribute('class','date_publi');
+				public.appendChild(date_publi);
+				date_publi.innerHTML = data[i].date_publication;
+				var reac_div = document.createElement('div');
+				reac_div.setAttribute('class','reaction');
+				var reac = document.createElement('h3');
+				reac.innerHTML = "Réactions :";
+				public.appendChild(reac_div);
+				reac_div.appendChild(reac);
+			}
 		})
 		.catch(error => { console.log(error) });
 });
