@@ -27,7 +27,7 @@ SQL
 $stmt->execute();
 $cat = [];
 
-while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($cat,$row); 
 }
 if(empty($cat)) {

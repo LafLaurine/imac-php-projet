@@ -77,7 +77,7 @@ document.ready( () => {
 
 				var para = document.createElement('p');
 				var link = document.createElement('a');
-				link.setAttribute("href", "publication.html?="+data[i].id_publication);
+				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
 				link.setAttribute("class", "voirPlus");
 				link.setAttribute("id", data[i].id_publication);
 				link.innerHTML = "→ Voir plus";
