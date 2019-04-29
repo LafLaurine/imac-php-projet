@@ -87,34 +87,9 @@ document.ready( () => {
 			}
 		})
 		.catch(error => { console.log(error) });
-});
-
-//pop up new publication
-function popupAppear()
-{
-	document.getElementById("publier").style.display = "block";
-}
-
-//ferme pop up new publication
-function popupClose()
-{
-	document.getElementById("publier").style.display = "none";
-}
-
-//active warning new publication
-function noFile()
-{
-	document.getElementById("publier").style.display = "block";
-}
-
-//ferme pop up new publication
-function pubClose()
-{
-	document.location.href="index.html"; 
-}
 
 document.getElementById("validerpubli").onclick = event => {
-    event.preventDefault();
+	event.preventDefault();
     const form = document.querySelector('#form');
     let params = {};
     if(form.titre.value)
@@ -143,3 +118,28 @@ document.getElementById("validerpubli").onclick = event => {
     request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_publication.php",true);
     request.send(body);
 };
+});
+//pop up new publication
+function popupAppear()
+{
+	document.getElementById("publier").style.display = "block";
+}
+	
+//ferme pop up new publication
+function popupClose()
+{
+	document.getElementById("publier").style.display = "none";
+}
+
+//active warning new publication
+function noFile()
+{
+	document.getElementById("publier").style.display = "block";
+}
+
+//ferme pop up new publication	
+function pubClose()
+{
+	document.location.href="index.html"; 
+}
+

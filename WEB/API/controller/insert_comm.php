@@ -46,13 +46,12 @@ else {
 SQL
 );
 	$stmt->bindParam(':date_commentaire',$date_comm);
-	$stmt->bindParam(':id_publication',$id_publi);
 	$stmt->bindParam(':content_com',$commentaire);
 	$stmt->execute();
 	
 	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
 	
-	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publi, "content_com" => $commentaire);
+	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "content_com" => $commentaire);
 	echo json_encode($resp);
 }
 exit();

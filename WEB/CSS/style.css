@@ -291,10 +291,6 @@ h1 {
     top: 8.5%;
 }
 
-#form {
-
-}
-
 #titre {
     /*border: 1.5px solid #FFBCB3;
     border-radius: 5px;
@@ -351,7 +347,7 @@ h1 {
     top: 170px
 }
 
-#contenu {
+#contenu, #pub_commentaire {
     border: 1.5px solid #CECECE;
     border-radius: 5px;
     color: #CECECE;
