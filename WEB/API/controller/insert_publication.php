@@ -1,6 +1,6 @@
 <?php
 // headers
-//header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
 // check HTTP method
 $method = strtolower($_SERVER['REQUEST_METHOD']);

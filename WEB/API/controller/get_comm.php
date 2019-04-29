@@ -29,17 +29,17 @@ else {
 
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-    FROM publication
+    FROM commentaire
     WHERE id_publication = :id_publi;
 SQL
 );
 $stmt->bindParam(':id_publi',$id_publi);
 $stmt->execute();
-$publi = [];
+$comm = [];
 
 if(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($publi,$row); 
+	array_push($comm,$row); 
 }
 
-echo json_encode($publi,JSON_UNESCAPED_UNICODE);
+echo json_encode($comm,JSON_UNESCAPED_UNICODE);
 exit();
