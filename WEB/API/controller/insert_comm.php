@@ -4,23 +4,21 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // check HTTP method
 $method = strtolower($_SERVER['REQUEST_METHOD']);
-
+/*
 if ($method !== 'post') {
 	http_response_code(405);
 	echo json_encode(array('message' => 'This method is not allowed.'));
 	exit();
-}
+}*/
 
 // include data
 include_once "../data/MyPDO.spottimac.include.php";
 
+
 // response status
 http_response_code(200);
 
-else {
-    echo json_encode(array("error" => "Missing id publi"));
-	http_response_code(422);
-}
+
 
 $input = file_get_contents('php://input');
 

@@ -92,6 +92,9 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 
+});
+
+
 document.getElementById("validerpubli").onclick = event => {
 	event.preventDefault();
     const form = document.querySelector('#form');
@@ -109,20 +112,18 @@ document.getElementById("validerpubli").onclick = event => {
             if(request.status == 200)
             {
 				Array.prototype = true;
-				console.log(request);
 				var response = JSON.parse(request.responseText);
-				console.log(response);
+				console.log(request);
 			}
-
+			else {
+				console.log("Erreur");
+			}
 		}
-		else {
-			console.log("Erreur");
-		}
+		
 	}
     request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_publication.php",true);
     request.send(body);
 };
-});
 //pop up new publication
 function popupAppear()
 {
