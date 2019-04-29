@@ -347,6 +347,11 @@ h1 {
     top: 170px
 }
 
+a:hover {
+    color:red;
+    cursor:pointer;
+}
+
 #contenu, #pub_commentaire {
     border: 1.5px solid #CECECE;
     border-radius: 5px;

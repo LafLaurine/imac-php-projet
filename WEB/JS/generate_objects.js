@@ -17,13 +17,17 @@ document.ready( () => {
 			let categories = document.getElementById('choixcategorie');
 			//let cat_publi = document.getElementById('publicategorie');
 			data.forEach( categorie => {
+				let titre_cat = document.getElementById("titrecategorie");
 				let choix_cat  = document.createElement("li");
-				choix_cat.innerHTML = categorie.nom_categorie;
+				let cate  = document.createElement("a");
+				choix_cat.appendChild(cate);
+				cate.innerHTML = categorie.nom_categorie;
                 let option_pub  = document.createElement("option");
 				option_pub.innerHTML = categorie.nom_categorie;
 				option_pub.value=categorie.id_categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
+ 				//titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
 				//cat_publi.appendChild(option_pub);
 			});
 		})

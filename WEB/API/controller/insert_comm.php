@@ -50,7 +50,6 @@ SQL
 	$stmt->execute();
 	
 	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
-	
 	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "content_com" => $commentaire);
 	echo json_encode($resp);
 }
