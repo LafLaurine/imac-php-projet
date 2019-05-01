@@ -20,6 +20,7 @@ document.ready( () => {
 				let titre_cat = document.getElementById("titrecategorie");
 				let choix_cat  = document.createElement("li");
 				let cate  = document.createElement("a");
+				cate.setAttribute("data-id_cat",categorie.id_categorie);
 				choix_cat.appendChild(cate);
 				cate.innerHTML = categorie.nom_categorie;
                 let option_pub  = document.createElement("option");
@@ -41,8 +42,11 @@ document.ready( () => {
 		.then( data => {
 			let topics = document.getElementById('choixtopic');
 			let cat_topic = document.getElementById('publitopic');
-			data.forEach( topic => {
+			data.forEach(topic => {
 				let choix_topic  = document.createElement("li");
+				let top  = document.createElement("a");
+				top.setAttribute("data-id_topic",topic.id_topic);
+				choix_topic.appendChild(top);
 				choix_topic.innerHTML = topic.nom_topic;
 				let option_pub  = document.createElement("option");
 				option_pub.value=topic.id_topic;

@@ -18,6 +18,8 @@ document.ready( () => {
 		.then( data => {
 			data.forEach( publi => {
 				let titre_publi  = document.getElementById("titrepubli");
+				let val_comm = document.getElementById("valider_comm");
+				val_comm.setAttribute("data-id_publication",publi.id_publication)
 				let content = document.getElementById("publicontent");
 				let date = document.getElementById("date");
 				let commentaire = document.getElementById("commentaire");
@@ -26,8 +28,10 @@ document.ready( () => {
 				date.innerHTML = publi.date_publication;
 			});
 		})
-		.catch(error => { console.log(error) });8
-		document.ready( () => {
+		.catch(error => { console.log(error) });
+});
+
+document.ready( () => {
 			var url_string = window.location.href;
 			var new_url = url_string.split('=');
 			var id_publication = new_url[1];
@@ -42,14 +46,19 @@ document.ready( () => {
 					});
 				})
 				.catch(error => { console.log(error) });
-		});
-		
-	document.getElementById("valider_comm").onclick = event => {
+});
+
+
+document.getElementById("valider_comm").onclick = event => {
+		let valid = document.getElementById("valider_comm");
+		let id_publication = valid.getAttribute("data-id_publication");
+		console.log(id_publication);
 		event.preventDefault();
 		const form = document.querySelector('#pub_commentaire');
 		let params = {};
 		if(form.publi_com.value)
 			params['publi_com'] = form.publi_com.value;
+		params['id_publication'] = id_publication;
 		var body = JSON.stringify(params);
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = () => {
@@ -71,5 +80,5 @@ document.ready( () => {
 		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
 		request.send(body);
 	};
-});
+
 
