@@ -17,8 +17,8 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-if(!empty($_GET['id'])){
-    $id_publi = $_GET['id'];
+if(!empty($_GET['id_publi'])){
+    $id_publi = $_GET['id_publi'];
 }
 
 else {
@@ -37,7 +37,7 @@ $stmt->bindParam(':id_publi',$id_publi);
 $stmt->execute();
 $comm = [];
 
-if(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($comm,$row); 
 }
 

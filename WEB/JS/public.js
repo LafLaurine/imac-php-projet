@@ -29,25 +29,24 @@ document.ready( () => {
 			});
 		})
 		.catch(error => { console.log(error) });
-});
 
-document.ready( () => {
-			var url_string = window.location.href;
-			var new_url = url_string.split('=');
-			var id_publication = new_url[1];
-			fetch("./API/controller/get_comm.php?id="+id_publication)
-				.then( response => response.json() )
-				.then( data => {
-					data.forEach( comm => {
-						let comm_pub  = document.getElementById("comm_pub");
-						let date_comm = document.getElementById("date_comm");
-						comm_pub.innerHTML = comm.content_com;
-						date_comm.innerHTML = comm.date_commentaire;
-					});
-				})
-				.catch(error => { console.log(error) });
+		fetch("./API/controller/get_comm.php?id_publi="+id_publication)
+		.then( response => response.json() )
+		.then( data => {
+			data.forEach( comm => {
+				let com_div = document.getElementById("commentaire");
+				let com_h3 = document.createElement("h3");
+				com_h3.setAttribute("id","comm_pub");
+				let date_h3 = document.createElement("h3");
+				date_h3.setAttribute("id","date_comm");
+				com_div.appendChild(com_h3);
+				com_div.appendChild(date_h3);
+				com_h3.innerHTML = comm.content_com;
+				date_h3.innerHTML = comm.date_commentaire;
+			});
+		})
+		.catch(error => { console.log(error) });
 });
-
 
 document.getElementById("valider_comm").onclick = event => {
 		let valid = document.getElementById("valider_comm");
