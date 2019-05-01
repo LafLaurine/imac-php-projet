@@ -44,10 +44,10 @@ document.ready( () => {
 			let cat_topic = document.getElementById('publitopic');
 			data.forEach(topic => {
 				let choix_topic  = document.createElement("li");
-				let top  = document.createElement("a");
-				top.setAttribute("data-id_topic",topic.id_topic);
-				choix_topic.appendChild(top);
-				choix_topic.innerHTML = topic.nom_topic;
+				let topi  = document.createElement("a");
+				topi.setAttribute("data-id_topic",topic.id_topic);
+				choix_topic.appendChild(topi);
+				topi.innerHTML = topic.nom_topic;
 				let option_pub  = document.createElement("option");
 				option_pub.value=topic.id_topic;
                 option_pub.innerHTML = topic.nom_topic;
