@@ -80,4 +80,8 @@ document.getElementById("valider_comm").onclick = event => {
 		request.send(body);
 	};
 
-
+//ferme pop up new publication	
+function pubClose()
+{
+	document.location.href="index.html"; 
+}
