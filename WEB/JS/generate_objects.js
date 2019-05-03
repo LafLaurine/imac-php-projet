@@ -113,7 +113,13 @@ document.getElementById("validerpubli").onclick = event => {
 
 	var fileSelect = document.getElementById('file');
 	var files = fileSelect.files;
-	var file = files[0];
+	//le FormData permet créer des paires clé/valeur du même format 
+	//que celles générées par l'attribut 'name' dans les champs <input> du formulaire.
+	var formData = new FormData();
+	for (var i = 0; i < files.length; i++) {
+  		var file = files[i];
+  		formData.append('file', file, file.name);
+  	}	
 	// Loop through each of the selected files.
   	params['fileName'] = file.name;
   	params['fileType'] = file.type;
