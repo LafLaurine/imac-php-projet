@@ -1,6 +1,6 @@
 <?php
 // headers
-//header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
 // check HTTP method
 $method = strtolower($_SERVER['REQUEST_METHOD']);
@@ -44,6 +44,7 @@ else {
 		exit();
 	}
 
+
 	$title = $json_obj['titre'];
 	$id_topic = $json_obj['topic'];
 	$content = $json_obj['content'];
@@ -60,133 +61,30 @@ SQL
 	$stmt->bindParam(':content',$content);
 	$stmt->execute();
 	
-	$id_publi = MyPDO::getInstance()->lastInsertId(); 
+	$id_publi = MyPDO::getInstance()->lastInsertId();
 
-	/*
-	if ($_FILES['up_file']['size']==0) { die("No file selected"); }
-	if (exif_imagetype($_FILES['up_file']['tmp_name'])===false) { die("Not an image"); }
+		if(!isset($json_obj['fileName']) || !isset($json_obj['fileType']) || !isset($json_obj['fileSize']) )
+	{
+		echo json_encode(array("error" => "Missing File"));
+		exit();
+	} 
 
-	// ALTERNATE SOLUTION
-	// SIMPLY SAVE THE UPLOADED FILE INTO A PRIVATE FOLDER
-	$target_file = "../private_upload/" . basename($_FILES["up_file"]["nom_image"]);
-	if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) { echo "ok"; }
-	else{ echo "error"; }*/
+	$fileName = $json_obj['fileName'];
+	$fileType = $json_obj['fileType'];
+	$fileSize=$json_obj['fileSize'];
+
+	$stmt2 = MyPDO::getInstance()->prepare(<<<SQL
+	INSERT INTO image(id_publication, nom_image, taille_image, type_image)
+	VALUES (:id_publication, :nom_image, :taille_image, :type_image)
+SQL
+);
+	$stmt2->bindParam(':id_publication',$id_publi);
+	$stmt2->bindParam(':nom_image',$fileName);
+	$stmt2->bindParam(':taille_image',$fileSize);
+	$stmt2->bindParam(':type_image',$fileType);
+	$stmt2->execute();
 	
 	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_topic" => $id_topic, "content" => $content);
 	echo json_encode($resp);
-
-
 }
-
-/*
-$valeurs = ['titre'=>'', 'datepub'=>'', 'topic'=>'', 'content' =>''];
-if(!empty($_GET)){
-	if(isset($_GET['titre']) && !empty($_GET['titre'])){
-		$valeurs['titre'] = $_GET['titre'];			
-	}
-	if(isset($_GET['topic']) && !empty($_GET['topic'])){
-		$req_id = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM topic
-	WHERE nom_topic = $_GET['topic']	
-SQL
-);
-		$req_id->execute();
-		while (($row = $req_id->fetch()) !== false) {
-			$valeurs['topic'] = $row['id_topic'];
-		}	
-	}
-	if(isset($_GET['content']) && !empty($_GET['content'])){
-		$valeurs['content'] = $_GET['content'];			
-	}
-}
-
-$date = date('Y-m-d');
-$valeurs['datepub'] = $date ;
-
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO publication(titre_publication, date_publication, id_topic, content)
-	VALUES (:titre, :datepub, :topic, :content)
-SQL
-);
- 
-$insertion = $stmt->execute($valeurs);
-
-if ($insertion){
-	$message = 'Operation enregistree avec succes';
-}
-else{
-	$message = 'Operation non enregistree ';
-}
-
-echo json_encode($message);*/
-
-/*
-
-//insertion dans la table publication 
-$champsPublication = ['titre'=>'', 'datepub'=>'', 'topic'=>'', 'content' =>''];
-if(!empty($_POST)){
-	if(isset($_POST['titre']) && !empty($_POST['titre'])){
-		$champsPublication['titre'] = $_POST['titre'];			
-	}
-	if(isset($_POST['topic']) && !empty($_POST['topic'])){
-		$req_id = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM topic
-	WHERE nom_topic = $_POST['topic']	
-SQL
-);
-		$req_id->execute();
-		while (($row = $req_id->fetch()) !== false) {
-			$champsPublication['topic'] = $row['id_topic'];
-		}	
-	}
-	if(isset($_POST['content']) && !empty($_POST['content'])){
-		$champsPublication['content'] = $_POST['content'];			
-	}
-}
-
-$date = date('Y-m-d');
-$champsPublication['datepub'] = $date ;
-
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO publication(titre_publication, date_publication, id_topic, content)
-	VALUES (:titre, :datepub, :topic, :content)
-SQL
-);
-
-$insertionPublication = $stmt->execute($champsPublication);
-
-$idPub = MyPDO::lastInsertId();
-
-// Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
-if (isset($_FILES['file']) AND $_FILES['file']['error'] == 0){
-	if ($_FILES['file']['size'] <= 1000000){
-		$infosfichier = pathinfo($_FILES['file']['name']);
-		$extension_fichier = $infosfichier['extension'];
-		//testons si le fichier est une image 
-		$extensions_image = array('jpg', 'jpeg', 'gif', 'png');
-		if (in_array($extension_upload, $extensions_image)){
-			$destination = "../../STOCKAGE/IMAGE";
-			$champsImg = ['idPub' =>'','nom'=> '', 'taille'=>'', 'type'=>'', 'description' =>'', 'blob_image'=>''];
-			$nom = $_FILES['file']['name'];
-			$chemin = $destination.'/'.$nom;
-			$champsImg['idPub']= $idPub; 
-			$champsImg['nom']= $nom; 
-			$champsImg['taille']=$_FILES['file']['size'];
-			$champsImg['type']=$infosfichier['extension'];
-			$champsImg['blob_image']= $chemin;
-
-			move_uploaded_file($_FILES['file']['tmp_name'],$chemin);
-
-			$insertImg = MyPDO::getInstance()->prepare(<<<SQL
-			INSERT INTO image(id_publication, nom_image, taille_image, type_image, desc_image,blob_image)
-			VALUES (:idPub, :nom, :taille, :type, :description, :blob_image)
-SQL
-);
-			$insertImg->execute($champsImg);
-		}
-	}
-*/
-exit();
 ?>
