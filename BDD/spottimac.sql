@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(15) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(500) NOT NULL,
+  CONSTRAINT pk_user PRIMARY KEY (id_user)
+);
+
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS  `categories` (
     `id_categorie` int(15) NOT NULL AUTO_INCREMENT,
@@ -21,10 +29,13 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `titre_publication` varchar(150) NOT NULL,
   `date_publication` DATE NOT NULL,
   `id_topic` int(15) NOT NULL,
+  `id_user` int(15) NOT NULL,
   `content` varchar(1500) NOT NULL,
   CONSTRAINT pk_publication PRIMARY KEY (id_publication),
   CONSTRAINT fk_topic FOREIGN KEY (id_topic)
-  REFERENCES topic(id_topic)
+  REFERENCES topic(id_topic),
+  CONSTRAINT fk_user FOREIGN KEY (id_user)
+  REFERENCES user(id_user)
 );
 
 DROP TABLE IF EXISTS `image`;
@@ -75,20 +86,26 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_commentaire` int(15) NOT NULL AUTO_INCREMENT,
   `date_commentaire` DATE NOT NULL,
   `id_publication` int(15) NOT NULL,
+  `id_user` int(15) NOT NULL,
   `content_com` varchar(1500) NOT NULL,
   CONSTRAINT pk_commentaire PRIMARY KEY (id_commentaire),
   CONSTRAINT fk_publi FOREIGN KEY (id_publication)
-  REFERENCES publication(id_publication)
+  REFERENCES publication(id_publication),
+  CONSTRAINT fk_user FOREIGN KEY (id_user)
+  REFERENCES user(id_user)
 );
 
 DROP TABLE IF EXISTS `like`;
 CREATE TABLE IF NOT EXISTS `like` (
   `id_like` int(15) NOT NULL AUTO_INCREMENT,
   `id_publication` int(15) NOT NULL,
+  `id_user` int(15) NOT NULL,
   `count_like` INT,
   CONSTRAINT pk_like PRIMARY KEY (id_like),
   CONSTRAINT fk_publi FOREIGN KEY (id_publication)
-  REFERENCES publication(id_publication)
+  REFERENCES publication(id_publication),
+  CONSTRAINT fk_user FOREIGN KEY (id_user)
+  REFERENCES user(id_user)
 );
 
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
@@ -114,3 +131,12 @@ INSERT INTO `topic` (`id_topic`, `nom_topic`,`id_categorie`) VALUES
 (13, 'sport',4),
 (14, 'divers',4),
 (15, 'jeux_vidéos',4);
+
+INSERT INTO `commentaire` (`id_commentaire`, `date_commentaire`, `id_publication`, `id_user`, `content_com`) VALUES
+(1, '2019-05-04', 1, 2,"Non désolée je n'y arrive pas non plus"),
+(2, '2019-05-02', 2, 1, 'Oui ! il faut ça et ça et ça'),
+(3, '2019-05-04', 1, 1, 'Oui, va voir ce lien :');
+
+INSERT INTO `publication` (`id_publication`, `titre_publication`, `date_publication`, `id_topic`, `id_user`, `content`) VALUES
+(1, 'Aide Tower Defense', '2019-05-04', 7, 1, 'Coucou ! Je ne comprends pas l\'algo de Bressenham, quelqu\'un peut-il m\'expliquer ?'),
+(2, 'Projet son', '2019-04-25', 5, 2, 'salut ! qqn sait quel matériel il faut ?');
