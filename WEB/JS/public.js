@@ -19,6 +19,12 @@ document.ready( () => {
 			data.forEach( publi => {
 				let titre_publi  = document.getElementById("titrepubli");
 				let val_comm = document.getElementById("valider_comm");
+				let reac = document.getElementById("reaction");
+				var img_reac = document.createElement("img");
+				img_reac.setAttribute("id", "reac");
+				img_reac.setAttribute("src", "./SRC/heart.png");
+				img_reac.setAttribute('onclick','chngimg()');
+				reac.appendChild(img_reac);
 				val_comm.setAttribute("data-id_publication",publi.id_publication)
 				let content = document.getElementById("publicontent");
 				let date = document.getElementById("date");
@@ -83,4 +89,20 @@ document.getElementById("valider_comm").onclick = event => {
 function pubClose()
 {
 	document.location.href="index.html"; 
+}
+
+function chngimg() {
+	var img = document.getElementById('reac').src;
+	var count = 0;
+	if (img.indexOf('heart.png')!=-1) {
+		document.getElementById('reac').src  = './SRC/heart_pink.png';
+		count = count+1;
+	}
+	 else {
+	   document.getElementById('reac').src = './SRC/heart.png';
+	   if(count !=0) {
+		   count = count-1;
+	   }
+	   
+   }
 }
