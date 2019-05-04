@@ -17,22 +17,29 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM categories
-	ORDER BY nom_categorie;
-SQL
-);
-
-$stmt->execute();
-$cat = [];
-
-while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($cat,$row); 
+if(!empty($_GET['id'])){
+    $id_publi = $_GET['id'];
 }
-if(empty($cat)) {
-	echo json_encode(array("error" => "Missing categories"));
+
+else {
+    echo json_encode(array("error" => "Missing id publi"));
 	http_response_code(422);
 }
-echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+
+
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
+	SELECT *
+    FROM publication
+    WHERE id_publication = :id_publi;
+SQL
+);
+$stmt->bindParam(':id_publi',$id_publi);
+$stmt->execute();
+$publi = [];
+
+if(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+	array_push($publi,$row); 
+}
+
+echo json_encode($publi,JSON_UNESCAPED_UNICODE);
 exit();

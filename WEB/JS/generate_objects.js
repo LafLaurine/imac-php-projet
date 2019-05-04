@@ -9,6 +9,7 @@ Document.prototype.ready = callback => {
 	}
 };
 
+
 // get categories
 document.ready( () => {
 	fetch("./API/controller/get_categories.php")
