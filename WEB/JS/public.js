@@ -86,6 +86,15 @@ document.getElementById("valider_comm").onclick = event => {
 		request.send(body);
 };
 
+
+document.getElementById("logout").onclick = event => {
+	fetch("./API/user/logout.php")
+		.then( response => response.json() )
+		.then( data => {
+		})
+		.catch(error => { console.log(error) });
+};
+
 function pubClose()
 {
 	document.location.href="index.html"; 

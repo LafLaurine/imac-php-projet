@@ -89,6 +89,15 @@ h1 {
     width: 500px;
 }
 
+#register_form {
+    margin-left:30em;
+    margin-top:15em;
+}
+
+#login_form {
+    margin-left:30em;
+}
+
 #siteImac {
     font-size: 1.2em;
     text-decoration: none;
