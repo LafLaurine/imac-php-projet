@@ -78,6 +78,9 @@ document.getElementById("valider_comm").onclick = event => {
 		}
 		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
 		request.send(body);
-	};
+};
 
-
+function pubClose()
+{
+	document.location.href="index.html"; 
+}

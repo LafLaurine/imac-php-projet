@@ -9,56 +9,55 @@
 
 <body>
 	<!-- Page accueil full screen et scrollable pour acceder à la suite -->
-	<div id="accueil">
-		<img id="decorAccueil" alt="decor fond" src="SRC/accueil1.png"/>
-		<img id="decorAccueil2" alt="decor fond" src="SRC/accueil2.png"/>
-		<img id="decorAccueil3" alt="decor fond" src="SRC/accueil3.png"/>
-		<img id="decorAccueil4" alt="decor fond" src="SRC/accueil4.png"/>
-		<h1>Spott'IMAC</h1>
-		<p id="texteAccueil" class="pageAccueil">IMACIENS IMACIENNES,
+	<img id="decorAccueil" alt="decor fond" src="SRC/accueil1.png"/>
+	<img id="decorAccueil2" alt="decor fond" src="SRC/accueil2.png"/>
+	<img id="decorAccueil3" alt="decor fond" src="SRC/accueil3.png"/>
+	<img id="decorAccueil4" alt="decor fond" src="SRC/accueil4.png"/>
+<div id="accueil">
+	<h1>Spott'IMAC</h1>
+	<p id="texteAccueil" class="pageAccueil">IMACIENS IMACIENNES,
 Bonjour à tou.te.s, voici le seul et l’unique Spott’IMAC, un spotted fait par des IMACS pour des IMACS!
 Ici vous pourrez exprimer et partager vos idées, projets et tout autre sujet qui vous passe par la tête! Tout cela se fera de façon anonyme, maintenant à vos claviers!
 
 Merci de rester respectueux et bienveillants, si nous voyons des publications offensantes, nous ne nous priverons pas de les supprimer.
 
 (Nous ne sommes en rien responsables des abus et mauvaises utilisations du site)</p>
-		<p class="pageAccueil"><a href="#actu" id="go">C'est parti !</a></p>
-		<p id="siteLien" class="pageAccueil">Consultez le site de <a href="https://www.ingenieur-imac.fr/" id="siteImac" class="pageAccueil">l'IMAC</a></p>
-	</div>
-	
-	<!-- Page scrollable avec les publications récentes : fil d'actualités -->
-	<div id="actu">
-		<!-- En tête fixe : sticky bar -->
-		<header>
-			<div id="rectVert"></div>	
-				<h2 id="titrecategorie">Titre catégorie (cat actuelle)
-				<select id="trier" name="trier">
-					<option id="tri_date" name="tri_date">Plus récent</option>
-					<option id="tri_like" name="tri_like">Plus populaire</option>
-				</select>
+	<p class="pageAccueil"><a href="#actu" id="go">C'est parti !</a></p>
+	<p id="siteLien" class="pageAccueil">Consultez le site de <a href="https://www.ingenieur-imac.fr/" id="siteImac" class="pageAccueil">l'IMAC</a></p>
+</div>
 
-		</header>
+<!-- Page scrollable avec les publications récentes : fil d'actualités -->
+<div id="actu">
+	<!-- En tête fixe : sticky bar -->
+	<header>
+		<div id="rectVert"></div>	
+			<h2 id="titrecategorie">Bienvenue</h2>
+			<select id="trier" name="trier">
+				<option id="tri_date" name="tri_date">Plus récent</option>
+				<option id="tri_like" name="tri_like">Plus populaire</option>
+			</select>
 
-		<!-- Barre latérale fixe : menu de sélection -->
-		<aside>
-			<div id="rectVert2"></div>
-			<img src="SRC/logobw.png" id="logo"><br>
-			<button id="newpubli" onclick="popupAppear()"><a href="#publier" id="newPubText"> Nouvelle publication</a></button>
-			<ul id="choixcategorie">
-			</ul>
-			<ul id="choixtopic">
-			</ul>
-		</aside>
+	</header>
 
-		<!-- Contenu principal de la page : fil d'actualités scrollable -->
-		<article>
-			<img id="zoom1" alt="decor fond" src="SRC/zoom1.png"/>
-			<img id="zoom2" alt="decor fond 2" src="SRC/zoom2.png"/>
-			<div id="publication"></div>
-			<!-- Lien pour afficher une publication en entière : redirection vers une autre page -->
-			<p><a href="publication.html" id="voirPlus">→ Voir plus</a></p>
-		</article>
-	</div>
+	<!-- Barre latérale fixe : menu de sélection -->
+	<aside>
+		<div id="rectVert2"></div>
+		<img src="SRC/logobw.png" id="logo"><br>
+		<button id="newpubli" onclick="popupAppear()"><a href="#publier" id="newPubText"> Nouvelle publication</a></button>
+		<ul id="choixcategorie">
+		</ul>
+		<ul id="choixtopic">
+		</ul>
+	</aside>
+
+	<!-- Contenu principal de la page : fil d'actualités scrollable -->
+	<article>
+		<img id="zoom1" alt="decor fond" src="SRC/zoom1.png"/>
+		<img id="zoom2" alt="decor fond 2" src="SRC/zoom2.png"/>
+		<div id="publication"></div>
+		<!-- Lien pour afficher une publication en entière : redirection vers une autre page -->
+	</article>
+</div>
 
 	<!-- Fenêtre pop up : écrire une nouvelle publication  -->
 	<div id="publier">
@@ -82,7 +81,6 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 				<p id="nvPub">NOUVELLE</p>
 				<p id="nvPub2">PUBLICATION</p>
 
-			</div>
 		</form>
 	</div>
 	<script src="JS/generate_objects.js"></script>

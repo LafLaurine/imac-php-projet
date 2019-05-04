@@ -14,19 +14,30 @@
 	<div id="fullpublication">
 		<div id="fondPub"></div>
 		<input type="image" id="closed_cross2" src="SRC/cross2.png" onclick="pubClose()" alt="Croix pour fermer la fenêtre"/>
-		<h2 id="titrepubli">Titre publication</h2>
+		<h2 id="titrepubli"></h2>
 		<div id="content">
 			<p id="publicontent"></p>
 		</div>
-		<div id="commentaire">
-			<h3>Commentaires :</h3>
+		<div>
+			<h3>Date :</h3>
+			<h3 id="date"></h3>
 		</div>
 		<div id="reaction">
 			<h3>Réactions :</h3>
+			<h3 id="reac"></h3>
 		</div>
+		<div id="commentaire">
+			<h3>Commentaires : </h3>
+		</div>
+		<form id="pub_commentaire">
+			<h3>Publier un commentaire :</h3>
+			<textarea id="publi_com" name="publi_com" required></textarea><br>
+			<button type="submit" id="valider_comm">Valider</button>
+		</form>
+		
 	</div>
 	<div id="rectVertPub"></div>
 	<div id="rectVertPub2"></div>
-	<script src="JS/generate_objects.js"></script>
+	<script src="JS/public.js"></script>
 </body>
 </html>

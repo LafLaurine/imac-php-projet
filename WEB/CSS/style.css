@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'FuturaExtended';
-    src: url('./FONTS/FuturaExtended.ttf');
+    src: url('../FONTS/FuturaExtended.ttf');
 }
 
 @font-face {
@@ -54,32 +54,38 @@ h1 {
     font-family: 'FuturaExtended';
 }
 
+#fondAccueil {
+    position: absolute;
+    width: 100%; height: 760px;
+    top: -1px;
+}
+
 #decorAccueil{
     position: absolute;
-    top:-160px;
-    left: -140px;
-    width: 40%; height: auto;
+    top: -25%;
+    left: -10%;
+    width: 480px;
 }
 
 #decorAccueil2{
     position: absolute;
-    top:560px;
-    left: -140px;
-    width: 35%; height: auto;
+    top: 75.5%;
+    left: -5%;
+    width: 500px;
 }
 
 #decorAccueil3{
     position: absolute;
-    top:-80px;
-    right: -180px;
-    width: 35%; height: auto;
+    top: -10%;
+    right: -14%;
+    width: 500px;
 }
 
 #decorAccueil4{
     position: absolute;
-    top:590px;
-    right: -180px;
-    width: 35%; height: auto;
+    top: 79%;
+    right: -10%;
+    width: 500px;
 }
 
 #siteImac {
@@ -179,14 +185,14 @@ h1 {
     height: 750px
 }
 
-#voirPlus {
+.voirPlus {
     text-decoration:none;
     color: #303030;
     font-family: 'FuturaExtended';
     font-size: 1.2em;
-    position: absolute;
+    /*position: absolute;
     top: 1600px;
-    left: 1300px;
+    left: 1300px;*/
 }
 
 #zoom1 {
@@ -291,10 +297,6 @@ h1 {
     top: 8.5%;
 }
 
-#form {
-
-}
-
 #titre {
     /*border: 1.5px solid #FFBCB3;
     border-radius: 5px;
@@ -351,7 +353,12 @@ h1 {
     top: 170px
 }
 
-#contenu {
+a:hover {
+    color:red;
+    cursor:pointer;
+}
+
+#contenu, #pub_commentaire {
     border: 1.5px solid #CECECE;
     border-radius: 5px;
     color: #CECECE;
@@ -444,7 +451,7 @@ label{
     left: 30px;
 }
 
-#reaction {
+#reaction, #date {
     font-family: 'FuturaExtended';
     font-size: 1.1em;
     color: #FFBCB3;
@@ -501,3 +508,39 @@ label{
     top : 30px;
     opacity: 0.6;
 }
+
+/*@media (max-width: 768px){
+
+    #texteAccueil {
+    margin-left: 5%;
+    margin-bottom: 30px;
+    }
+
+    #siteLien{
+    color: #FFBCB3;
+    position: absolute;
+    bottom: 35px;
+    right: 60px;
+    }
+
+    #decorAccueil{
+    top:-60px;
+    left: -80px;
+    }
+
+    #decorAccueil2{
+        top: 664px;
+        left: -80px;
+    }
+
+    #decorAccueil3{ 
+        top:-50px;
+        right: -90px;
+    }
+
+    #decorAccueil4{
+        top: 676px;
+        right: -100px;
+    }
+
+}*/
