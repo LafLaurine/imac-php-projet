@@ -80,7 +80,7 @@ document.ready( () => {
 				var reac_div = document.createElement('div');
 				reac_div.setAttribute('class','reaction');
 				var reac = document.createElement("img");
-				reac.setAttribute("id", "reac");
+				reac.setAttribute("class", "reac");
 				reac.setAttribute("src", "./SRC/heart.png");
 				reac.setAttribute('onclick','chngimg()'); 
 				public.appendChild(reac_div);
@@ -174,14 +174,14 @@ function pubClose()
 }
 
 function chngimg() {
-	var img = document.getElementById('reac').src;
+	var img = document.querySelector('.reac').src;
 	var count = 0;
 	if (img.indexOf('heart.png')!=-1) {
-		document.getElementById('reac').src  = './SRC/heart_pink.png';
+		document.querySelector('.reac').src  = './SRC/heart_pink.png';
 		count = count+1;
 	}
 	 else {
-	   document.getElementById('reac').src = './SRC/heart.png';
+	   document.querySelector('.reac').src = './SRC/heart.png';
 	   if(count !=0) {
 		   count = count-1;
 	   }

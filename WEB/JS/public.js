@@ -18,6 +18,7 @@ document.ready( () => {
 		.then( data => {
 			data.forEach( publi => {
 				let titre_publi  = document.getElementById("titrepubli");
+				let from_user  = document.getElementById("from_user");
 				let val_comm = document.getElementById("valider_comm");
 				let reac = document.getElementById("reaction");
 				var img_reac = document.createElement("img");
@@ -30,6 +31,7 @@ document.ready( () => {
 				let date = document.getElementById("date");
 				let commentaire = document.getElementById("commentaire");
 				titre_publi.innerHTML = publi.titre_publication;
+				from_user.innerHTML = "Écrit par " + publi.username;
 				content.innerHTML = publi.content;
 				date.innerHTML = publi.date_publication;
 			});
@@ -40,14 +42,19 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			data.forEach( comm => {
+				console.log(comm);
 				let com_div = document.getElementById("commentaire");
+				let com_from = document.createElement("h4");
+				com_from.setAttribute("id","comm_from");
 				let com_h3 = document.createElement("h3");
 				com_h3.setAttribute("id","comm_pub");
 				let date_h3 = document.createElement("h3");
 				date_h3.setAttribute("id","date_comm");
+				com_div.appendChild(com_from);
 				com_div.appendChild(com_h3);
 				com_div.appendChild(date_h3);
 				com_h3.innerHTML = comm.content_com;
+				com_from.innerHTML = "De " + comm.username;
 				date_h3.innerHTML = comm.date_commentaire;
 			});
 		})

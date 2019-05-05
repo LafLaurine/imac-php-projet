@@ -52,7 +52,8 @@ else {
 
 	$title = $json_obj['titre'];
 	$id_topic = $json_obj['topic'];
-	$id_user = $_SESSION['id_user'];
+	$id_user = $_SESSION['username'];
+	$username = $_SESSION['id_user'];
 	$content = $json_obj['content'];
 	$date = date('Y-m-d');
 
@@ -91,7 +92,7 @@ SQL
 	$stmt2->bindParam(':type_image',$fileType);
 	$stmt2->execute();
 	
-	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "content" => $content);
+	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content);
 	echo json_encode($resp);
 }
 ?>

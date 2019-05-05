@@ -50,7 +50,8 @@ else {
 	$commentaire = $json_obj['publi_com'];
 	$id_publication = $json_obj['id_publication'];
 	$id_user = $_SESSION['id_user'];
-    $date_comm = date('Y-m-d');
+	$username = $_SESSION['username'];
+  $date_comm = date('Y-m-d');
 
   $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	INSERT INTO commentaire(date_commentaire, id_publication, id_user, content_com)
@@ -64,7 +65,7 @@ SQL
 	$stmt->execute();
 	
 	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
-	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "id_user" => $id_user, "content_com" => $commentaire);
+	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "id_user" => $id_user, "username", $username, "content_com" => $commentaire);
 	echo json_encode($resp);
 }
 exit();
