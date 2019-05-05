@@ -47,9 +47,7 @@ document.ready( () => {
 
 		fetch("./API/controller/get_topics.php")
 		.then( response => response.json() )
-		.then( data => {
-			console.log(data);
-			
+		.then( data => {			
 			let topics = document.getElementById('choixtopic');
 			let cat_topic = document.getElementById('publitopic');
 			data.forEach(topic => {

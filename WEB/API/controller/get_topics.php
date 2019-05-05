@@ -63,21 +63,5 @@ SQL
 
 	echo json_encode($topic,JSON_UNESCAPED_UNICODE);
 
-//allow us to get topic from categories (need to put it under categories)
-
-
-/*$topic_cat = [];
-$stmt_topic_cat = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT nom_topic, nom_categorie 
-	FROM topic,categories 
-	WHERE topic.id_categorie = categories.id_categorie
-SQL
-);
-
-while (($row_2 = $stmt_topic_cat->fetch(PDO::FETCH_ASSOC))) {
-	array_push($topic_cat,$row['nom_topic']); 
-}*/
-
-
 exit();
 ?>
