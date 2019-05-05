@@ -16,7 +16,16 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			let categories = document.getElementById('choixcategorie');
-			//let cat_publi = document.getElementById('publicategorie');
+			let cat_publi = document.getElementById('publicategorie');
+			
+			let option_pub  = document.createElement("option");
+			option_pub.innerHTML = "choisir une option";
+			option_pub.setAttribute('disabled', '')
+			option_pub.setAttribute('selected', '')
+			option_pub.setAttribute('value', '')
+
+			cat_publi.appendChild(option_pub);
+
 			data.forEach( categorie => {
 				let titre_cat = document.getElementById("titrecategorie");
 				let choix_cat  = document.createElement("li");
@@ -24,23 +33,23 @@ document.ready( () => {
 				cate.setAttribute("data-id_cat",categorie.id_categorie);
 				choix_cat.appendChild(cate);
 				cate.innerHTML = categorie.nom_categorie;
+
                 let option_pub  = document.createElement("option");
 				option_pub.innerHTML = categorie.nom_categorie;
 				option_pub.value=categorie.id_categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
- 				//titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
-				//cat_publi.appendChild(option_pub);
+ 				titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
+				cat_publi.appendChild(option_pub);
 			});
 		})
 		.catch(error => { console.log(error) });
-});
 
-//get topics
-document.ready( () => {
-	fetch("./API/controller/get_topics.php")
+		fetch("./API/controller/get_topics.php")
 		.then( response => response.json() )
 		.then( data => {
+			console.log(data);
+			
 			let topics = document.getElementById('choixtopic');
 			let cat_topic = document.getElementById('publitopic');
 			data.forEach(topic => {
@@ -49,16 +58,57 @@ document.ready( () => {
 				topi.setAttribute("data-id_topic",topic.id_topic);
 				choix_topic.appendChild(topi);
 				topi.innerHTML = topic.nom_topic;
-				let option_pub  = document.createElement("option");
-				option_pub.value=topic.id_topic;
-                option_pub.innerHTML = topic.nom_topic;
-				option_pub.classList.add("topic");
+				// let option_pub  = document.createElement("option");
+				// option_pub.value=topic.id_topic;
+                // option_pub.innerHTML = topic.nom_topic;
+				// option_pub.classList.add("topic");
+				// cat_topic.appendChild(option_pub);
 				topics.appendChild(choix_topic);
-				cat_topic.appendChild(option_pub);
+				
 			});
 		})
 		.catch(error => { console.log(error) });
 });
+
+
+//tri topics par cat
+document.getElementById('publicategorie').onchange = event  => {
+	event.preventDefault();
+	console.log("oulala");
+    const form = document.querySelector('#form');
+    let params = {};
+    if(form.publicategorie.value)
+		params ['publicategorie'] = form.publicategorie.value;
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = () => {
+			if(request.readyState == 4) {
+				console.log(request.status);
+				if(request.status == 200)
+				{
+					var data = JSON.parse(request.responseText);
+					let cat_topic = document.getElementById('publitopic');
+					cat_topic.innerHTML='';
+					data.forEach(topic => {
+						let option_pub  = document.createElement("option");
+						option_pub.value=topic.id_topic;
+						option_pub.innerHTML = topic.nom_topic;
+						option_pub.classList.add("topic");
+						cat_topic.appendChild(option_pub);
+					});
+				}
+				else {
+					console.log("Erreur");
+				}
+			}
+			
+		}
+		//$url= '?categorie=' + params['publicategorie'];
+		request.open("GET", "./API/controller/get_topics.php?publicategorie="+params['publicategorie'],true);
+		request.send();
+	};
+
+
+
 
 
 document.ready( () => {
@@ -146,7 +196,7 @@ document.getElementById("validerpubli").onclick = event => {
 		}
 		
 	}
-    request.open("POST", "API/controller/insert_publication.php",true);
+    request.open("POST", "./API/controller/insert_publication.php",true);
     request.send(body);
 };
 //pop up new publication
