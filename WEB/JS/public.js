@@ -27,6 +27,7 @@ document.ready( () => {
 				img_reac.setAttribute('onclick','chngimg()');
 				reac.appendChild(img_reac);
 				val_comm.setAttribute("data-id_publication",publi.id_publication)
+				console.log(publi);
 				let content = document.getElementById("publicontent");
 				let date = document.getElementById("date");
 				let commentaire = document.getElementById("commentaire");
@@ -42,7 +43,6 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			data.forEach( comm => {
-				console.log(comm);
 				let com_div = document.getElementById("commentaire");
 				let com_from = document.createElement("h4");
 				com_from.setAttribute("id","comm_from");
@@ -62,49 +62,40 @@ document.ready( () => {
 });
 
 document.getElementById("valider_comm").onclick = event => {
-		let valid = document.getElementById("valider_comm");
-		let id_publication = valid.getAttribute("data-id_publication");
-		console.log(id_publication);
-		event.preventDefault();
-		const form = document.querySelector('#pub_commentaire');
-		let params = {};
-		if(form.publi_com.value)
-			params['publi_com'] = form.publi_com.value;
-		params['id_publication'] = id_publication;
-		var body = JSON.stringify(params);
-		var request = new XMLHttpRequest();
-		request.onreadystatechange = () => {
-			console.log(request);
-			if(request.readyState == 4) {
-				if(request.status == 200)
-				{
-					Array.prototype = true;
-					console.log(request);
-					var response = JSON.parse(request.responseText);
-					console.log(response);
-				}
-			
+	let valid = document.getElementById("valider_comm");
+	let id_publication = valid.getAttribute("data-id_publication");
+	console.log(id_publication);
+	event.preventDefault();
+	const form = document.querySelector('#pub_commentaire');
+	let params = {};
+	if(form.publi_com.value)
+		params['publi_com'] = form.publi_com.value;
+	params['id_publication'] = id_publication;
+	var body = JSON.stringify(params);
+	var request = new XMLHttpRequest();
+	request.onreadystatechange = () => {
+		console.log(request);
+		if(request.readyState == 4) {
+			if(request.status == 200)
+			{
+				Array.prototype = true;
+				console.log(request);
+				var response = JSON.parse(request.responseText);
+				console.log(response);
 			}
-			else {
-				console.log("Erreur");
-			}
+		
 		}
-		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
-		request.send(body);
-};
-
-
-document.getElementById("logout").onclick = event => {
-	fetch("./API/user/logout.php")
-		.then( response => response.json() )
-		.then( data => {
-		})
-		.catch(error => { console.log(error) });
+		else {
+			console.log("Erreur");
+		}
+	}
+	request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
+	request.send(body);
 };
 
 function pubClose()
 {
-	document.location.href="index.html"; 
+	document.location.href="index.php"; 
 }
 
 function chngimg() {

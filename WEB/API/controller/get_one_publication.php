@@ -28,9 +28,8 @@ else {
 
 
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT titre_publication,date_publication,id_topic,content,username
+	SELECT *
     FROM publication
-	INNER JOIN user ON user.id_user = publication.id_user
     WHERE id_publication = :id_publi;
 SQL
 );

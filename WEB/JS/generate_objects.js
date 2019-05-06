@@ -218,7 +218,7 @@ function noFile()
 //ferme pop up new publication	
 function pubClose()
 {
-	document.location.href="index.html"; 
+	document.location.href="index.php"; 
 }
 
 function chngimg() {
@@ -236,3 +236,12 @@ function chngimg() {
 	   
    }
 }
+
+
+document.getElementById("logout").onclick = event => {
+	fetch("./API/user/logout.php")
+		.then( response => response.json() )
+		.then( data => {
+		})
+		.catch(error => { console.log(error) });
+};

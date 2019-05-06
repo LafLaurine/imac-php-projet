@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 //headers
 header("Content-Type: application/text; charset=UTF-8");
 
