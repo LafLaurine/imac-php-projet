@@ -39,7 +39,7 @@ document.ready( () => {
 				option_pub.value=categorie.id_categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
- 				titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
+ 				//titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
 				cat_publi.appendChild(option_pub);
 			});
 		})
@@ -51,17 +51,17 @@ document.ready( () => {
 			let topics = document.getElementById('choixtopic');
 			let cat_topic = document.getElementById('publitopic');
 			data.forEach(topic => {
-				let choix_topic  = document.createElement("li");
+				/*let choix_topic  = document.createElement("li");
 				let topi  = document.createElement("a");
 				topi.setAttribute("data-id_topic",topic.id_topic);
 				choix_topic.appendChild(topi);
-				topi.innerHTML = topic.nom_topic;
+				topi.innerHTML = topic.nom_topic;*/
 				// let option_pub  = document.createElement("option");
 				// option_pub.value=topic.id_topic;
                 // option_pub.innerHTML = topic.nom_topic;
 				// option_pub.classList.add("topic");
 				// cat_topic.appendChild(option_pub);
-				topics.appendChild(choix_topic);
+				//topics.appendChild(choix_topic);
 				
 			});
 		})
@@ -72,7 +72,6 @@ document.ready( () => {
 //tri topics par cat
 document.getElementById('publicategorie').onchange = event  => {
 	event.preventDefault();
-	console.log("oulala");
     const form = document.querySelector('#form');
     let params = {};
     if(form.publicategorie.value)
@@ -103,10 +102,7 @@ document.getElementById('publicategorie').onchange = event  => {
 		//$url= '?categorie=' + params['publicategorie'];
 		request.open("GET", "./API/controller/get_topics.php?publicategorie="+params['publicategorie'],true);
 		request.send();
-	};
-
-
-
+};
 
 
 document.ready( () => {
@@ -130,7 +126,8 @@ document.ready( () => {
 				var reac = document.createElement("img");
 				reac.setAttribute("class", "reac");
 				reac.setAttribute("src", "./SRC/heart.png");
-				reac.setAttribute('onclick','chngimg()'); 
+				reac.setAttribute("id", data[i].id_publication);
+				reac.setAttribute('onclick','chngimg(this)'); 
 				public.appendChild(reac_div);
 				reac_div.appendChild(reac);
 
@@ -149,10 +146,21 @@ document.ready( () => {
 
 });
 
+document.getElementById("choixcategorie").onclick = event => {
+	var id_categorie = event.target.dataset.id_cat;
+	fetch("./API/controller/get_current_categorie.php?id="+id_categorie)
+		.then( response => response.json() )
+		.then( data => {
+			data.forEach(cat => {
+				document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
+			});			
+		})
+		.catch(error => { console.log(error) });
+};
+
 
 document.getElementById("validerpubli").onclick = event => {
 	event.preventDefault();
-	console.log("oulala");
     const form = document.querySelector('#form');
     let params = {};
     if(form.titre.value)
@@ -221,7 +229,7 @@ function pubClose()
 	document.location.href="index.php"; 
 }
 
-function chngimg() {
+function chngimg(img) {
 	var img = document.querySelector('.reac').src;
 	var count = 0;
 	if (img.indexOf('heart.png')!=-1) {

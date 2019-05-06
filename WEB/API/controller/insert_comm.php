@@ -1,9 +1,15 @@
 <?php
 
-
-session_start();
 // headers
 header("Content-Type: application/text; charset=UTF-8");
+
+session_start();
+
+include_once "../data/MyPDO.spottimac.include.php";
+if (!isset($_SESSION['id_user'])){
+	echo json_encode(array('message' => 'User non connecté'));
+	exit();
+}
 
 // check HTTP method
 $method = strtolower($_SERVER['REQUEST_METHOD']);
@@ -41,22 +47,25 @@ else {
 		exit();
   }
     
-		$commentaire = $json_obj['publi_com'];
-		$id_publication = $json_obj['id_publication'];
-    $date_comm = date('Y-m-d');
+	$commentaire = $json_obj['publi_com'];
+	$id_publication = $json_obj['id_publication'];
+	$id_user = $_SESSION['id_user'];
+	$username = $_SESSION['username'];
+  $date_comm = date('Y-m-d');
 
-    $stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO commentaire(date_commentaire, id_publication, content_com)
-	VALUES (:date_commentaire, :id_publication, :content_com)
+  $stmt = MyPDO::getInstance()->prepare(<<<SQL
+	INSERT INTO commentaire(date_commentaire, id_publication, id_user, content_com)
+	VALUES (:date_commentaire, :id_publication, :id_user, :content_com)
 SQL
 );
 	$stmt->bindParam(':date_commentaire',$date_comm);
 	$stmt->bindParam(':id_publication',$id_publication);
 	$stmt->bindParam(':content_com',$commentaire);
+	$stmt->bindParam(':id_user',$id_user);
 	$stmt->execute();
 	
 	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
-	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "content_com" => $commentaire);
+	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "id_user" => $id_user, "username", $username, "content_com" => $commentaire);
 	echo json_encode($resp);
 }
 exit();
