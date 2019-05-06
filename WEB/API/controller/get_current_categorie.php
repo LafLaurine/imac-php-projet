@@ -30,7 +30,9 @@ else {
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
 	FROM categories
-	WHERE id_categorie = :id_categorie;
+	INNER JOIN topic ON categories.id_categorie = topic.id_categorie
+	INNER JOIN publication ON publication.id_topic = topic.id_topic
+	WHERE categories.id_categorie = :id_categorie;
 SQL
 );
 $stmt->bindParam(':id_categorie',$id_categorie);
@@ -38,7 +40,7 @@ $stmt->execute();
 $cat = [];
 
 while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($cat,$row); 
+	array_push($cat,$row);
 }
 if(empty($cat)) {
 	echo json_encode(array("error" => "Missing categorie"));
