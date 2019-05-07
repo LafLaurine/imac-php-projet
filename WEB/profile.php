@@ -12,23 +12,26 @@
 	<img id="decorAccueil2" alt="decor fond" src="SRC/accueil2.png"/>
 	<img id="decorAccueil3" alt="decor fond" src="SRC/accueil3.png"/>
 	<img id="decorAccueil4" alt="decor fond" src="SRC/accueil4.png"/>
-	<h3>Register</h3>
+
+	<h3 id="register">Register</h3>
+	<div id="cadreRegister">
 	<form id="register_form">
     <p id="pseudo">Pseudo :</p>
     <input type="text" id="username" name="username" required><br>
     <p id="password">Mot de passe :</p>
     <input type="password" id="pwd" name="pwd" required><br>
 		<button type="submit" id="valid_register">Inscription</button>
-	</form>
+	</form></div>
 	
-	<h3>Login</h3>
+	<h3 id="login">Login</h3>
+	<div id="cadreLogin">
 	<form id="login_form">
     <p id="pseudo">Pseudo :</p>
     <input type="text" id="username_log" name="username_log" required><br>
     <p id="password">Mot de passe :</p>
     <input type="password" id="pwd_log" name="pwd_log" required><br>
 		<button type="submit" id="valid_login">Login</button>
-	</form>
+	</form></div>
     <script src="JS/profile.js"></script>
 </body>
 </html>

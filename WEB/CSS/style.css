@@ -139,17 +139,18 @@ h1 {
 #titrecategorie {
     font-family: 'AmaticB';
     font-size: 3.5em;
-    position: absolute;
-    left: 450px;
-    top: 750px;
+    position: relative;
+    margin-left: 50%;
+    margin-top: -2%;
 }
 
 #trier {
     border: 1.5px solid #CECECE;
     border-radius: 5px;
     background-color: #CECECE;
-    position: absolute;
-
+    position: relative;
+    margin-top: -10%;
+    margin-left: 65%;
 }
 
 #logo {
@@ -157,6 +158,36 @@ h1 {
     position: relative;
     left: 30px;
     top: 165px;
+}
+
+/* Publications */
+
+#publication {
+    position: absolute;
+    background: #F5FFFA;
+    opacity: 0.7;
+    border: 3px solid #CECECE;
+    width: 850px;
+    height: 230px;
+    left: 30%;
+    top: 200%;
+}
+
+#titrepubli {
+    position: relative;
+    margin-left: 45%;
+}
+
+#date_publi {
+ position: relative;
+}
+
+#reaction {
+ position: relative;
+}
+
+#paraVoir {
+ position: relative;
 }
 
 #newpubli {
@@ -519,6 +550,62 @@ label{
     right: 40px;
     top : 30px;
     opacity: 0.6;
+}
+
+#register {
+    font-family: 'AmaticB';
+    font-size: 4em;
+    color: #FFBCB3;
+    margin-left: 45%;
+    margin-top: 2%;
+}
+
+#cadreRegister { 
+    border: 1.5px solid #FFBCB3;
+    border-radius: 10px;
+    width: 370px;
+    height: 200px;
+    position: absolute;
+    left: 37%;
+    top: 18%;
+}
+
+#register_form {
+    position: relative;
+    font-family: 'FuturaLight';
+    margin-top: 6%;
+    margin-left: 30%;
+    width: 200px;
+}
+
+#login {
+    font-family: 'AmaticB';
+    font-size: 4em;
+    color: #B1F3E3;
+    margin-left: 45%;
+    margin-top: 18%;
+}
+
+#cadreLogin { 
+    border: 1.5px solid #B1F3E3;
+    border-radius: 10px;
+    width: 370px;
+    height: 200px;
+    margin-left: 50%;
+    position: absolute;
+    left: -13%;
+    top: 67%;
+}
+
+#login_form {
+    position: relative;
+    font-family: 'FuturaLight';
+    margin-top: 6%;
+    margin-left: 30%;
+    width: 200px;
+}
+#password, #pseudo {
+    margin-bottom: 1.5%;
 }
 
 /*@media (max-width: 768px){
