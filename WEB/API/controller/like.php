@@ -6,11 +6,10 @@ session_start();
 header("Content-Type: application/text; charset=UTF-8");
 
 include_once "../data/MyPDO.spottimac.include.php";
-if (!isset($_SESSION["id_user"])){
-	echo "<script>alert(\"User non connecté\")</script>";
-	header("Location: ../user/login.php");
+if (!isset($_SESSION['id_user'])){
+	echo json_encode(array('message' => 'User non connecté'));
+	exit();
 }
-
 
 // check HTTP method
 $method = strtolower($_SERVER['REQUEST_METHOD']);
@@ -36,35 +35,35 @@ if (!isset($input) || empty($input)) {
 else {
 	$json_obj = json_decode($input,true);
 
-	if(!isset($json_obj['publi_com']))
+	if(!isset($json_obj['id_publication']))
 	{
 		echo json_encode(array("error" => "Missing comm"));
 		exit();
 	}
-	
-	if(!isset($json_obj['id_publication']))
-	{
-		echo json_encode(array("error" => "Missing id publication"));
-		exit();
-  }
-    
-		$commentaire = $json_obj['publi_com'];
-		$id_publication = $json_obj['id_publication'];
-    $date_comm = date('Y-m-d');
-
-    $stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO commentaire(date_commentaire, id_publication, content_com)
-	VALUES (:date_commentaire, :id_publication, :content_com)
+	$id_user = $_SESSION['id_user'];
+	$id_publication = $json_obj['id_publication'];
+	$like = 0;
+	$stmt_like = MyPDO::getInstance()->prepare(<<<SQL
+	SELECT count_like
+	FROM like
 SQL
 );
-	$stmt->bindParam(':date_commentaire',$date_comm);
-	$stmt->bindParam(':id_publication',$id_publication);
-	$stmt->bindParam(':content_com',$commentaire);
-	$stmt->execute();
-	
-	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
-	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "content_com" => $commentaire);
-	echo json_encode($resp);
+	$stmt_like->execute();
+	while(($row = $count_like->fetch(PDO::FETCH_ASSOC))) {
+		$count_like = $count_like + $row;
+		$stmt = MyPDO::getInstance()->prepare(<<<SQL
+		INSERT INTO like(id_publication, id_user, count_like)
+		VALUES (:id_publication, :id_user, :count_like)
+SQL
+);
+		$stmt->bindParam(':id_publication',$id_publication);
+		$stmt->bindParam(':id_user',$id_user);
+		$stmt->bindParam(':count_like',$count_like);
+		$stmt->execute();
+		$id_like = MyPDO::getInstance()->lastInsertId(); 
+		$resp = array("id_like" => $id_like, "id_publication" => $id_publication, "id_user" => $id_user, "count_like" => $count_like);
+		echo json_encode($resp);
+	}
 }
 exit();
 

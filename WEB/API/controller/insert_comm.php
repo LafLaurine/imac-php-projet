@@ -45,15 +45,14 @@ else {
 	{
 		echo json_encode(array("error" => "Missing id publication"));
 		exit();
-  }
-    
+	}
 	$commentaire = $json_obj['publi_com'];
 	$id_publication = $json_obj['id_publication'];
 	$id_user = $_SESSION['id_user'];
-	$username = $_SESSION['username'];
-  $date_comm = date('Y-m-d');
-
-  $stmt = MyPDO::getInstance()->prepare(<<<SQL
+	$username = $_SESSION['username']; 
+	$date_comm = date('Y-m-d');
+	
+	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	INSERT INTO commentaire(date_commentaire, id_publication, id_user, content_com)
 	VALUES (:date_commentaire, :id_publication, :id_user, :content_com)
 SQL

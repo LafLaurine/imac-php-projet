@@ -130,7 +130,7 @@ document.ready( () => {
 				public.appendChild(date_publi);
 				date_publi.innerHTML = data[i].date_publication;
 
-				var reac_div = document.createElement('div');
+				var reac_div = document.createElement('form');
 				reac_div.setAttribute('class','reaction');
 				var reac = document.createElement("img");
 				reac.setAttribute("class", "reac");
@@ -155,6 +155,34 @@ document.ready( () => {
 			}
 		})
 		.catch(error => { console.log(error) });
+
+		document.getElementById("heart-id1").onclick = event => {
+			let heart = document.getElementById("heart-id1");
+			let id_publication = heart.getAttribute("data-id_publication");
+			event.preventDefault();
+			const form = document.querySelector('.reaction');
+			let params = {};
+			params['id_publication'] = id_publication;
+			var body = JSON.stringify(params);
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = () => {
+				if(request.readyState == 4) {
+					if(request.status == 200)
+					{
+						Array.prototype = true;
+						console.log(request);
+						var response = JSON.parse(request.responseText);
+						console.log(response);
+					}
+				
+				}
+				else {
+					console.log("Erreur");
+				}
+			}
+			request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/like.php",true);
+			request.send(body);
+		};
 
 });
 
@@ -256,6 +284,8 @@ document.getElementById("validerpubli").onclick = event => {
     request.open("POST", "./API/controller/insert_publication.php",true);
     request.send(body);
 };
+
+
 //pop up new publication
 function popupAppear()
 {
@@ -282,23 +312,24 @@ function pubClose()
 
 function chngimg() {
 	var length = document.querySelectorAll('.reac').length;
-	var i = 0;
-	while(i < length)
+
+	for(var i = 0; i < length; i++)
 	{
-		//var heart_id = document.getElementsByClassName("reac")[i].id;
-		console.log(heart_id);
-		/*heart_id.forEach( heart_img => {
-			heart_img = document.getElementById(heart_id);
-			if (heart_img.src  = './SRC/heart') {
-				heart_img.src  = './SRC/heart_pink.png';
-			}
-			else {
-				heart_img.src  = './SRC/heart.png';
-			}
-			
-		});*/
-		
-		i++;
+		var heart_id = document.getElementsByClassName("reac")[i].id;
+		var img = document.querySelector('.reac').src;
+		var count = 0;
+		if (img.indexOf('heart.png')!=-1) {
+			document.querySelector('.reac').src  = './SRC/heart_pink.png';
+			count = count+1;
+		}
+		 else {
+		   document.querySelector('.reac').src = './SRC/heart.png';
+		   if(count !=0) {
+			   count = count-1;
+		   }
+		   
+	   }
+	
    }
 }
 

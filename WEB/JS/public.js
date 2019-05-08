@@ -64,7 +64,6 @@ document.ready( () => {
 document.getElementById("valider_comm").onclick = event => {
 	let valid = document.getElementById("valider_comm");
 	let id_publication = valid.getAttribute("data-id_publication");
-	console.log(id_publication);
 	event.preventDefault();
 	const form = document.querySelector('#pub_commentaire');
 	let params = {};
@@ -74,7 +73,6 @@ document.getElementById("valider_comm").onclick = event => {
 	var body = JSON.stringify(params);
 	var request = new XMLHttpRequest();
 	request.onreadystatechange = () => {
-		console.log(request);
 		if(request.readyState == 4) {
 			if(request.status == 200)
 			{
@@ -96,20 +94,4 @@ document.getElementById("valider_comm").onclick = event => {
 function pubClose()
 {
 	document.location.href="index.php"; 
-}
-
-function chngimg() {
-	var img = document.getElementById('reac').src;
-	var count = 0;
-	if (img.indexOf('heart.png')!=-1) {
-		document.getElementById('reac').src  = './SRC/heart_pink.png';
-		count = count+1;
-	}
-	 else {
-	   document.getElementById('reac').src = './SRC/heart.png';
-	   if(count !=0) {
-		   count = count-1;
-	   }
-	   
-   }
 }
