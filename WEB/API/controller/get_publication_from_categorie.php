@@ -26,8 +26,8 @@ else {
 	http_response_code(422);
 }
 
-
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
+if($id_categorie !=100) {
+	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
 	FROM categories
 	INNER JOIN topic ON categories.id_categorie = topic.id_categorie
@@ -35,16 +35,22 @@ $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	WHERE categories.id_categorie = :id_categorie;
 SQL
 );
-$stmt->bindParam(':id_categorie',$id_categorie);
-$stmt->execute();
-$cat = [];
+	$stmt->bindParam(':id_categorie',$id_categorie);
+	$stmt->execute();
+	$cat = [];
 
-while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($cat,$row);
+	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+		array_push($cat,$row);
+	}
+	if(empty($cat)) {
+		echo json_encode(array("error" => "Missing categorie"));
+		http_response_code(422);
+	}
+	echo json_encode($cat,JSON_UNESCAPED_UNICODE);
 }
-if(empty($cat)) {
-	echo json_encode(array("error" => "Missing categorie"));
-	http_response_code(422);
+
+else {
+	include_once "./get_publications.php";
 }
-echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+
 exit();

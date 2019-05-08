@@ -16,6 +16,12 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			let categories = document.getElementById('choixcategorie');
+			let att_cat = document.createElement("li");
+			let all  = document.createElement("a");
+			all.setAttribute("data-id_cat",100);
+			all.innerHTML = "tout";
+			att_cat.appendChild(all);
+			categories.appendChild(att_cat);
 			let cat_publi = document.getElementById('publicategorie');
 			
 			let option_pub  = document.createElement("option");
@@ -25,23 +31,25 @@ document.ready( () => {
 			option_pub.setAttribute('value', '')
 
 			cat_publi.appendChild(option_pub);
+		
 
 			data.forEach( categorie => {
-				let titre_cat = document.getElementById("titrecategorie");
 				let choix_cat  = document.createElement("li");
 				let cate  = document.createElement("a");
+				choix_cat.setAttribute("class","choix_cat_menu")
 				cate.setAttribute("data-id_cat",categorie.id_categorie);
 				choix_cat.appendChild(cate);
 				cate.innerHTML = categorie.nom_categorie;
-
+				
                 let option_pub  = document.createElement("option");
 				option_pub.innerHTML = categorie.nom_categorie;
 				option_pub.value=categorie.id_categorie;
 				option_pub.classList.add("categorie");
 				categories.appendChild(choix_cat);
- 				//titre_cat.innerHTML = categorie[Object.keys(categorie)[1]];
 				cat_publi.appendChild(option_pub);
+				
 			});
+			
 		})
 		.catch(error => { console.log(error) });
 
@@ -110,6 +118,7 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			let public = document.getElementById("publication");
+			var count_heart_id = 1;
 			for(var i =0; i<data.length; i++) {
 				var title = document.createElement('h2');
 				title.setAttribute('class','titrepubli');
@@ -126,8 +135,10 @@ document.ready( () => {
 				var reac = document.createElement("img");
 				reac.setAttribute("class", "reac");
 				reac.setAttribute("src", "./SRC/heart.png");
-				reac.setAttribute("id", data[i].id_publication);
-				reac.setAttribute('onclick','chngimg(this)'); 
+				reac.setAttribute("data-id_publication", data[i].id_publication);
+				reac.setAttribute("id", "heart-id"+count_heart_id);
+				count_heart_id++;
+				reac.setAttribute('onclick','chngimg()'); 
 				public.appendChild(reac_div);
 				reac_div.appendChild(reac);
 
@@ -150,7 +161,7 @@ document.ready( () => {
 document.getElementById("choixcategorie").onclick = event => {
 	var id_categorie = event.target.dataset.id_cat;
 
-	fetch("./API/controller/get_current_categorie.php?id="+id_categorie)
+	fetch("./API/controller/get_publication_from_categorie.php?id="+id_categorie)
 		.then( response => response.json() )
 		.then( data => {
 			data.forEach(cat => {
@@ -177,7 +188,7 @@ document.getElementById("choixcategorie").onclick = event => {
 					reac.setAttribute("class", "reac");
 					reac.setAttribute("src", "./SRC/heart.png");
 					reac.setAttribute("id", data[i].id_publication);
-					reac.setAttribute('onclick','chngimg(this)'); 
+					reac.setAttribute('onclick','chngimg()'); 
 					public.appendChild(reac_div);
 					reac_div.appendChild(reac);
 
@@ -269,27 +280,35 @@ function pubClose()
 	document.location.href="index.php"; 
 }
 
-function chngimg(img) {
-	var img = document.querySelector('.reac').src;
-	var count = 0;
-	if (img.indexOf('heart.png')!=-1) {
-		document.querySelector('.reac').src  = './SRC/heart_pink.png';
-		count = count+1;
-	}
-	 else {
-	   document.querySelector('.reac').src = './SRC/heart.png';
-	   if(count !=0) {
-		   count = count-1;
-	   }
-	   
+function chngimg() {
+	var length = document.querySelectorAll('.reac').length;
+	var i = 0;
+	while(i < length)
+	{
+		//var heart_id = document.getElementsByClassName("reac")[i].id;
+		console.log(heart_id);
+		/*heart_id.forEach( heart_img => {
+			heart_img = document.getElementById(heart_id);
+			if (heart_img.src  = './SRC/heart') {
+				heart_img.src  = './SRC/heart_pink.png';
+			}
+			else {
+				heart_img.src  = './SRC/heart.png';
+			}
+			
+		});*/
+		
+		i++;
    }
 }
 
-
-document.getElementById("logout").onclick = event => {
-	fetch("./API/user/logout.php")
-		.then( response => response.json() )
-		.then( data => {
-		})
-		.catch(error => { console.log(error) });
-};
+if(document.getElementById("logout") != null) {
+	document.getElementById("logout").onclick = event => {
+		fetch("./API/user/logout.php")
+			.then( response => response.json() )
+			.then( data => {
+			})
+			.catch(error => { console.log(error) });
+	};
+	
+}
