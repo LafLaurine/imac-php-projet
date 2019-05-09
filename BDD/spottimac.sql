@@ -40,12 +40,11 @@ CREATE TABLE IF NOT EXISTS `publication` (
 
 DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
-  `id_image` int(15) NOT NULL,
+  `id_image` int(15) NOT NULL AUTO_INCREMENT,
   `id_publication` int(15) NOT NULL,
   `nom_image` varchar(150) NOT NULL,
   `taille_image` INT NOT NULL,
   `type_image` varchar(50) NOT NULL,
-  `desc_image` varchar(200) NOT NULL,
   `blob_image` TEXT NOT NULL,
   CONSTRAINT pk_image PRIMARY KEY (id_image),
   CONSTRAINT fk_publication FOREIGN KEY (id_publication)

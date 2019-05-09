@@ -30,36 +30,37 @@ if (!isset($input) || empty($input)) {
 }
 else {
 	$json_obj = json_decode($input,true);
+	print_r($json_obj);
 
-	if(!isset($json_obj['titre']))
+	if(!isset($json_obj['body']['titre']))
 	{
 		echo json_encode(array("error" => "Missing title"));
 		exit();
 	}
 
-	if(!isset($json_obj['topic']))
+	if(!isset($json_obj['body']['topic']))
 	{
 		echo json_encode(array("error" => "Missing topic"));
 		exit();
 	}
 
-	if(!isset($json_obj['content']))
+	if(!isset($json_obj['body']['content']))
 	{
 		echo json_encode(array("error" => "Missing content"));
 		exit();
 	}
 
 
-	$title = $json_obj['titre'];
-	$id_topic = $json_obj['topic'];
-	$id_user = $_SESSION['username'];
-	$username = $_SESSION['id_user'];
-	$content = $json_obj['content'];
+	$title = $json_obj['body']['titre'];
+	$id_topic = $json_obj['body']['topic'];
+	$id_user = $_SESSION['id_user'];
+	$username = $_SESSION['username'];
+	$content = $json_obj['body']['content'];
 	$date = date('Y-m-d');
 
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO publication(titre_publication, date_publication, id_topic, id_user content)
-	VALUES (:titre_publication, :date_publication, :id_topic, :id_user :content)
+	INSERT INTO publication(titre_publication, date_publication, id_topic, id_user, content)
+	VALUES (:titre_publication, :date_publication, :id_topic, :id_user, :content)
 SQL
 );
 	$stmt->bindParam(':titre_publication',$title);
@@ -81,15 +82,20 @@ SQL
 	$fileType = $json_obj['fileType'];
 	$fileSize=$json_obj['fileSize'];
 
+	$uploaddir = './uploads/';
+	$uploadfile = $uploaddir . basename($fileName);
+	move_uploaded_file($json_obj['formData']['file'],$uploadfile);
+
 	$stmt2 = MyPDO::getInstance()->prepare(<<<SQL
 	INSERT INTO image(id_publication, nom_image, taille_image, type_image)
-	VALUES (:id_publication, :nom_image, :taille_image, :type_image)
+	VALUES (:id_publication, :nom_image, :taille_image, :type_image, :blob_image)
 SQL
 );
 	$stmt2->bindParam(':id_publication',$id_publi);
 	$stmt2->bindParam(':nom_image',$fileName);
 	$stmt2->bindParam(':taille_image',$fileSize);
 	$stmt2->bindParam(':type_image',$fileType);
+	$stmt2->bindParam(':blob_image',LOAD_FILE($uploadfile));
 	$stmt2->execute();
 	
 	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content);

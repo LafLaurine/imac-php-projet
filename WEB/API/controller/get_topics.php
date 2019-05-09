@@ -26,7 +26,7 @@ function tri_by_cat($id)
 	http_response_code(200);
 
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-		SELECT nom_topic
+		SELECT *
 		FROM topic
 		LEFT JOIN categories
 		ON topic.id_categorie = categories.id_categorie
@@ -41,7 +41,7 @@ SQL
 
 function allTopic() {
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-		SELECT nom_topic
+		SELECT *
 		FROM topic
 		ORDER BY nom_topic
 SQL

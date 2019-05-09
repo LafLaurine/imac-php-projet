@@ -96,6 +96,7 @@ document.getElementById('publicategorie').onchange = event  => {
 					data.forEach(topic => {
 						let option_pub  = document.createElement("option");
 						option_pub.value=topic.id_topic;
+						console.log(topic.id_topic);
 						option_pub.innerHTML = topic.nom_topic;
 						option_pub.classList.add("topic");
 						cat_topic.appendChild(option_pub);
@@ -243,7 +244,7 @@ document.getElementById("validerpubli").onclick = event => {
     const form = document.querySelector('#form');
     let params = {};
     if(form.titre.value)
-        params ['titre'] = form.titre.value;
+        params['titre'] = form.titre.value;
     if(form.publitopic.value)
         params['topic'] = form.publitopic.value;
     if(form.contenu.value)
@@ -256,7 +257,7 @@ document.getElementById("validerpubli").onclick = event => {
 	var formData = new FormData();
 	for (var i = 0; i < files.length; i++) {
   		var file = files[i];
-  		formData.append('file', file, file.name);
+  		formData.append('file', file);
   	}	
 	// Loop through each of the selected files.
   	params['fileName'] = file.name;
@@ -282,7 +283,7 @@ document.getElementById("validerpubli").onclick = event => {
 		
 	}
     request.open("POST", "./API/controller/insert_publication.php",true);
-    request.send(body);
+    request.send("body="+body+"&formData ="+formData);
 };
 
 
@@ -316,6 +317,7 @@ function chngimg() {
 	for(var i = 0; i < length; i++)
 	{
 		var heart_id = document.getElementsByClassName("reac")[i].id;
+		console.log(heart_id);
 		var img = document.querySelector('.reac').src;
 		var count = 0;
 		if (img.indexOf('heart.png')!=-1) {
