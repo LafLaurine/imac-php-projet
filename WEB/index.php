@@ -49,7 +49,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 	<!-- Barre latérale fixe : menu de sélection -->
 	<aside>
 		<div id="rectVert2"></div>
-		<img src="SRC/logobw.png" id="logo"><br>
+		<img src="SRC/logo.png" id="logo"><br>
 		<button id="newpubli" onclick="popupAppear()"><a href="#publier" id="newPubText"> Nouvelle publication</a></button>
 		<ul id="choixcategorie">
 		</ul>
