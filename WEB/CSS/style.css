@@ -151,7 +151,7 @@ h1 {
     position: relative;
     margin-top: -5%;
     margin-left: 65%;
-    z-index:100000;
+    z-index: 5;
 }
 
 #logo {
@@ -290,6 +290,7 @@ h1 {
 	display: none;
 	position: fixed;
     font-family: 'FuturaExtended';
+    z-index: 10;
 }
 
 #fond_fenetre {
