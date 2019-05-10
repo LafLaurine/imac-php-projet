@@ -17,8 +17,8 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-if(!empty($_GET['id'])){
-    $date_publication = $_GET['id'];
+if(!empty($_GET['date'])){
+    $date_publication = $_GET['date'];
 }
 
 else {
