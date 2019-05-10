@@ -41,6 +41,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 		<div id="rectVert"></div>	
 			<h2 id="titrecategorie">Bienvenue</h2>
 			<select id="trier" name="trier">
+				<option id="tri_null" name="tri_null">Trier par</option>
 				<option id="tri_date" name="tri_date">Plus récent</option>
 				<option id="tri_like" name="tri_like">Plus populaire</option>
 			</select>
