@@ -17,37 +17,36 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-if(!empty($_GET['date'])){
-    $date_publication = $_GET['date'];
+if(!empty($_GET['like'])){
+    $id_like = $_GET['like'];
 }
 
 else {
-    echo json_encode(array("error" => "Missing date"));
+    echo json_encode(array("error" => "Missing id like"));
 	http_response_code(422);
 }
 
-if($date_publication !=100) {
+if($id_like !=100) {
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM publication
-	-- INNER JOIN topic ON publication.date_publication = topic.date_publication
-	-- INNER JOIN publication ON publication.id_topic = topic.id_topic
-	WHERE publication.date_publication = :date_publication
-	ORDER BY publication.date_publication ASC;
+	FROM likes
+	INNER JOIN publication ON likes.id_like = publication.id_like
+	--INNER JOIN publication ON publication.id_topic = topic.id_topic
+	WHERE likes.id_like = :id_like;
 SQL
 );
-	$stmt->bindParam(':date_publication',$date_publication);
+	$stmt->bindParam(':id_like',$id_like);
 	$stmt->execute();
-	$date = [];
+	$like = [];
 
 	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-		array_push($date,$row);
+		array_push($like,$row);
 	}
-	if(empty($date)) {
-		echo json_encode(array("error" => "Missing date"));
+	if(empty($like)) {
+		echo json_encode(array("error" => "Missing like"));
 		http_response_code(422);
 	}
-	echo json_encode($date,JSON_UNESCAPED_UNICODE);
+	echo json_encode($like,JSON_UNESCAPED_UNICODE);
 }
 
 else {
