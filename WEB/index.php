@@ -38,12 +38,12 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 <div id="actu">
 	<!-- En tête fixe : sticky bar -->
 	<header>
-		<div id="rectVert"></div>	
-			<h2 id="titrecategorie">Bienvenue</h2>
+		<div id="rectVert"></div>
 			<select id="trier" name="trier">
 				<option id="tri_date" name="tri_date">Plus récent</option>
 				<option id="tri_like" name="tri_like">Plus populaire</option>
 			</select>
+			<h2 id="titrecategorie">Bienvenue</h2>
 	</header>
 
 	<!-- Barre latérale fixe : menu de sélection -->
@@ -82,7 +82,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 					<p id="listTopic">Topics</p>
 					<select id="publitopic" name="publitopic" size="0" required></select><img id="select-icon" src= "SRC/down-arrow.svg" alt="icône de flèche vers le bas"/><br>
 					<textarea id="contenu" name="contenu"required></textarea><br>
-					<label for="file">Ajouter un fichier</label>
+					<label for="file"></label>
 					<input type="file" id="file" name="up_file" accept=".png,.gif,.jpg,.webp"><!-- Choisir les extensions qu'on accepte --><br>
 					<button type="submit" id="validerpubli" onclick="popupClose()">Publier</button>
 				</div>
