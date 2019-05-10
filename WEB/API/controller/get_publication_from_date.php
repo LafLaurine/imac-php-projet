@@ -18,35 +18,36 @@ include_once "../data/MyPDO.spottimac.include.php";
 http_response_code(200);
 
 if(!empty($_GET['id'])){
-    $id_categorie = $_GET['id'];
+    $date_publication = $_GET['id'];
 }
 
 else {
-    echo json_encode(array("error" => "Missing id categorie"));
+    echo json_encode(array("error" => "Missing date"));
 	http_response_code(422);
 }
 
-if($id_categorie !=100) {
+if($date_publication !=100) {
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM categories
-	INNER JOIN topic ON categories.id_categorie = topic.id_categorie
-	INNER JOIN publication ON publication.id_topic = topic.id_topic
-	WHERE categories.id_categorie = :id_categorie;
+	FROM publication
+	-- INNER JOIN topic ON publication.date_publication = topic.date_publication
+	-- INNER JOIN publication ON publication.id_topic = topic.id_topic
+	WHERE publication.date_publication = :date_publication
+	ORDER BY publication.date_publication ASC;
 SQL
 );
-	$stmt->bindParam(':id_categorie',$id_categorie);
+	$stmt->bindParam(':date_publication',$date_publication);
 	$stmt->execute();
-	$cat = [];
+	$date = [];
 
 	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-		array_push($cat,$row);
+		array_push($date,$row);
 	}
-	if(empty($cat)) {
-		echo json_encode(array("error" => "Missing categorie"));
+	if(empty($date)) {
+		echo json_encode(array("error" => "Missing date"));
 		http_response_code(422);
 	}
-	echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+	echo json_encode($date,JSON_UNESCAPED_UNICODE);
 }
 
 else {

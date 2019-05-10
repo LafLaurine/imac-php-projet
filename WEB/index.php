@@ -31,7 +31,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 		echo "<p class='pageAccueil'><a href='./API/user/logout.php' id='logout'>Se déconnecter</a></p>";
 	}?>
 	<p class="pageAccueil"><a href="#actu" id="go">C'est parti !</a></p>
-	<p id="siteLien" class="pageAccueil">Consultez le site de <a href="https://www.ingenieur-imac.fr/" id="siteImac" class="pageAccueil">l'IMAC</a></p>
+	<p id="siteLien" class="pageAccueil">Consultez le site de <a href="https://www.ingenieur-imac.fr/" target="_blank" id="siteImac" class="pageAccueil">l'IMAC</a></p>
 </div>
 
 <!-- Page scrollable avec les publications récentes : fil d'actualités -->
