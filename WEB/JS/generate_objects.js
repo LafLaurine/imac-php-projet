@@ -96,6 +96,7 @@ document.getElementById('publicategorie').onchange = event  => {
 					data.forEach(topic => {
 						let option_pub  = document.createElement("option");
 						option_pub.value=topic.id_topic;
+						console.log(topic.id_topic);
 						option_pub.innerHTML = topic.nom_topic;
 						option_pub.classList.add("topic");
 						cat_topic.appendChild(option_pub);
@@ -155,12 +156,41 @@ document.ready( () => {
 			}
 		})
 		.catch(error => { console.log(error) });
+
+		document.getElementById("heart-id1").onclick = event => {
+			let heart = document.getElementById("heart-id1");
+			let id_publication = heart.getAttribute("data-id_publication");
+			event.preventDefault();
+			const form = document.querySelector('.reaction');
+			let params = {};
+			params['id_publication'] = id_publication;
+			var body = JSON.stringify(params);
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = () => {
+				if(request.readyState == 4) {
+					if(request.status == 200)
+					{
+						Array.prototype = true;
+						console.log(request);
+						var response = JSON.parse(request.responseText);
+						console.log(response);
+					}
+				
+				}
+				else {
+					console.log("Erreur");
+				}
+			}
+			request.open("POST", "API/controller/like.php",true);
+			request.send(body);
+		};
+
 });
 
 document.getElementById("choixcategorie").onclick = event => {
 	var id_categorie = event.target.dataset.id_cat;
 
-	fetch("./API/controller/tri_categorie.php?id="+id_categorie)
+	fetch("./API/controller/get_publication_from_categorie.php?id="+id_categorie)
 		.then( response => response.json() )
 		.then( data => {
 			data.forEach(cat => {
@@ -205,6 +235,7 @@ document.getElementById("choixcategorie").onclick = event => {
 			});			
 		})
 		.catch(error => { console.log(error) });
+	
 };
 
 
@@ -221,19 +252,23 @@ document.getElementById("validerpubli").onclick = event => {
 
 	var fileSelect = document.getElementById('file');
 	var files = fileSelect.files;
-	//le FormData permet créer des paires clé/valeur du même format 
-	//que celles générées par l'attribut 'name' dans les champs <input> du formulaire.
-	var formData = new FormData();
-	for (var i = 0; i < files.length; i++) {
-  		var file = files[i];
-  		formData.append('file', file);
-  	}	
+
 	// Loop through each of the selected files.
-  	params['fileName'] = file.name;
-  	params['fileType'] = file.type;
-  	params['fileSize'] = file.size;
+
+  	document.getElementById("file").onchange = function(event) {
+	    var reader = new FileReader();
+	    reader.readAsDataURL(event.srcElement.files[0]);
+	    var fileContent = reader.result;
+	    console.log(fileContent);
+    }
+	
+  	params['fileName'] = files.name;
+  	params['fileType'] = files.type;
+  	params['fileSize'] = files.size;
+  	params['filePath'] = fileContent;
 	var body = JSON.stringify(params);
-	console.log(body);
+
+	//console.log(body);
 	var request = new XMLHttpRequest();
     request.onreadystatechange = () => {
         if(request.readyState == 4) {

@@ -51,11 +51,11 @@ else {
 	}
 
 
-	$title = $json_obj['body']['titre'];
-	$id_topic = $json_obj['body']['topic'];
+	$title = $json_obj['titre'];
+	$id_topic = $json_obj['topic'];
 	$id_user = $_SESSION['id_user'];
 	$username = $_SESSION['username'];
-	$content = $json_obj['body']['content'];
+	$content = $json_obj['content'];
 	$date = date('Y-m-d');
 
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
@@ -81,10 +81,11 @@ SQL
 	$fileName = $json_obj['fileName'];
 	$fileType = $json_obj['fileType'];
 	$fileSize=$json_obj['fileSize'];
+	$filePath = $json_obj['filePath'];
 
 	$uploaddir = './uploads/';
 	$uploadfile = $uploaddir . basename($fileName);
-	move_uploaded_file($json_obj['formData']['file'],$uploadfile);
+	move_uploaded_file($json_obj['filePath'],$uploadfile);
 
 	$stmt2 = MyPDO::getInstance()->prepare(<<<SQL
 	INSERT INTO image(id_publication, nom_image, taille_image, type_image)
