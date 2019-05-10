@@ -134,11 +134,13 @@ document.ready( () => {
 				reac_div.setAttribute('class','reaction');
 				var reac = document.createElement("img");
 				reac.setAttribute("class", "reac");
+				reac.setAttribute("onclick", 'chngimg()');
 				reac.setAttribute("src", "./SRC/heart.png");
 				reac.setAttribute("data-id_publication", data[i].id_publication);
 				reac.setAttribute("id", "heart-id"+count_heart_id);
+0
 				count_heart_id++;
-				reac.setAttribute('onclick','chngimg()'); 
+				
 				public.appendChild(reac_div);
 				reac_div.appendChild(reac);
 
@@ -155,6 +157,7 @@ document.ready( () => {
 			}
 		})
 		.catch(error => { console.log(error) });
+
 });
 
 document.getElementById("choixcategorie").onclick = event => {
@@ -285,13 +288,15 @@ function chngimg() {
 
 	for(var i = 0; i < length; i++)
 	{
-		var heart_id = document.getElementsByClassName("reac")[i].id;
-		console.log(heart_id);
+		//var heart_id = document.getElementsByClassName("reac")[i].id;
+		//console.log(heart_id);
+		console.log("lol");
 		var img = document.querySelector('.reac').src;
 		var count = 0;
 		if (img.indexOf('heart.png')!=-1) {
 			document.querySelector('.reac').src  = './SRC/heart_pink.png';
 			count = count+1;
+			console.log("c nul");
 		}
 		 else {
 		   document.querySelector('.reac').src = './SRC/heart.png';
