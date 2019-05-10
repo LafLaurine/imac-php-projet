@@ -17,36 +17,36 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-if(!empty($_GET['id'])){
-    $id_categorie = $_GET['id'];
+if(!empty($_GET['like'])){
+    $id_like = $_GET['like'];
 }
 
 else {
-    echo json_encode(array("error" => "Missing id categorie"));
+    echo json_encode(array("error" => "Missing id like"));
 	http_response_code(422);
 }
 
-if($id_categorie !=100) {
+if($id_like !=100) {
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM categories
-	INNER JOIN topic ON categories.id_categorie = topic.id_categorie
-	INNER JOIN publication ON publication.id_topic = topic.id_topic
-	WHERE categories.id_categorie = :id_categorie;
+	FROM likes
+	INNER JOIN publication ON likes.id_like = publication.id_like
+	--INNER JOIN publication ON publication.id_topic = topic.id_topic
+	WHERE likes.id_like = :id_like;
 SQL
 );
-	$stmt->bindParam(':id_categorie',$id_categorie);
+	$stmt->bindParam(':id_like',$id_like);
 	$stmt->execute();
-	$cat = [];
+	$like = [];
 
 	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-		array_push($cat,$row);
+		array_push($like,$row);
 	}
-	if(empty($cat)) {
-		echo json_encode(array("error" => "Missing categorie"));
+	if(empty($like)) {
+		echo json_encode(array("error" => "Missing like"));
 		http_response_code(422);
 	}
-	echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+	echo json_encode($like,JSON_UNESCAPED_UNICODE);
 }
 
 else {
