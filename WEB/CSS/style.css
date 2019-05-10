@@ -241,6 +241,14 @@ h1 {
     height: 150%;
 }
 
+#contenu {
+    position: relative;
+    width: 850px;
+    height: 250px;
+    margin-left: 10%;
+    margin-top: 15%;
+}
+
 .voirPlus {
     text-decoration:none;
     color: #303030;
@@ -457,6 +465,13 @@ a:hover {
     position: absolute;
     top: 93%;
     right: 2.4%;
+}
+
+#closed_cross3 {
+    width: 2%;
+    position: absolute;
+    right: 10%;
+    top : 7%;
 }
 
 label{
