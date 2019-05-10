@@ -34,7 +34,7 @@ document.getElementById("valid_register").onclick = event => {
 		}
 		
 	}
-    request.open("POST", "API/user/register.php",true);
+    request.open("POST", "./API/user/register.php",true);
     request.send(body);
 };
 
@@ -63,6 +63,6 @@ document.getElementById("valid_login").onclick = event => {
 		}
 		
 	}
-    request.open("POST", "API/user/login.php",true);
+    request.open("POST", "./API/user/login.php",true);
     request.send(body);
 };
