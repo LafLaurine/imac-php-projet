@@ -94,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   REFERENCES user(id_user)
 );
 
-DROP TABLE IF EXISTS `like`;
-CREATE TABLE IF NOT EXISTS `like` (
+DROP TABLE IF EXISTS `like_publication`;
+CREATE TABLE IF NOT EXISTS `like_publication` (
   `id_like` int(15) NOT NULL AUTO_INCREMENT,
   `id_publication` int(15) NOT NULL,
   `id_user` int(15) NOT NULL,

@@ -158,12 +158,40 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 
+		document.getElementById("heart-id1").onclick = event => {
+			let heart = document.getElementById("heart-id1");
+			let id_publication = heart.getAttribute("data-id_publication");
+			event.preventDefault();
+			const form = document.querySelector('.reaction');
+			let params = {};
+			params['id_publication'] = id_publication;
+			var body = JSON.stringify(params);
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = () => {
+				if(request.readyState == 4) {
+					if(request.status == 200)
+					{
+						Array.prototype = true;
+						console.log(request);
+						var response = JSON.parse(request.responseText);
+						console.log(response);
+					}
+				
+				}
+				else {
+					console.log("Erreur");
+				}
+			}
+			request.open("POST", "http://localhost/imac-php-projet/WEB/API/controller/add_like.php",true);
+			request.send(body);
+		};
+
 });
 
 document.getElementById("choixcategorie").onclick = event => {
 	var id_categorie = event.target.dataset.id_cat;
 
-	fetch("./API/controller/tri_categorie.php?id="+id_categorie)
+	fetch("./API/controller/get_publication_from_categorie.php?id="+id_categorie)
 		.then( response => response.json() )
 		.then( data => {
 			data.forEach(cat => {
@@ -258,6 +286,57 @@ document.getElementById("validerpubli").onclick = event => {
     request.send("body="+body+"&formData ="+formData);
 };
 
+//Accueil : tri publi par date
+document.getElementById("tri_date").onclick = event => {
+	var id_tri = event.target.dataset.id_date;
+
+	fetch("./API/controller/get_publication_from_date.php?id="+id_tri)
+		.then( response => response.json() )
+		.then( data => {
+			data.forEach( date => {
+				document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
+				let public = document.getElementById("publication");
+				while (public.firstChild) {
+					public.removeChild(public.firstChild);
+				}
+				
+				for(var i =0; i<data.length; i++) {
+					var title = document.createElement('h2');
+					title.setAttribute('class','titrepubli');
+					public.appendChild(title);
+					title.innerHTML = data[i].titre_publication;
+
+					var date_publi = document.createElement('h3');
+					date_publi.setAttribute('class','date_publi');
+					public.appendChild(date_publi);
+					date_publi.innerHTML = data[i].date_publication;
+
+					var reac_div = document.createElement('div');
+					reac_div.setAttribute('class','reaction');
+					var reac = document.createElement("img");
+					reac.setAttribute("class", "reac");
+					reac.setAttribute("src", "./SRC/heart.png");
+					reac.setAttribute("id", data[i].id_publication);
+					reac.setAttribute('onclick','chngimg()'); 
+					public.appendChild(reac_div);
+					reac_div.appendChild(reac);
+
+					var para = document.createElement('p');
+					para.setAttribute("id","paraVoir");
+					var link = document.createElement('a');
+					link.setAttribute("href", "publication.html?id="+data[i].id_publication);
+					link.setAttribute("class", "voirPlus");
+					link.setAttribute("id", data[i].id_publication);
+					link.innerHTML = "→ Voir plus";
+					public.appendChild(para);
+					para.appendChild(link);
+
+				}
+			});			
+		})
+		.catch(error => { console.log(error) });
+	
+};
 
 //pop up new publication
 function popupAppear()

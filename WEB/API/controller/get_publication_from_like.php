@@ -29,10 +29,10 @@ else {
 if($id_like !=100) {
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM likes
-	INNER JOIN publication ON likes.id_like = publication.id_like
+	FROM like_publication
+	INNER JOIN publication ON like_publication.id_like = publication.id_like
 	--INNER JOIN publication ON publication.id_topic = topic.id_topic
-	WHERE likes.id_like = :id_like;
+	WHERE like_publication.id_like = :id_like;
 SQL
 );
 	$stmt->bindParam(':id_like',$id_like);
