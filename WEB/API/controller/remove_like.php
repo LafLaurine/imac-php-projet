@@ -47,11 +47,12 @@ else {
 	SELECT *
 	FROM like_publication
 	WHERE like_publication.id_publication = $id_publication
+
 SQL
 );
 	$stmt_like->execute();
 	if(($row = $stmt_like->fetch(PDO::FETCH_ASSOC))) {
-		$count_like = $row['count_like'] + 1;
+		$count_like = $row['count_like'] - 1;
 		$stmt = MyPDO::getInstance()->prepare(<<<SQL
 		INSERT INTO like_publication(id_publication, id_user, count_like)
 		VALUES (:id_publication, :id_user, :count_like)
@@ -66,7 +67,6 @@ SQL
 		echo json_encode($resp);
 	}
 }
-
 exit();
 
 ?>

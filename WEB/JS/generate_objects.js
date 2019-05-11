@@ -129,7 +129,7 @@ document.ready( () => {
 				public.appendChild(date_publi);
 				date_publi.innerHTML = data[i].date_publication;
 
-				var reac_div = document.createElement('form');
+				var reac_div = document.createElement('div');
 				reac_div.setAttribute('class','reaction');
 				var reac = document.createElement("img");
 				reac.setAttribute("class", "reac");
@@ -381,13 +381,52 @@ function chngimg() {
 	if (img.indexOf('heart.png')!=-1) {
 		event.target.src  = './SRC/heart_pink.png';
 		count = count+1;
+		event.preventDefault();
+		let params = {};
+		params['id_publication'] = event.target.dataset.id_publication;
+		var body = JSON.stringify(params);
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = () => {
+		if(request.readyState == 4) {
+			if(request.status == 200)
+			{
+				Array.prototype = true;
+				console.log(request);
+			}
+		}
+		else {
+			console.log("Erreur");
+		}
+	}
+		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/add_like.php",true);
+		request.send(body);
 	}
 	else {
 		event.target.src = './SRC/heart.png';
 		if(count !=0) {
 			count = count-1;
 		}
+		event.preventDefault();
+		let params = {};
+		params['id_publication'] = event.target.dataset.id_publication;
+		var body = JSON.stringify(params);
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = () => {
+		if(request.readyState == 4) {
+			if(request.status == 200)
+			{
+				Array.prototype = true;
+				console.log(request);
+			}
+		}
+		else {
+			console.log("Erreur");
+		}
 	}
+		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/remove_like.php",true);
+		request.send(body);
+	}
+	
 }
 
 if(document.getElementById("logout") != null) {
