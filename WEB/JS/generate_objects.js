@@ -118,7 +118,6 @@ document.ready( () => {
 		.then( response => response.json() )
 		.then( data => {
 			let public = document.getElementById("publication");
-			var count_heart_id = 1;
 			for(var i =0; i<data.length; i++) {
 				var title = document.createElement('h2');
 				title.setAttribute('class','titrepubli');
@@ -137,10 +136,6 @@ document.ready( () => {
 				reac.setAttribute("onclick", 'chngimg()');
 				reac.setAttribute("src", "./SRC/heart.png");
 				reac.setAttribute("data-id_publication", data[i].id_publication);
-				reac.setAttribute("id", "heart-id"+count_heart_id);
-0
-				count_heart_id++;
-				
 				public.appendChild(reac_div);
 				reac_div.appendChild(reac);
 
@@ -158,7 +153,7 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 
-		document.getElementById("heart-id1").onclick = event => {
+		/*document.getElementById("heart-id1").onclick = event => {
 			let heart = document.getElementById("heart-id1");
 			let id_publication = heart.getAttribute("data-id_publication");
 			event.preventDefault();
@@ -184,7 +179,7 @@ document.ready( () => {
 			}
 			request.open("POST", "http://localhost/imac-php-projet/WEB/API/controller/add_like.php",true);
 			request.send(body);
-		};
+		};*/
 
 });
 
@@ -249,6 +244,25 @@ document.getElementById("validerpubli").onclick = event => {
         params['topic'] = form.publitopic.value;
     if(form.contenu.value)
 		params['content'] = form.contenu.value;
+	var body = JSON.stringify(params);
+	var request = new XMLHttpRequest();
+    request.onreadystatechange = () => {
+        if(request.readyState == 4) {
+        	console.log(request.status);
+            if(request.status == 200)
+            {
+				Array.prototype = true;
+				console.log(request);
+
+			}
+			else {
+				console.log("Erreur");
+			}
+		}
+		
+	}
+    request.open("POST", "./API/controller/insert_publication.php",true);
+	request.send(body);
 
 	var fileSelect = document.getElementById('file');
 	var files = fileSelect.files;
@@ -262,18 +276,16 @@ document.getElementById("validerpubli").onclick = event => {
 	// Loop through each of the selected files.
   	params['fileName'] = file.name;
   	params['fileType'] = file.type;
-  	params['fileSize'] = file.size;
-	var body = JSON.stringify(params);
-	console.log(body);
-	var request = new XMLHttpRequest();
-    request.onreadystatechange = () => {
-        if(request.readyState == 4) {
-        	console.log(request.status);
-            if(request.status == 200)
+	params['fileSize'] = file.size;
+	console.log(params['fileName']);
+	var request_formData = new XMLHttpRequest();
+    request_formData.onreadystatechange = () => {
+        if(request_formData.readyState == 4) {
+        	console.log(request_formData.status);
+            if(request_formData.status == 200)
             {
 				Array.prototype = true;
-				var response = JSON.parse(request.responseText);
-				console.log(request);
+				console.log(request_formData);
 
 			}
 			else {
@@ -282,8 +294,8 @@ document.getElementById("validerpubli").onclick = event => {
 		}
 		
 	}
-    request.open("POST", "./API/controller/insert_publication.php",true);
-    request.send("body="+body+"&formData ="+formData);
+    request_formData.open("POST", "./API/controller/insert_file.php",true);
+	request_formData.send(formData);
 };
 
 //Accueil : tri publi par date
@@ -363,29 +375,19 @@ function pubClose()
 }
 
 function chngimg() {
-	var length = document.querySelectorAll('.reac').length;
-
-	for(var i = 0; i < length; i++)
-	{
-		//var heart_id = document.getElementsByClassName("reac")[i].id;
-		//console.log(heart_id);
-		console.log("lol");
-		var img = document.querySelector('.reac').src;
-		var count = 0;
-		if (img.indexOf('heart.png')!=-1) {
-			document.querySelector('.reac').src  = './SRC/heart_pink.png';
-			count = count+1;
-			console.log("c nul");
+	var img = event.target.src;
+	console.log(img);
+	var count = 0;		
+	if (img.indexOf('heart.png')!=-1) {
+		event.target.src  = './SRC/heart_pink.png';
+		count = count+1;
+	}
+	else {
+		event.target.src = './SRC/heart.png';
+		if(count !=0) {
+			count = count-1;
 		}
-		 else {
-		   document.querySelector('.reac').src = './SRC/heart.png';
-		   if(count !=0) {
-			   count = count-1;
-		   }
-		   
-	   }
-	
-   }
+	}
 }
 
 if(document.getElementById("logout") != null) {
