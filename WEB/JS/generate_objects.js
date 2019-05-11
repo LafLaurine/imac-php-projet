@@ -183,6 +183,94 @@ document.ready( () => {
 
 });
 
+document.getElementById("tri_default").onclick = event => {
+	fetch("./API/controller/get_publications.php")
+		.then( response => response.json() )
+		.then( data => {
+			let public = document.getElementById("publication");
+			while (public.firstChild) {
+				public.removeChild(public.firstChild);
+			}
+			for(var i =0; i<data.length; i++) {
+				var title = document.createElement('h2');
+				title.setAttribute('class','titrepubli');
+				public.appendChild(title);
+				title.innerHTML = data[i].titre_publication;
+
+				var date_publi = document.createElement('h3');
+				date_publi.setAttribute('class','date_publi');
+				public.appendChild(date_publi);
+				date_publi.innerHTML = data[i].date_publication;
+
+				var reac_div = document.createElement('div');
+				reac_div.setAttribute('class','reaction');
+				var reac = document.createElement("img");
+				reac.setAttribute("class", "reac");
+				reac.setAttribute("onclick", 'chngimg()');
+				reac.setAttribute("src", "./SRC/heart.png");
+				reac.setAttribute("data-id_publication", data[i].id_publication);
+				public.appendChild(reac_div);
+				reac_div.appendChild(reac);
+
+				var para = document.createElement('p');
+				para.setAttribute("id","paraVoir");
+				var link = document.createElement('a');
+				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
+				link.setAttribute("class", "voirPlus");
+				link.setAttribute("id", data[i].id_publication);
+				link.innerHTML = "→ Voir plus";
+				public.appendChild(para);
+				para.appendChild(link);
+
+			}
+		})
+		.catch(error => { console.log(error) });
+};
+
+document.getElementById("tri_like").onclick = event => {
+	fetch("./API/controller/get_publication_from_like.php")
+		.then( response => response.json() )
+		.then( data => {
+			let public = document.getElementById("publication");
+			while (public.firstChild) {
+				public.removeChild(public.firstChild);
+			}
+			for(var i =0; i<data.length; i++) {
+				var title = document.createElement('h2');
+				title.setAttribute('class','titrepubli');
+				public.appendChild(title);
+				title.innerHTML = data[i].titre_publication;
+
+				var date_publi = document.createElement('h3');
+				date_publi.setAttribute('class','date_publi');
+				public.appendChild(date_publi);
+				date_publi.innerHTML = data[i].date_publication;
+
+				var reac_div = document.createElement('div');
+				reac_div.setAttribute('class','reaction');
+				var reac = document.createElement("img");
+				reac.setAttribute("class", "reac");
+				reac.setAttribute("onclick", 'chngimg()');
+				reac.setAttribute("src", "./SRC/heart.png");
+				reac.setAttribute("data-id_publication", data[i].id_publication);
+				public.appendChild(reac_div);
+				reac_div.appendChild(reac);
+
+				var para = document.createElement('p');
+				para.setAttribute("id","paraVoir");
+				var link = document.createElement('a');
+				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
+				link.setAttribute("class", "voirPlus");
+				link.setAttribute("id", data[i].id_publication);
+				link.innerHTML = "→ Voir plus";
+				public.appendChild(para);
+				para.appendChild(link);
+
+			}
+		})
+		.catch(error => { console.log(error) });
+};
+
 document.getElementById("choixcategorie").onclick = event => {
 	var id_categorie = event.target.dataset.id_cat;
 
@@ -300,13 +388,11 @@ document.getElementById("validerpubli").onclick = event => {
 
 //Accueil : tri publi par date
 document.getElementById("tri_date").onclick = event => {
-	var id_tri = event.target.dataset.id_date;
 
-	fetch("./API/controller/get_publication_from_date.php?id="+id_tri)
+	fetch("./API/controller/get_publication_from_date.php")
 		.then( response => response.json() )
 		.then( data => {
-			data.forEach( date => {
-				document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
+			data.forEach( publication => {
 				let public = document.getElementById("publication");
 				while (public.firstChild) {
 					public.removeChild(public.firstChild);

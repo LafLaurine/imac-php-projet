@@ -17,40 +17,27 @@ include_once "../data/MyPDO.spottimac.include.php";
 // response status
 http_response_code(200);
 
-if(!empty($_GET['like'])){
-    $id_like = $_GET['like'];
-}
-
-else {
-    echo json_encode(array("error" => "Missing id like"));
-	http_response_code(422);
-}
-
-if($id_like !=100) {
-	$stmt = MyPDO::getInstance()->prepare(<<<SQL
+//COUNT ON LIKE
+$stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM like_publication
-	INNER JOIN publication ON like_publication.id_like = publication.id_like
-	--INNER JOIN publication ON publication.id_topic = topic.id_topic
-	WHERE like_publication.id_like = :id_like;
+	FROM publication
+	ORDER BY id_publication = (SELECT MAX(id_publication)
+							FROM user_liked) DESC
 SQL
 );
-	$stmt->bindParam(':id_like',$id_like);
-	$stmt->execute();
-	$like = [];
 
-	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-		array_push($like,$row);
-	}
-	if(empty($like)) {
-		echo json_encode(array("error" => "Missing like"));
-		http_response_code(422);
-	}
-	echo json_encode($like,JSON_UNESCAPED_UNICODE);
+$stmt->execute();
+$like = [];
+
+while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+	array_push($like,$row);
 }
 
-else {
-	include_once "./get_publications.php";
+if(empty($like)) {
+	echo json_encode(array("error" => "Missing like"));
+	http_response_code(422);
+	exit();
 }
 
+echo json_encode($like,JSON_UNESCAPED_UNICODE);
 exit();

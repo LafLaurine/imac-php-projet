@@ -41,6 +41,7 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 	<header>
 		<div id="rectVert"></div>
 			<select id="trier" name="trier">
+				<option id="tri_default" name="tri_default">Trier par :</option>
 				<option id="tri_date" name="tri_date">Plus récent</option>
 				<option id="tri_like" name="tri_like">Plus populaire</option>
 			</select>
