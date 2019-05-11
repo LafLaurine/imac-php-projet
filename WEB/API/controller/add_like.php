@@ -3,7 +3,7 @@
 session_start();
 
 //headers
-header("Content-Type: application/text; charset=UTF-8");
+header("Content-Type: application/json; charset=UTF-8");
 
 include_once "../data/MyPDO.spottimac.include.php";
 if (!isset($_SESSION['id_user'])){
@@ -43,28 +43,16 @@ else {
 	$id_user = $_SESSION['id_user'];
 	$id_publication = $json_obj['id_publication'];
 	$count_like = [];
-	$stmt_like = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM like_publication
-	WHERE like_publication.id_publication = $id_publication
-SQL
-);
-	$stmt_like->execute();
-	if(($row = $stmt_like->fetch(PDO::FETCH_ASSOC))) {
-		$count_like = $row['count_like'] + 1;
-		$stmt = MyPDO::getInstance()->prepare(<<<SQL
-		INSERT INTO like_publication(id_publication, id_user, count_like)
-		VALUES (:id_publication, :id_user, :count_like)
+	$stmt = MyPDO::getInstance()->prepare(<<<SQL
+		INSERT INTO user_liked(id_publication, id_user)
+		VALUES (:id_publication, :id_user)
 SQL
 );
 		$stmt->bindParam(':id_publication',$id_publication);
 		$stmt->bindParam(':id_user',$id_user);
-		$stmt->bindParam(':count_like',$count_like);
 		$stmt->execute();
-		$id_like = MyPDO::getInstance()->lastInsertId(); 
-		$resp = array("id_like" => $id_like, "id_publication" => $id_publication, "id_user" => $id_user, "count_like" => $count_like);
+		$resp = array("id_publication" => $id_publication, "id_user" => $id_user);
 		echo json_encode($resp);
-	}
 }
 
 exit();

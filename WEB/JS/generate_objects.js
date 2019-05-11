@@ -374,6 +374,7 @@ function pubClose()
 	document.location.href="index.php"; 
 }
 
+//TQ QUE VAR = 1 COEUR EST DE COULEUR ROSE = USER A LIKE, SINON VAR = 0
 function chngimg() {
 	var img = event.target.src;
 	console.log(img);

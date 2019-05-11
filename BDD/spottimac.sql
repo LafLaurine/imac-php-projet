@@ -94,13 +94,11 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   REFERENCES user(id_user)
 );
 
-DROP TABLE IF EXISTS `like_publication`;
-CREATE TABLE IF NOT EXISTS `like_publication` (
-  `id_like` int(15) NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `user_liked`;
+CREATE TABLE IF NOT EXISTS `user_liked` (
   `id_publication` int(15) NOT NULL,
   `id_user` int(15) NOT NULL,
-  `count_like` INT,
-  CONSTRAINT pk_like PRIMARY KEY (id_like),
+  CONSTRAINT pk_like_publi PRIMARY KEY (id_publication,id_user),
   CONSTRAINT fk_publi FOREIGN KEY (id_publication)
   REFERENCES publication(id_publication),
   CONSTRAINT fk_user FOREIGN KEY (id_user)
