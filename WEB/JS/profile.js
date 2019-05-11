@@ -66,3 +66,9 @@ document.getElementById("valid_login").onclick = event => {
     request.open("POST", "./API/user/login.php",true);
     request.send(body);
 };
+
+//ferme pop up new publication	
+function pubClose()
+{
+	document.location.href="./index.php"; 
+}

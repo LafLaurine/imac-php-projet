@@ -241,6 +241,14 @@ h1 {
     height: 150%;
 }
 
+#contenu {
+    position: relative;
+    width: 850px;
+    height: 250px;
+    margin-left: 10%;
+    margin-top: 15%;
+}
+
 .voirPlus {
     text-decoration:none;
     color: #303030;
@@ -415,15 +423,36 @@ a:hover {
     cursor:pointer;
 }
 
-#contenu, #pub_commentaire {
-    border: 1.5px solid #CECECE;
-    border-radius: 5px;
+#content, #pub_commentaire {
     color: #CECECE;
-    position: absolute;
     left: 80px;
     top: 200px;
-    width: 78%;
-    height: 60%
+}
+
+#pub_commentaire {
+    position : relative;
+    font-family: 'FuturaLight';
+    margin-left: 10%;
+    margin-top: -25%;
+}
+
+#publi_com {
+    width: 50%;
+    height: 20%;
+}
+
+#from_user {
+    margin-left: 11%;
+    font-family: 'FuturaLight';
+    font-size: 1em;
+    color: #303030;
+}
+
+#content {
+    border: 1.5px solid #CECECE;
+    border-radius: 5px;
+    width: 150px;
+    height: 200px;
 }
 
 #file {
@@ -436,6 +465,13 @@ a:hover {
     position: absolute;
     top: 93%;
     right: 2.4%;
+}
+
+#closed_cross3 {
+    width: 2%;
+    position: absolute;
+    right: 10%;
+    top : 7%;
 }
 
 label{
@@ -502,10 +538,10 @@ label{
 
 #commentaire {
     font-family: 'FuturaExtended';
-    font-size: 1.1em;
+    font-size: 0.9em;
     color: #FFBCB3;
     position: relative;
-    left: 30px;
+    margin-left: 115px;
 }
 
 #reaction, #date {
@@ -514,6 +550,24 @@ label{
     color: #FFBCB3;
     position: relative;
     left: 30px;
+}
+
+#dateContent {
+    font-family: 'FuturaExtended';
+    font-size: 0.9em;
+    color: #FFBCB3;
+    position: relative;
+    margin-left: 15%;
+}
+
+#date {
+    margin-top: -5.7%;
+    margin-left: 3%;
+}
+
+#reaction {
+    margin-top: -5%;
+    margin-left: 80%;
 }
 
 #page1 {

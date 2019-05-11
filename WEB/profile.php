@@ -13,6 +13,8 @@
 	<img id="decorAccueil3" alt="decor fond" src="SRC/accueil3.png"/>
 	<img id="decorAccueil4" alt="decor fond" src="SRC/accueil4.png"/>
 
+	<input type="image" id="closed_cross3" src="SRC/croix.png" onclick="pubClose()" alt="Croix pour fermer la fenêtre"/>
+
 	<h3 id="register">Register</h3>
 	<div id="cadreRegister">
 	<form id="register_form">
