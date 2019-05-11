@@ -463,14 +463,15 @@ function pubClose()
 //TQ QUE VAR = 1 COEUR EST DE COULEUR ROSE = USER A LIKE, SINON VAR = 0
 function chngimg() {
 	var img = event.target.src;
-	console.log(img);
-	var count = 0;		
+	var count = 0;
+	var liked = 0;		
 	if (img.indexOf('heart.png')!=-1) {
 		event.target.src  = './SRC/heart_pink.png';
 		count = count+1;
 		event.preventDefault();
 		let params = {};
 		params['id_publication'] = event.target.dataset.id_publication;
+		params['liked'] = liked;
 		var body = JSON.stringify(params);
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = () => {
@@ -487,7 +488,10 @@ function chngimg() {
 	}
 		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/add_like.php",true);
 		request.send(body);
+		liked = 1;
+		console.log(liked);
 	}
+
 	else {
 		event.target.src = './SRC/heart.png';
 		if(count !=0) {
@@ -512,8 +516,7 @@ function chngimg() {
 	}
 		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/remove_like.php",true);
 		request.send(body);
-	}
-	
+	}	
 }
 
 if(document.getElementById("logout") != null) {
@@ -521,6 +524,7 @@ if(document.getElementById("logout") != null) {
 		fetch("./API/user/logout.php")
 			.then( response => response.json() )
 			.then( data => {
+				document.location.href="index.php"; 
 			})
 			.catch(error => { console.log(error) });
 	};

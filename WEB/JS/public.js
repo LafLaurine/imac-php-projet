@@ -78,8 +78,7 @@ document.getElementById("valider_comm").onclick = event => {
 			{
 				Array.prototype = true;
 				console.log(request);
-				var response = JSON.parse(request.responseText);
-				console.log(response);
+				alert("Commentaire ajouté !");
 			}
 		
 		}

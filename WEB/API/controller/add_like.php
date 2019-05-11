@@ -34,14 +34,17 @@ if (!isset($input) || empty($input)) {
 }
 else {
 	$json_obj = json_decode($input,true);
-
+	
+	
 	if(!isset($json_obj['id_publication']))
 	{
 		echo json_encode(array("error" => "Missing comm"));
 		exit();
 	}
+
 	$id_user = $_SESSION['id_user'];
 	$id_publication = $json_obj['id_publication'];
+
 	$count_like = [];
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
 		INSERT INTO user_liked(id_publication, id_user)

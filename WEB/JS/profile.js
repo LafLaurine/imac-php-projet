@@ -27,6 +27,7 @@ document.getElementById("valid_register").onclick = event => {
             {
 				Array.prototype = true;
 				var response = JSON.parse(request.responseText);
+				alert("Register succeed");
 			}
 			else {
 				console.log("Erreur");
@@ -56,6 +57,7 @@ document.getElementById("valid_login").onclick = event => {
             {
 				Array.prototype = true;
 				var response = JSON.parse(request.responseText);
+				document.location.href="index.php"; 
 			}
 			else {
 				console.log("Erreur");

@@ -29,6 +29,7 @@ SQL
 $stmt->execute();
 $like = [];
 
+
 while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($like,$row);
 }
