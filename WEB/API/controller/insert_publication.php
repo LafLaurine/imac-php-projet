@@ -30,7 +30,6 @@ if (!isset($input) || empty($input)) {
 }
 else {
 	$json_obj = json_decode($input,true);
-	print_r($json_obj);
 
 	if(!isset($json_obj['titre']))
 	{
@@ -49,6 +48,16 @@ else {
 		echo json_encode(array("error" => "Missing content"));
 		exit();
 	}
+
+	if(!isset($json_obj['fileName']) || !isset($json_obj['fileType']) || !isset($json_obj['fileSize']) )
+	{
+	echo json_encode(array("error" => "Missing file"));
+	exit();
+	}
+
+	$fileName = $json_obj['fileName'];
+	$fileType = $json_obj['fileType'];
+	$fileSize= $json_obj['fileSize'];
 	$title = $json_obj['titre'];
 	$id_topic = $json_obj['topic'];
 	$id_user = $_SESSION['id_user'];
@@ -69,7 +78,19 @@ SQL
 	$stmt->execute();
 	
 	$id_publi = MyPDO::getInstance()->lastInsertId();
-	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content);
+
+	$stmt2 = MyPDO::getInstance()->prepare(<<<SQL
+	INSERT INTO image(id_publication, nom_image, taille_image, type_image)
+	VALUES (:id_publication, :nom_image, :taille_image, :type_image)
+SQL
+);
+	$stmt2->bindParam(':id_publication',$id_publi);
+	$stmt2->bindParam(':nom_image',$fileName);
+	$stmt2->bindParam(':taille_image',$fileSize);
+	$stmt2->bindParam(':type_image',$fileType);
+	$stmt2->execute();
+
+	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content, "nom_image" => $fileName, "taille_image" => $fileSize);
 	echo json_encode($resp);
 	exit();
 }

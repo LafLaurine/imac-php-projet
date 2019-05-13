@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `image` (
   `nom_image` varchar(150) NOT NULL,
   `taille_image` INT NOT NULL,
   `type_image` varchar(50) NOT NULL,
-  `blob_image` TEXT NOT NULL,
+  `blob_image` TEXT,
   CONSTRAINT pk_image PRIMARY KEY (id_image),
   CONSTRAINT fk_publication FOREIGN KEY (id_publication)
   REFERENCES publication(id_publication)

@@ -325,22 +325,56 @@ document.getElementById("choixcategorie").onclick = event => {
 document.getElementById("validerpubli").onclick = event => {
 	event.preventDefault();
     const form = document.querySelector('#form');
-    let params = {};
+	let params = {};
     if(form.titre.value)
         params['titre'] = form.titre.value;
     if(form.publitopic.value)
         params['topic'] = form.publitopic.value;
     if(form.contenu.value)
 		params['content'] = form.contenu.value;
+	var fileSelect = document.getElementById('file');
+	var files = fileSelect.files;
+	//le FormData permet créer des paires clé/valeur du même format 
+	//que celles générées par l'attribut 'name' dans les champs <input> du formulaire.
+	var formData = new FormData();
+	for (var i = 0; i < files.length; i++) {
+  		var file = files[i];
+  		formData.append('file', file);
+  	}
+	// Loop through each of the selected files.
+  	params['fileName'] = file.name;
+  	params['fileType'] = file.type;
+	params['fileSize'] = file.size;
 	var body = JSON.stringify(params);
 	var request = new XMLHttpRequest();
+	var id_publication;
     request.onreadystatechange = () => {
         if(request.readyState == 4) {
         	console.log(request.status);
             if(request.status == 200)
             {
 				Array.prototype = true;
-				console.log(request);
+				var response = JSON.parse(request.responseText);
+				id_publication = response.id_publication;
+				console.log(id_publication);
+				var request_formData = new XMLHttpRequest();
+				request_formData.onreadystatechange = () => {
+					if(request_formData.readyState == 4) {
+						console.log(request_formData.status);
+						if(request_formData.status == 200)
+						{
+							Array.prototype = true;
+							console.log(request_formData);
+			
+						}
+						else {
+							console.log("Erreur");
+						}
+					}
+					
+				}
+				request_formData.open("POST", "./API/controller/insert_file.php?id_publication="+id_publication,true);
+				request_formData.send(formData);
 
 			}
 			else {
@@ -352,38 +386,7 @@ document.getElementById("validerpubli").onclick = event => {
     request.open("POST", "./API/controller/insert_publication.php",true);
 	request.send(body);
 
-	var fileSelect = document.getElementById('file');
-	var files = fileSelect.files;
-	//le FormData permet créer des paires clé/valeur du même format 
-	//que celles générées par l'attribut 'name' dans les champs <input> du formulaire.
-	var formData = new FormData();
-	for (var i = 0; i < files.length; i++) {
-  		var file = files[i];
-  		formData.append('file', file);
-  	}	
-	// Loop through each of the selected files.
-  	params['fileName'] = file.name;
-  	params['fileType'] = file.type;
-	params['fileSize'] = file.size;
-	console.log(params['fileName']);
-	var request_formData = new XMLHttpRequest();
-    request_formData.onreadystatechange = () => {
-        if(request_formData.readyState == 4) {
-        	console.log(request_formData.status);
-            if(request_formData.status == 200)
-            {
-				Array.prototype = true;
-				console.log(request_formData);
 
-			}
-			else {
-				console.log("Erreur");
-			}
-		}
-		
-	}
-    request_formData.open("POST", "./API/controller/insert_file.php",true);
-	request_formData.send(formData);
 };
 
 //Accueil : tri publi par date

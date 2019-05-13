@@ -21,7 +21,7 @@
 Bonjour à tou.te.s, voici le seul et l’unique Spott’IMAC, un spotted fait par des IMACS pour des IMACS!
 Ici vous pourrez exprimer et partager vos idées, projets et tout autre sujet qui vous passe par la tête! Tout cela se fera de façon anonyme, maintenant à vos claviers!
 
-Merci de rester respectueux et bienveillants, si nous voyons des publications offensantes, nous ne nous priverons pas de les supprimer.
+Merci de rester respectueux.se et bienveillant.te, si nous voyons des publications offensantes, nous ne nous priverons pas de les supprimer.
 
 (Nous ne sommes en rien responsables des abus et mauvaises utilisations du site)</p>
 	<?php
@@ -85,7 +85,12 @@ Merci de rester respectueux et bienveillants, si nous voyons des publications of
 					<select id="publitopic" name="publitopic" size="0" required></select><img id="select-icon" src= "SRC/down-arrow.svg" alt="icône de flèche vers le bas"/><br>
 					<textarea id="contenu" name="contenu"required></textarea><br>
 					<label for="file"></label>
-					<input type="file" id="file" name="up_file" accept=".png,.gif,.jpg,.webp"><!-- Choisir les extensions qu'on accepte --><br>
+					<form action="./API/controller/insert_file.php" method="post" enctype="multipart/form-data">
+						Select Image File to Upload:
+						<input type="file" name="file">
+						<input type="submit" name="submit" value="Upload">
+					</form>
+					<input type="file" id="file" name="up_file" accept=".png,.gif,.jpg,.webp"><br>
 					<button type="submit" id="validerpubli" onclick="popupClose()">Publier</button>
 				</div>
 				<p id="nvPub">NOUVELLE</p>
