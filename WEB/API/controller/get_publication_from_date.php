@@ -20,7 +20,7 @@ http_response_code(200);
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
 	FROM publication
-	ORDER BY publication.date_publication ASC;
+	ORDER BY publication.date_publication DESC;
 SQL
 );
 	$stmt->execute();

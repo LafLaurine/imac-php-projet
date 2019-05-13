@@ -21,11 +21,21 @@ document.ready( () => {
 				let from_user  = document.getElementById("from_user");
 				let val_comm = document.getElementById("valider_comm");
 				let reac = document.getElementById("reaction");
+				if(publi.lien_fichier != undefined) {
+					let fichier = document.getElementById("fichier");
+					var img_fichier = document.createElement("img");
+					img_fichier.setAttribute("id", "img_fichier");
+					img_fichier.setAttribute("src", publi.lien_fichier);
+					fichier.appendChild(img_fichier);
+				}
+			
 				var img_reac = document.createElement("img");
 				img_reac.setAttribute("id", "reac");
 				img_reac.setAttribute("src", "./SRC/heart.png");
+				img_reac.setAttribute("data-id_publication", publi.id_publication);
 				img_reac.setAttribute('onclick','chngimg()');
 				reac.appendChild(img_reac);
+
 				val_comm.setAttribute("data-id_publication",publi.id_publication)
 				console.log(publi);
 				let content = document.getElementById("publicontent");
@@ -89,6 +99,64 @@ document.getElementById("valider_comm").onclick = event => {
 	request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
 	request.send(body);
 };
+
+function chngimg() {
+	var img = event.target.src;
+	var count = 0;
+	var liked = 0;		
+	if (img.indexOf('heart.png')!=-1) {
+		event.target.src  = './SRC/heart_pink.png';
+		count = count+1;
+		event.preventDefault();
+		let params = {};
+		params['id_publication'] = event.target.dataset.id_publication;
+		params['liked'] = liked;
+		var body = JSON.stringify(params);
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = () => {
+		if(request.readyState == 4) {
+			if(request.status == 200)
+			{
+				Array.prototype = true;
+				console.log(request);
+			}
+		}
+		else {
+			console.log("Erreur");
+		}
+	}
+		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/add_like.php",true);
+		request.send(body);
+		liked = 1;
+		console.log(liked);
+	}
+
+	else {
+		event.target.src = './SRC/heart.png';
+		if(count !=0) {
+			count = count-1;
+		}
+		event.preventDefault();
+		let params = {};
+		params['id_publication'] = event.target.dataset.id_publication;
+		var body = JSON.stringify(params);
+		var request = new XMLHttpRequest();
+		request.onreadystatechange = () => {
+		if(request.readyState == 4) {
+			if(request.status == 200)
+			{
+				Array.prototype = true;
+				console.log(request);
+			}
+		}
+		else {
+			console.log("Erreur");
+		}
+	}
+		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/remove_like.php",true);
+		request.send(body);
+	}	
+}
 
 function pubClose()
 {

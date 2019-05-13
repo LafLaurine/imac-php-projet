@@ -38,7 +38,7 @@ $stmt->execute();
 $publi = [];
 
 if(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($publi,$row); 
+	array_push($publi,$row);
 }
 
 echo json_encode($publi,JSON_UNESCAPED_UNICODE);

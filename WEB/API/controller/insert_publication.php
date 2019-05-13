@@ -49,25 +49,17 @@ else {
 		exit();
 	}
 
-	if(!isset($json_obj['fileName']) || !isset($json_obj['fileType']) || !isset($json_obj['fileSize']) )
-	{
-	echo json_encode(array("error" => "Missing file"));
-	exit();
-	}
-
-	$fileName = $json_obj['fileName'];
-	$fileType = $json_obj['fileType'];
-	$fileSize= $json_obj['fileSize'];
 	$title = $json_obj['titre'];
 	$id_topic = $json_obj['topic'];
 	$id_user = $_SESSION['id_user'];
 	$username = $_SESSION['username'];
 	$content = $json_obj['content'];
+	$file = $json_obj['up_file'];
 	$date = date('Y-m-d');
 
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO publication(titre_publication, date_publication, id_topic, id_user, content)
-	VALUES (:titre_publication, :date_publication, :id_topic, :id_user, :content)
+	INSERT INTO publication(titre_publication, date_publication, id_topic, id_user, content, lien_fichier)
+	VALUES (:titre_publication, :date_publication, :id_topic, :id_user, :content, :lien_fichier)
 SQL
 );
 	$stmt->bindParam(':titre_publication',$title);
@@ -75,22 +67,12 @@ SQL
 	$stmt->bindParam(':id_topic',$id_topic);
 	$stmt->bindParam(':id_user',$id_user);
 	$stmt->bindParam(':content',$content);
+	$stmt->bindParam(':lien_fichier',$file);
 	$stmt->execute();
 	
 	$id_publi = MyPDO::getInstance()->lastInsertId();
 
-	$stmt2 = MyPDO::getInstance()->prepare(<<<SQL
-	INSERT INTO image(id_publication, nom_image, taille_image, type_image)
-	VALUES (:id_publication, :nom_image, :taille_image, :type_image)
-SQL
-);
-	$stmt2->bindParam(':id_publication',$id_publi);
-	$stmt2->bindParam(':nom_image',$fileName);
-	$stmt2->bindParam(':taille_image',$fileSize);
-	$stmt2->bindParam(':type_image',$fileType);
-	$stmt2->execute();
-
-	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content, "nom_image" => $fileName, "taille_image" => $fileSize);
+	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content, "lien_fichier" => $file);
 	echo json_encode($resp);
 	exit();
 }

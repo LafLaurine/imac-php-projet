@@ -48,7 +48,7 @@ else {
 SQL
 );
 	$stmt->execute();
-	$resp = array("Publication deleted where id_publication :" => $id_publication, "id_user" => $id_user);
+	$resp = array("Like deleted where id_publication :" => $id_publication, "id_user" => $id_user);
 		echo json_encode($resp);
 }
 

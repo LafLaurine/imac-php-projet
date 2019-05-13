@@ -38,7 +38,7 @@ else {
 	
 	if(!isset($json_obj['id_publication']))
 	{
-		echo json_encode(array("error" => "Missing comm"));
+		echo json_encode(array("error" => "Missing id_publication"));
 		exit();
 	}
 

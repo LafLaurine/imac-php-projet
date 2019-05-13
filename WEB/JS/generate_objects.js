@@ -279,6 +279,9 @@ document.getElementById("choixcategorie").onclick = event => {
 		.then( data => {
 			data.forEach(cat => {
 				document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
+				if(id_categorie == 100) {
+					document.getElementById("titrecategorie").innerHTML  = "Tout";
+				}
 				let public = document.getElementById("publication");
 				while (public.firstChild) {
 					public.removeChild(public.firstChild);
@@ -332,7 +335,9 @@ document.getElementById("validerpubli").onclick = event => {
         params['topic'] = form.publitopic.value;
     if(form.contenu.value)
 		params['content'] = form.contenu.value;
-	var fileSelect = document.getElementById('file');
+	if(form.up_file.value)
+		params['up_file'] = form.up_file.value;
+	/*var fileSelect = document.getElementById('file');
 	var files = fileSelect.files;
 	//le FormData permet créer des paires clé/valeur du même format 
 	//que celles générées par l'attribut 'name' dans les champs <input> du formulaire.
@@ -344,7 +349,7 @@ document.getElementById("validerpubli").onclick = event => {
 	// Loop through each of the selected files.
   	params['fileName'] = file.name;
   	params['fileType'] = file.type;
-	params['fileSize'] = file.size;
+	params['fileSize'] = file.size;*/
 	var body = JSON.stringify(params);
 	var request = new XMLHttpRequest();
 	var id_publication;
@@ -355,27 +360,6 @@ document.getElementById("validerpubli").onclick = event => {
             {
 				Array.prototype = true;
 				var response = JSON.parse(request.responseText);
-				id_publication = response.id_publication;
-				console.log(id_publication);
-				var request_formData = new XMLHttpRequest();
-				request_formData.onreadystatechange = () => {
-					if(request_formData.readyState == 4) {
-						console.log(request_formData.status);
-						if(request_formData.status == 200)
-						{
-							Array.prototype = true;
-							console.log(request_formData);
-			
-						}
-						else {
-							console.log("Erreur");
-						}
-					}
-					
-				}
-				request_formData.open("POST", "./API/controller/insert_file.php?id_publication="+id_publication,true);
-				request_formData.send(formData);
-
 			}
 			else {
 				console.log("Erreur");
@@ -388,6 +372,24 @@ document.getElementById("validerpubli").onclick = event => {
 
 
 };
+
+/*
+var request_formData = new XMLHttpRequest();
+request_formData.onreadystatechange = () => {
+	if(request_formData.readyState == 4) {
+		if(request_formData.status == 200)
+		{
+			Array.prototype = true;
+		}
+		else {
+			console.log("Erreur");
+		}
+	}
+					
+}
+request_formData.open("POST", "./API/controller/insert_file.php?id_publication="+id_publication,true);
+request_formData.send(formData);
+*/
 
 //Accueil : tri publi par date
 document.getElementById("tri_date").onclick = event => {

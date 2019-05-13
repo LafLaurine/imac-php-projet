@@ -38,7 +38,6 @@ SQL
 	$stmt->bindParam(':id_categorie',$id_categorie);
 	$stmt->execute();
 	$cat = [];
-
 	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 		array_push($cat,$row);
 	}

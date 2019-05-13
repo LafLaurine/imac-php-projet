@@ -84,13 +84,8 @@ Merci de rester respectueux.se et bienveillant.te, si nous voyons des publicatio
 					<p id="listTopic">Topics</p>
 					<select id="publitopic" name="publitopic" size="0" required></select><img id="select-icon" src= "SRC/down-arrow.svg" alt="icône de flèche vers le bas"/><br>
 					<textarea id="contenu" name="contenu"required></textarea><br>
-					<label for="file"></label>
-					<form action="./API/controller/insert_file.php" method="post" enctype="multipart/form-data">
-						Select Image File to Upload:
-						<input type="file" name="file">
-						<input type="submit" name="submit" value="Upload">
-					</form>
-					<input type="file" id="file" name="up_file" accept=".png,.gif,.jpg,.webp"><br>
+					<p id="file">Lien vers votre fichier</p>
+					<input type="text" id="file" name="up_file"><br>
 					<button type="submit" id="validerpubli" onclick="popupClose()">Publier</button>
 				</div>
 				<p id="nvPub">NOUVELLE</p>
