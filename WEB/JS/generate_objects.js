@@ -183,6 +183,27 @@ document.ready( () => {
 
 });
 
+document.ready( () => {
+	fetch("./API/controller/get_liked.php")
+	.then( response => response.json() )
+	.then( data => {
+		var select = document.getElementsByClassName("reac");
+		console.log(select);
+		for (var i = 0; i < select.length; i++) {
+			var id_publi = select[i].getAttribute("data-id_publication");
+			console.log(id_publi);
+			for (var j = 0; j<data.length; j++){
+			 	if(id_publi == data[j].id_publication){
+			 		if (data[j].liked == "1"){
+			 			select[i].setAttribute("src", "./SRC/heart_pink.png");
+			 		}
+			 	}
+			 }
+		}
+
+	}).catch(error => { console.log(error) });
+});
+
 document.getElementById("tri_default").onclick = event => {
 	fetch("./API/controller/get_publications.php")
 		.then( response => response.json() )
@@ -473,6 +494,7 @@ function chngimg() {
 	if (img.indexOf('heart.png')!=-1) {
 		event.target.src  = './SRC/heart_pink.png';
 		count = count+1;
+		liked = 1;
 		event.preventDefault();
 		let params = {};
 		params['id_publication'] = event.target.dataset.id_publication;
@@ -493,7 +515,6 @@ function chngimg() {
 	}
 		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/add_like.php",true);
 		request.send(body);
-		liked = 1;
 		console.log(liked);
 	}
 
@@ -502,9 +523,11 @@ function chngimg() {
 		if(count !=0) {
 			count = count-1;
 		}
+		liked = 0;
 		event.preventDefault();
 		let params = {};
 		params['id_publication'] = event.target.dataset.id_publication;
+		params['liked'] = liked;
 		var body = JSON.stringify(params);
 		var request = new XMLHttpRequest();
 		request.onreadystatechange = () => {

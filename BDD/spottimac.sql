@@ -98,6 +98,7 @@ DROP TABLE IF EXISTS `user_liked`;
 CREATE TABLE IF NOT EXISTS `user_liked` (
   `id_publication` int(15) NOT NULL,
   `id_user` int(15) NOT NULL,
+  `liked` tinyint(1) NOT NULL DEFAULT '0',
   CONSTRAINT pk_like_publi PRIMARY KEY (id_publication,id_user),
   CONSTRAINT fk_publi FOREIGN KEY (id_publication)
   REFERENCES publication(id_publication),

@@ -44,17 +44,19 @@ else {
 
 	$id_user = $_SESSION['id_user'];
 	$id_publication = $json_obj['id_publication'];
+	$liked = $json_obj['liked'];
 
 	$count_like = [];
 	$stmt = MyPDO::getInstance()->prepare(<<<SQL
-		INSERT INTO user_liked(id_publication, id_user)
-		VALUES (:id_publication, :id_user)
+		INSERT INTO user_liked(id_publication, id_user, liked)
+		VALUES (:id_publication, :id_user, :liked)
 SQL
 );
 		$stmt->bindParam(':id_publication',$id_publication);
 		$stmt->bindParam(':id_user',$id_user);
+		$stmt->bindParam(':liked',$liked);
 		$stmt->execute();
-		$resp = array("id_publication" => $id_publication, "id_user" => $id_user);
+		$resp = array("id_publication" => $id_publication, "id_user" => $id_user, "liked" => $liked);
 		echo json_encode($resp);
 }
 
