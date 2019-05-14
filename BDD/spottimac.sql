@@ -38,48 +38,6 @@ CREATE TABLE IF NOT EXISTS `publication` (
   REFERENCES user(id_user)
 );
 
-DROP TABLE IF EXISTS `image`;
-CREATE TABLE IF NOT EXISTS `image` (
-  `id_image` int(15) NOT NULL AUTO_INCREMENT,
-  `id_publication` int(15) NOT NULL,
-  `nom_image` varchar(150) NOT NULL,
-  `taille_image` INT NOT NULL,
-  `type_image` varchar(50) NOT NULL,
-  `blob_image` TEXT,
-  CONSTRAINT pk_image PRIMARY KEY (id_image),
-  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
-  REFERENCES publication(id_publication)
-);
-
-
-DROP TABLE IF EXISTS `son`;
-CREATE TABLE IF NOT EXISTS `son` (
-  `id_son` int(15) NOT NULL,
-  `id_publication` int(15) NOT NULL,
-  `nom_son` varchar(150) NOT NULL,
-  `taille_son` INT NOT NULL,
-  `type_son` varchar(50) NOT NULL,
-  `desc_son` varchar(200) NOT NULL,
-  `blob_son` TEXT NOT NULL,
-  CONSTRAINT pk_son PRIMARY KEY (id_son),
-  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
-  REFERENCES publication(id_publication)
-);
-
-DROP TABLE IF EXISTS `video`;
-CREATE TABLE IF NOT EXISTS `video` (
-  `id_video` int(15) NOT NULL,
-  `id_publication` int(15) NOT NULL,
-  `nom_video` varchar(150) NOT NULL,
-  `taille_video` INT NOT NULL,
-  `type_video` varchar(50) NOT NULL,
-  `desc_video` varchar(200) NOT NULL,
-  `blob_video` TEXT NOT NULL,
-  CONSTRAINT pk_video PRIMARY KEY (id_video),
-  CONSTRAINT fk_publication FOREIGN KEY (id_publication)
-  REFERENCES publication(id_publication)
-);
-
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
   `id_commentaire` int(15) NOT NULL AUTO_INCREMENT,
@@ -135,6 +93,6 @@ INSERT INTO `commentaire` (`id_commentaire`, `date_commentaire`, `id_publication
 (2, '2019-05-02', 2, 1, 'Oui ! il faut ça et ça et ça'),
 (3, '2019-05-04', 1, 1, 'Oui, va voir ce lien :');
 
-INSERT INTO `publication` (`id_publication`, `titre_publication`, `date_publication`, `id_topic`, `id_user`, `content`) VALUES
-(1, 'Aide Tower Defense', '2019-05-04', 7, 1, 'Coucou ! Je ne comprends pas l\'algo de Bressenham, quelqu\'un peut-il m\'expliquer ?'),
+INSERT INTO `publication` (`id_publication`, `titre_publication`, `date_publication`, `id_topic`, `id_user`, `content`,`lien_fichier`) VALUES
+(1, 'Aide Tower Defense', '2019-05-04', 7, 1, 'Coucou ! Je ne comprends pas l\'algo de Bressenham, quelqu\'un peut-il m\'expliquer ?',https://images.assetsdelivery.com/compings_v2/ornitopter/ornitopter1509/ornitopter150900301.jpg'),
 (2, 'Projet son', '2019-04-25', 5, 2, 'salut ! qqn sait quel matériel il faut ?');
