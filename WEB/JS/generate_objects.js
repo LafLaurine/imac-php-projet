@@ -373,7 +373,6 @@ document.getElementById("validerpubli").onclick = event => {
 	params['fileSize'] = file.size;*/
 	var body = JSON.stringify(params);
 	var request = new XMLHttpRequest();
-	var id_publication;
     request.onreadystatechange = () => {
         if(request.readyState == 4) {
         	console.log(request.status);

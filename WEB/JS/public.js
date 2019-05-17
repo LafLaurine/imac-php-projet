@@ -22,11 +22,24 @@ document.ready( () => {
 				let val_comm = document.getElementById("valider_comm");
 				let reac = document.getElementById("reaction");
 				if(publi.lien_fichier != undefined) {
-					let fichier = document.getElementById("fichier");
-					var img_fichier = document.createElement("img");
-					img_fichier.setAttribute("id", "img_fichier");
-					img_fichier.setAttribute("src", publi.lien_fichier);
-					fichier.appendChild(img_fichier);
+					var fichier_type = publi.lien_fichier.substr(-3);
+					var fichier_type_vid = publi.lien_fichier.substr(12,7);
+					console.log(fichier_type_vid);
+					if(fichier_type == "jpg" || fichier_type == "png" || fichier_type == "gif") {
+						let fichier = document.getElementById("fichier");
+						var img_fichier = document.createElement("img");
+						img_fichier.setAttribute("id", "img_fichier");
+						img_fichier.setAttribute("src", publi.lien_fichier);
+						fichier.appendChild(img_fichier);
+					}
+					else if(fichier_type == "mp4" || fichier_type == "webm" || fichier_type_vid == "youtube"){
+						let fichier = document.getElementById("fichier");
+						var vid_fichier = document.createElement("iframe");
+						vid_fichier.setAttribute("id", "vid_fichier");
+						vid_fichier.setAttribute("src", publi.lien_fichier);
+						fichier.appendChild(vid_fichier);
+					}
+					
 				}
 			
 				var img_reac = document.createElement("img");
