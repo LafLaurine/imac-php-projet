@@ -153,6 +153,25 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 
+		fetch("./API/controller/get_liked.php")
+		.then( response => response.json() )
+		.then( data => {
+			var select = document.getElementsByClassName("reac");
+			console.log(select);
+			for (var i = 0; i < select.length; i++) {
+				var id_publi = select[i].getAttribute("data-id_publication");
+				console.log(id_publi);
+				for (var j = 0; j<data.length; j++){
+				 	if(id_publi == data[j].id_publication){
+				 		if (data[j].liked == "1"){
+				 			select[i].setAttribute("src", "./SRC/heart_pink.png");
+				 		}
+				 	}
+				 }
+		}
+
+		}).catch(error => { console.log(error) });
+
 		/*document.getElementById("heart-id1").onclick = event => {
 			let heart = document.getElementById("heart-id1");
 			let id_publication = heart.getAttribute("data-id_publication");
@@ -183,26 +202,7 @@ document.ready( () => {
 
 });
 
-document.ready( () => {
-	fetch("./API/controller/get_liked.php")
-	.then( response => response.json() )
-	.then( data => {
-		var select = document.getElementsByClassName("reac");
-		console.log(select);
-		for (var i = 0; i < select.length; i++) {
-			var id_publi = select[i].getAttribute("data-id_publication");
-			console.log(id_publi);
-			for (var j = 0; j<data.length; j++){
-			 	if(id_publi == data[j].id_publication){
-			 		if (data[j].liked == "1"){
-			 			select[i].setAttribute("src", "./SRC/heart_pink.png");
-			 		}
-			 	}
-			 }
-		}
 
-	}).catch(error => { console.log(error) });
-});
 
 document.getElementById("tri_default").onclick = event => {
 	fetch("./API/controller/get_publications.php")
@@ -513,7 +513,7 @@ function chngimg() {
 			console.log("Erreur");
 		}
 	}
-		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/add_like.php",true);
+		request.open("POST", "./API/controller/add_like.php",true);
 		request.send(body);
 		console.log(liked);
 	}
@@ -542,7 +542,7 @@ function chngimg() {
 			console.log("Erreur");
 		}
 	}
-		request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/remove_like.php",true);
+		request.open("POST", "./API/controller/remove_like.php",true);
 		request.send(body);
 	}	
 }
