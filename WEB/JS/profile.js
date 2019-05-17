@@ -9,10 +9,12 @@ Document.prototype.ready = callback => {
 	}
 };
 
+//si user clique sur s'enregistrer
 document.getElementById("valid_register").onclick = event => {
 	event.preventDefault();
     const form = document.querySelector('#register_form');
-    let params = {};
+	let params = {};
+	//param envoyé au serveur via url
     if(form.username.value)
         params['username'] = form.username.value;
     if(form.pwd.value)
@@ -35,14 +37,17 @@ document.getElementById("valid_register").onclick = event => {
 		}
 		
 	}
+	//appel vers requête php de l'inscription
     request.open("POST", "./API/user/register.php",true);
     request.send(body);
 };
 
+//si user clique sur login
 document.getElementById("valid_login").onclick = event => {
 	event.preventDefault();
     const form = document.querySelector('#login_form');
-    let params = {};
+	let params = {};
+	//param envoyé au serveur via url
     if(form.username_log.value)
         params['username_log'] = form.username_log.value;
     if(form.pwd_log.value)
@@ -65,11 +70,12 @@ document.getElementById("valid_login").onclick = event => {
 		}
 		
 	}
+	//appel requête php connexion
     request.open("POST", "./API/user/login.php",true);
     request.send(body);
 };
 
-//ferme pop up new publication	
+//ferme pop up
 function pubClose()
 {
 	document.location.href="./index.php"; 

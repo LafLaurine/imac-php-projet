@@ -15,7 +15,8 @@
 
 	<input type="image" id="closed_cross3" src="SRC/croix.png" onclick="pubClose()" alt="Croix pour fermer la fenêtre"/>
 
-	<h3 id="register">Register</h3>
+	<!-- Formulaire d'inscription -->
+	<h3 id="register">Inscription</h3>
 	<div id="cadreRegister">
 	<form id="register_form">
     <p id="pseudo">Pseudo :</p>
@@ -25,14 +26,15 @@
 		<button type="submit" id="valid_register">Inscription</button>
 	</form></div>
 	
-	<h3 id="login">Login</h3>
+	<!-- Formulaire de connexion -->
+	<h3 id="login">Connexion</h3>
 	<div id="cadreLogin">
 	<form id="login_form">
     <p id="pseudo">Pseudo :</p>
     <input type="text" id="username_log" name="username_log" required><br>
     <p id="password">Mot de passe :</p>
     <input type="password" id="pwd_log" name="pwd_log" required><br>
-		<button type="submit" id="valid_login">Login</button>
+		<button type="submit" id="valid_login">Connexion</button>
 	</form></div>
     <script src="JS/profile.js"></script>
 </body>

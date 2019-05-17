@@ -12,9 +12,11 @@ if($method !== "get") {
 
 http_response_code(200);
 
+//destruction des sessions
 session_unset();
 session_destroy();
 
+//envoie des infos au client
 echo json_encode(array("message" => "Logout succeed"));
 exit();
 ?>
