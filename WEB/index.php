@@ -18,19 +18,22 @@
 <div id="accueil">
 	<h1>Spott'IMAC</h1>
 	<p id="texteAccueil" class="pageAccueil">IMACIENS IMACIENNES,
-Bonjour à tou.te.s, voici le seul et l’unique Spott’IMAC, un spotted fait par des IMACS pour des IMACS!
-Ici vous pourrez exprimer et partager vos idées, projets et tout autre sujet qui vous passe par la tête! Tout cela se fera de façon anonyme, maintenant à vos claviers!
+	Bonjour à tou.te.s, voici le seul et l’unique Spott’IMAC, un spotted fait par des IMACS pour des IMACS!
+	Ici vous pourrez exprimer et partager vos idées, projets et tout autre sujet qui vous passe par la tête! Tout cela se fera de façon anonyme, maintenant à vos claviers!
 
-Merci de rester respectueux.se et bienveillant.te, si nous voyons des publications offensantes, nous ne nous priverons pas de les supprimer.
+	Merci de rester respectueux.se et bienveillant.te, si nous voyons des publications offensantes, nous ne nous priverons pas de les supprimer.
 
-(Nous ne sommes en rien responsables des abus et mauvaises utilisations du site)</p>
+	(Nous ne sommes en rien responsables des abus et mauvaises utilisations du site)</p>
+
 	<?php
+	//Vérification connection de l'user. Proposition différente en fonction de s'il est connecté ou non
 	if (!isset($_SESSION['id_user'])){
 	echo "<p class='pageAccueil'><a href='profile.php' id='go'>Se connecter/s'inscrire</a></p>";
 	} 
 	else {
 		echo "<p class='pageAccueil'><a href='./API/user/logout.php' id='logout'>Se déconnecter</a></p>";
 	}?>
+	
 	<p class="pageAccueil"><a href="#actu" id="go">C'est parti !</a></p>
 	<p id="siteLien" class="pageAccueil">Consultez le site de <a href="https://www.ingenieur-imac.fr/" target="_blank" id="siteImac" class="pageAccueil">l'IMAC</a></p>
 </div>

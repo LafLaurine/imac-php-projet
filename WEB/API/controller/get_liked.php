@@ -1,6 +1,7 @@
 <?php
-// headers
+//start session car like associé à user
 session_start();
+// headers
 header("Content-Type: application/json; charset=UTF-8");
 
 // check HTTP method
@@ -41,6 +42,6 @@ if(empty($user_liked)) {
 	http_response_code(422);
 }
 
-
+//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
 echo json_encode($user_liked,JSON_UNESCAPED_UNICODE);
 exit();
