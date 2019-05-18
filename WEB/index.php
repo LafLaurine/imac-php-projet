@@ -82,9 +82,9 @@ Merci de rester respectueux.se et bienveillant.te, si nous voyons des publicatio
 					<p id="listCat">Catégories</p>
 					<select id="publicategorie" name="publicategorie" size="0" required></select><img id="select-icon" src= "SRC/down-arrow.svg" alt="icône de flèche vers le bas"/><br>
 					<p id="listTopic">Topics</p>
-					<select id="publitopic" name="publitopic" size="0" required></select><img id="select-icon" src= "SRC/down-arrow.svg" alt="icône de flèche vers le bas"/><br>
+					<select id="publitopic" name="publitopic" size="0" required></select><br>
 					<textarea id="contenu" name="contenu"required></textarea><br>
-					<p id="file">Lien vers votre fichier</p>
+					<p id="txt_file">Lien vers votre fichier</p>
 					<input type="text" id="file" name="up_file"><br>
 					<button type="submit" id="validerpubli" onclick="popupClose()">Publier</button>
 				</div>
