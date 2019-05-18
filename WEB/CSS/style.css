@@ -727,10 +727,16 @@ label{
         font-size: 1.1em;
     }
 
-
+    #texteAccueil {
+        margin-left: 26%;
+    }
 }
 
 @media (max-width: 1150px){
+    #texteAccueil {
+        margin-left: 22%;
+    }
+
     #newPubText {
         font-size: 0.9em;
     }
@@ -758,8 +764,7 @@ label{
     }
 
     #trier {
-        bottom: 2px;
-        margin-left: 80%;
+        margin-left: 70%;
     }
 
     #nvPub, #nvPub2 {
@@ -769,9 +774,29 @@ label{
     #nvPub2 {
         top: 6.8%;
     }
+
+    #titre {
+        left: 40%;
+        top: 50px;
+        width: 25%;
+        height: 6%;
+    }
+
+    #titrePub {
+        top: 23px;
+        left: 27%;
+    }
 }
 
 @media (max-width: 820px){
+    #texteAccueil {
+        margin-left: 11%;
+    }
+
+    #siteLien {
+        bottom: -10px;
+    }
+
     #newPubText {
         font-size: 0.7em;
     }
@@ -800,12 +825,84 @@ label{
         font-size: 0.8em;
         left: -50%;
     }
+
+    #trier {
+        margin-left: 77%;
+        bottom: 27px;
+    }
+
+    #titrePub {
+        top: 48px;
+        left: 20%;
+    }
+
+    #titre {
+        top: 70px;
+    }
+
+    #listCat {
+        left: 10%;
+    }
+
+    #publicategorie {
+        left: 25%;
+    }
+
+    #listTopic {
+        left: 16%;
+    }
+
+    #publitopic {
+        left: 25%;
+    }
+
+    #txt_file {
+        left: 64%;
+    }
+
+    #titrecategorie {
+        margin-top: -80px;
+    }
 }
 
 @media (max-width: 650px){
     #choixcategorie {
         font-size: 0.6em;
         margin-left: 0.5%;
+    }
+
+    #txt_file {
+        font-size: 0.9em;
+        left: 62%;
+        top: 30%;
+    }
+
+    #file {
+        top: 36%;
+    }
+
+    #newpubli {
+        border: 2px solid #FFE1DD;
+        margin-left: -0.3%;
+    }
+    #choixcategorie {
+        margin-left: -2%;
+    }
+
+    .titrepubli {
+        margin-left: 38%;
+    }
+
+    #publicategorie {
+        left: 30%;
+    }
+
+    #publitopic {
+        left: 30%;
+    }
+
+    #listTopic {
+        left: 19%;
     }
 }
 
@@ -849,6 +946,15 @@ label{
 
     #publication {
         height: 100px;
+    }
+
+    #trier {
+        margin-left: 52%;
+        bottom: -10px;
+    }
+
+    #txt_file {
+        left: 54%;
     }
 }
 
