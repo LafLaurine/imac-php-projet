@@ -508,7 +508,7 @@ label{
     background: #F5FFFA;
     opacity: 0.7;
     width: 100%;
-    height: 100%;
+    height: 170%;
     position: absolute;
 }
 
@@ -524,7 +524,7 @@ label{
 
 #content {
     width: 80%;
-    height: 500px;
+    height: 340px;
     position: relative;
     left: 85px;
     top: -10px;
@@ -579,8 +579,8 @@ label{
 }
 
 #date {
-    margin-top: -5.7%;
-    margin-left: 3%;
+    margin-top: -38px;
+    margin-left: 5%;
 }
 
 #reaction {
@@ -634,7 +634,7 @@ label{
 #closed_cross2 {
     width: 4%; height: auto;
     position: absolute;
-    right: 40px;
+    right: 10%;
     top : 30px;
     opacity: 0.6;
 }
@@ -644,8 +644,8 @@ label{
     font-family: 'AmaticB';
     font-size: 4em;
     color: #FFBCB3;
-    margin-left: 45%;
-    margin-top: 2%;
+    margin-left: 42%;
+    margin-top: 30px;
 }
 
 #cadreRegister { 
@@ -670,8 +670,8 @@ label{
     font-family: 'AmaticB';
     font-size: 4em;
     color: #B1F3E3;
-    margin-left: 45%;
-    margin-top: 18%;
+    margin-left: 42%;
+    margin-top: 280px;
 }
 
 #cadreLogin { 
@@ -719,7 +719,7 @@ label{
     padding-top: 1.5%;
     padding-bottom: 1.5%;
     margin-top: 5%;
-    margin-left: 28%;
+    margin-left: 22%;
 }
 
 @media (max-width: 1260px){
@@ -730,11 +730,77 @@ label{
     #texteAccueil {
         margin-left: 26%;
     }
+
+    #go {
+        margin-left: 1%;
+    }
+
+    #fondPub {
+        left: -60px;
+    }
+
+    #titrepubli {
+        margin-left: -25%;
+    }
+
+    #from_user {
+        margin-left: -1%;
+    }
+
+    #rectVertPub {
+        left: 310px;
+    }
+
+    #content {
+        left: -6px;
+    }
+
+    #dateContent {
+        margin-left: 5%;
+    }
+
+    #reaction {
+        margin-left: 65%;
+    }
+
+    #commentaire {
+        margin-left: 8%;
+        margin-top: -2%;
+    }
+    #pub_commentaire {
+        margin-left: -8%;
+    }
 }
 
 @media (max-width: 1150px){
     #texteAccueil {
         margin-left: 22%;
+        font-size: 0.8em;
+    }
+
+    #decorAccueil{
+        width: 25em;
+    }
+
+    #decorAccueil2{
+        top: 81.6%;
+        left: -5%;
+        width: 400px;
+    }
+
+    #decorAccueil3{
+        width: 400px;
+    }
+
+    #decorAccueil4{
+        top: 84.2%;
+        right: -10%;
+        width: 400px;
+    }
+
+    #go {
+        font-size: 1.5em;
+        margin-top: 15%;
     }
 
     #newPubText {
@@ -763,7 +829,12 @@ label{
         font-size: 1em;
     }
 
+    #titrecategorie {
+        margin-top: -60px;
+    }
+
     #trier {
+        bottom: 10px;
         margin-left: 70%;
     }
 
@@ -786,15 +857,36 @@ label{
         top: 23px;
         left: 27%;
     }
+
+    #login {
+        margin-left: 42%;
+    }
 }
 
 @media (max-width: 820px){
     #texteAccueil {
-        margin-left: 11%;
+        margin-left: 8%;
+        font-size: 0.7em;
     }
 
     #siteLien {
-        bottom: -10px;
+        bottom: 40px;
+        left: 20%;
+    }
+
+    #decorAccueil2{
+        top: 87.9%;
+        left: -5%;
+        width: 300px;
+    }
+
+    #decorAccueil3{
+        width: 300px;
+    }
+
+    #go {
+        font-size: 1.3em;
+        margin-left: -3%;
     }
 
     #newPubText {
@@ -826,9 +918,13 @@ label{
         left: -50%;
     }
 
+    #titrecategorie {
+        margin-top: -40px;
+    }
+
     #trier {
         margin-left: 77%;
-        bottom: 27px;
+        bottom: -7px;
     }
 
     #titrePub {
@@ -860,14 +956,112 @@ label{
         left: 64%;
     }
 
-    #titrecategorie {
-        margin-top: -80px;
+    #login {
+        font-size: 3.5em;
+        margin-left: 45%;
+        margin-top: 280px;
+    }
+
+    #register {
+        font-size: 3.5em;
+        margin-left: 44%;
+        margin-top: 50px;
+    }
+
+    #cadreRegister { 
+        left: 30%;
+    }
+
+    #cadreLogin { 
+        margin-left: 50%;
+        left: -20%;
+    }
+
+    #fondPub {
+        left: -140px;
+    }
+
+    #titrepubli {
+        margin-left: -65%;
+    }
+
+    #from_user {
+        margin-left: -25%;
+    }
+
+    #rectVertPub {
+        left: 230px;
+    }
+
+    #content {
+        left: -101px;
+    }
+
+    #closed_cross2{
+        right: 41%;
+    }
+
+    #dateContent {
+        margin-left: -25%;
+    }
+
+    #reaction {
+        margin-left: 43%;
+    }
+
+    #commentaire {
+        margin-left: -18%;
+    }
+    #pub_commentaire {
+        margin-left: -44%;
+        width: 120%;
     }
 }
 
 @media (max-width: 650px){
+    #texteAccueil {
+        margin-left: 3%;
+        width: 450px;
+    }
+
+    #decorAccueil{
+        width: 18em;
+        top: -20%;
+    }
+
+    #decorAccueil2{
+        display: none;
+    }
+
+    #decorAccueil3 {
+        display: none;
+    }
+
+    #decorAccueil4{
+        top: 89.7%;
+        right: -10%;
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 7em;
+    }
+
+    #go {
+        font-size: 1.1em;
+        margin-left: -2%;
+    }
+
+    #titrecategorie {
+        margin-top: -70px;
+    }
+
+    #trier {
+        margin-left: 50%;
+        bottom: -30px;
+    }
+
     #choixcategorie {
-        font-size: 0.6em;
         margin-left: 0.5%;
     }
 
@@ -903,6 +1097,69 @@ label{
 
     #listTopic {
         left: 19%;
+    }
+
+    #login {
+        font-size: 3.2em;
+        margin-left: 38%;
+        margin-top: 280px;
+    }
+
+    #register {
+        font-size: 3.2em;
+        margin-left: 37%;
+        margin-top: 50px;
+    }
+
+    #cadreRegister { 
+        left: 20%;
+    }
+
+    #cadreLogin { 
+        left: -30%;
+    }
+
+    #fondPub {
+        left: -209px;
+    }
+
+    #titrepubli {
+        margin-left: -129%;
+        margin-top: 70px;
+        font-size: 4em;
+    }
+
+    #from_user {
+        margin-left: -56%;
+    }
+
+    #rectVertPub {
+        left: 163px;
+    }
+
+    #content {
+        left: -178px;
+    }
+
+    #closed_cross2{
+        right: 70%;
+    }
+
+    #dateContent {
+        margin-left: -52%;
+    }
+
+    #reaction {
+        margin-left: 9%;
+    }
+
+    #commentaire {
+        margin-left: -47%;
+        margin-top: -7%;
+    }
+    #pub_commentaire {
+        margin-left: -80%;
+        width: 120%;
     }
 }
 
@@ -956,39 +1213,63 @@ label{
     #txt_file {
         left: 54%;
     }
+
+    #login {
+        margin-left: 33%;
+    }
+
+    #register {
+        margin-left: 32%;
+    }
+
+    #cadreRegister { 
+        left: 12%;
+    }
+
+    #cadreLogin { 
+        left: -38%;
+    }
+
+    #fondPub {
+        left: -266px;
+    }
+
+    #titrepubli {
+        margin-left: -213%;
+        margin-top: 70px;
+        font-size: 3.5em;
+    }
+
+    #from_user {
+        margin-left: 101%;
+    }
+
+    #rectVertPub {
+        left: 93px;
+    }
+
+    #content {
+        left: -244px;
+    }
+
+    #closed_cross2{
+        right: 70%;
+    }
+
+    #dateContent {
+        margin-left: -94%;
+    }
+
+    #reaction {
+        margin-left: -41%;
+    }
+
+    #commentaire {
+        margin-left: -89%;
+        margin-top: -13%;
+    }
+    #pub_commentaire {
+        margin-left: -132%;
+        width: 120%;
+    }
 }
-
-/*
-    #texteAccueil {
-    margin-left: 5%;
-    margin-bottom: 30px;
-    }
-
-    #siteLien{
-    color: #FFBCB3;
-    position: absolute;
-    bottom: 35px;
-    right: 60px;
-    }
-
-    #decorAccueil{
-    top:-60px;
-    left: -80px;
-    }
-
-    #decorAccueil2{
-        top: 664px;
-        left: -80px;
-    }
-
-    #decorAccueil3{ 
-        top:-50px;
-        right: -90px;
-    }
-
-    #decorAccueil4{
-        top: 676px;
-        right: -100px;
-    }
-
-}*/
