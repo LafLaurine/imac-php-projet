@@ -65,6 +65,18 @@ document.ready( () => {
 				img_reac.setAttribute("data-id_publication", publi.id_publication);
 				img_reac.setAttribute('onclick','chngimg()');
 				reac.appendChild(img_reac);
+				
+				//récupère le booléen like d'une publication : si publication liké, alors coeur reste rose
+				fetch("./API/controller/get_liked_one_publi.php?id="+id_publication)
+				.then( response => response.json() )
+				.then( data => {
+					
+					if (data[0].liked == 1){
+						console.log("oui");
+						img_reac.setAttribute("src", "./SRC/heart_pink.png");
+					}
+
+				}).catch(error => { console.log(error) });
 
 				//élément date
 				val_comm.setAttribute("data-id_publication",publi.id_publication)
@@ -109,6 +121,8 @@ document.ready( () => {
 			});
 		})
 		.catch(error => { console.log(error) });
+
+		
 });
 
 //insertion d'un commentaire
@@ -208,6 +222,7 @@ function chngimg() {
 		request.send(body);
 	}	
 }
+
 
 //ferme page, retour vers index
 function pubClose()
