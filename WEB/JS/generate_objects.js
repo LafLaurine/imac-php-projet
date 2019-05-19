@@ -58,46 +58,9 @@ document.ready( () => {
 		fetch("./API/controller/get_publications.php")
 		.then( response => response.json() )
 		.then( data => {
-			//création de l'élément principal qui contient les publications
-			let public = document.getElementById("publication");
 			//pour chaque publication, création des éléments
-			for(var i =0; i<data.length; i++) {
-
-				//A chaque publication lui est associé son élément et sa valeur 
-				//titre publication
-				var title = document.createElement('h2');
-				title.setAttribute('class','titrepubli');
-				public.appendChild(title);
-				title.innerHTML = data[i].titre_publication;
-
-				//date publication
-				var date_publi = document.createElement('h3');
-				date_publi.setAttribute('class','date_publi');
-				public.appendChild(date_publi);
-				date_publi.innerHTML = data[i].date_publication;
-
-				//coeur publication
-				var reac_div = document.createElement('div');
-				reac_div.setAttribute('class','reaction');
-				var reac = document.createElement("img");
-				reac.setAttribute("class", "reac");
-				reac.setAttribute("onclick", 'chngimg()');
-				reac.setAttribute("src", "./SRC/heart.png");
-				reac.setAttribute("data-id_publication", data[i].id_publication);
-				public.appendChild(reac_div);
-				reac_div.appendChild(reac);
-
-				//lien voir plus qui amène à publication détaillée
-				var para = document.createElement('p');
-				para.setAttribute("id","paraVoir");
-				var link = document.createElement('a');
-				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
-				link.setAttribute("class", "voirPlus");
-				link.setAttribute("id", data[i].id_publication);
-				link.innerHTML = "→ Voir plus";
-				public.appendChild(para);
-				para.appendChild(link);
-
+			for(var i = 0; i<data.length; i++) {
+				createPublication(data,i);
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -177,40 +140,7 @@ document.getElementById("tri_default").onclick = event => {
 			}
 			//A chaque publication est crée les éléments + les valeurs correspondantes y sont associées
 			for(var i =0; i<data.length; i++) {
-				//titre publication
-				var title = document.createElement('h2');
-				title.setAttribute('class','titrepubli');
-				public.appendChild(title);
-				title.innerHTML = data[i].titre_publication;
-
-				//date publication
-				var date_publi = document.createElement('h3');
-				date_publi.setAttribute('class','date_publi');
-				public.appendChild(date_publi);
-				date_publi.innerHTML = data[i].date_publication;
-
-				//coeur publication
-				var reac_div = document.createElement('div');
-				reac_div.setAttribute('class','reaction');
-				var reac = document.createElement("img");
-				reac.setAttribute("class", "reac");
-				reac.setAttribute("onclick", 'chngimg()');
-				reac.setAttribute("src", "./SRC/heart.png");
-				reac.setAttribute("data-id_publication", data[i].id_publication);
-				public.appendChild(reac_div);
-				reac_div.appendChild(reac);
-
-				//voir plus
-				var para = document.createElement('p');
-				para.setAttribute("id","paraVoir");
-				var link = document.createElement('a');
-				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
-				link.setAttribute("class", "voirPlus");
-				link.setAttribute("id", data[i].id_publication);
-				link.innerHTML = "→ Voir plus";
-				public.appendChild(para);
-				para.appendChild(link);
-
+				createPublication(data);
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -229,40 +159,7 @@ document.getElementById("tri_like").onclick = event => {
 			}
 			//a chaque publication est crée des éléments + leur valeur correspondantes sont associées
 			for(var i =0; i<data.length; i++) {
-				//titre publication
-				var title = document.createElement('h2');
-				title.setAttribute('class','titrepubli');
-				public.appendChild(title);
-				title.innerHTML = data[i].titre_publication;
-
-				//date publication
-				var date_publi = document.createElement('h3');
-				date_publi.setAttribute('class','date_publi');
-				public.appendChild(date_publi);
-				date_publi.innerHTML = data[i].date_publication;
-
-				//coeur publication
-				var reac_div = document.createElement('div');
-				reac_div.setAttribute('class','reaction');
-				var reac = document.createElement("img");
-				reac.setAttribute("class", "reac");
-				reac.setAttribute("onclick", 'chngimg()');
-				reac.setAttribute("src", "./SRC/heart.png");
-				reac.setAttribute("data-id_publication", data[i].id_publication);
-				public.appendChild(reac_div);
-				reac_div.appendChild(reac);
-
-				//voir plus
-				var para = document.createElement('p');
-				para.setAttribute("id","paraVoir");
-				var link = document.createElement('a');
-				link.setAttribute("href", "publication.html?id="+data[i].id_publication);
-				link.setAttribute("class", "voirPlus");
-				link.setAttribute("id", data[i].id_publication);
-				link.innerHTML = "→ Voir plus";
-				public.appendChild(para);
-				para.appendChild(link);
-
+				createPublication(data,i);
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -291,41 +188,7 @@ document.getElementById("choixcategorie").onclick = event => {
 				
 				//création élement publication + valeurs associées
 				for(var i =0; i<data.length; i++) {
-
-					//titre publication
-					var title = document.createElement('h2');
-					title.setAttribute('class','titrepubli');
-					public.appendChild(title);
-					title.innerHTML = data[i].titre_publication;
-
-					//date publication
-					var date_publi = document.createElement('h3');
-					date_publi.setAttribute('class','date_publi');
-					public.appendChild(date_publi);
-					date_publi.innerHTML = data[i].date_publication;
-
-					//coeur publication
-					var reac_div = document.createElement('div');
-					reac_div.setAttribute('class','reaction');
-					var reac = document.createElement("img");
-					reac.setAttribute("class", "reac");
-					reac.setAttribute("src", "./SRC/heart.png");
-					reac.setAttribute("id", data[i].id_publication);
-					reac.setAttribute('onclick','chngimg()'); 
-					public.appendChild(reac_div);
-					reac_div.appendChild(reac);
-
-					//voir plus publication
-					var para = document.createElement('p');
-					para.setAttribute("id","paraVoir");
-					var link = document.createElement('a');
-					link.setAttribute("href", "publication.html?id="+data[i].id_publication);
-					link.setAttribute("class", "voirPlus");
-					link.setAttribute("id", data[i].id_publication);
-					link.innerHTML = "→ Voir plus";
-					public.appendChild(para);
-					para.appendChild(link);
-
+					createPublication(data,i);
 				}
 			});			
 		})
@@ -346,40 +209,7 @@ document.getElementById("tri_date").onclick = event => {
 				}
 				//a chaque publication est crée un élément avec sa valeur associée
 				for(var i =0; i<data.length; i++) {
-					//titre publication
-					var title = document.createElement('h2');
-					title.setAttribute('class','titrepubli');
-					public.appendChild(title);
-					title.innerHTML = data[i].titre_publication;
-
-					//date publication
-					var date_publi = document.createElement('h3');
-					date_publi.setAttribute('class','date_publi');
-					public.appendChild(date_publi);
-					date_publi.innerHTML = data[i].date_publication;
-
-					//coeur publication
-					var reac_div = document.createElement('div');
-					reac_div.setAttribute('class','reaction');
-					var reac = document.createElement("img");
-					reac.setAttribute("class", "reac");
-					reac.setAttribute("src", "./SRC/heart.png");
-					reac.setAttribute("id", data[i].id_publication);
-					reac.setAttribute('onclick','chngimg()'); 
-					public.appendChild(reac_div);
-					reac_div.appendChild(reac);
-
-					//voir plus publication
-					var para = document.createElement('p');
-					para.setAttribute("id","paraVoir");
-					var link = document.createElement('a');
-					link.setAttribute("href", "publication.html?id="+data[i].id_publication);
-					link.setAttribute("class", "voirPlus");
-					link.setAttribute("id", data[i].id_publication);
-					link.innerHTML = "→ Voir plus";
-					public.appendChild(para);
-					para.appendChild(link);
-
+					createPublication(data,i);
 				}
 			});			
 		})
@@ -436,6 +266,43 @@ document.getElementById("validerpubli").onclick = event => {
 
 
 };
+
+function createPublication(data,i) {
+	let public = document.getElementById("publication");
+	//titre publication
+	var title = document.createElement('h2');
+	title.setAttribute('class','titrepubli');
+	public.appendChild(title);
+	title.innerHTML = data[i].titre_publication;
+
+	//date publication
+	var date_publi = document.createElement('h3');
+	date_publi.setAttribute('class','date_publi');
+	public.appendChild(date_publi);
+	date_publi.innerHTML = data[i].date_publication;
+
+	//coeur publication
+	var reac_div = document.createElement('div');
+	reac_div.setAttribute('class','reaction');
+	var reac = document.createElement("img");
+	reac.setAttribute("class", "reac");
+	reac.setAttribute("src", "./SRC/heart.png");
+	reac.setAttribute("id", data[i].id_publication);
+	reac.setAttribute('onclick','chngimg()'); 
+	public.appendChild(reac_div);
+	reac_div.appendChild(reac);
+
+	//voir plus publication
+	var para = document.createElement('p');
+	para.setAttribute("id","paraVoir");
+	var link = document.createElement('a');
+	link.setAttribute("href", "publication.html?id="+data[i].id_publication);
+	link.setAttribute("class", "voirPlus");
+	link.setAttribute("id", data[i].id_publication);
+	link.innerHTML = "→ Voir plus";
+	public.appendChild(para);
+	para.appendChild(link);
+}
 
 //pop up new publication
 function popupAppear()
