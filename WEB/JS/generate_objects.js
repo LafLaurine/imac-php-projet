@@ -296,7 +296,7 @@ function createPublication(data,i) {
 	var para = document.createElement('p');
 	para.setAttribute("id","paraVoir");
 	var link = document.createElement('a');
-	link.setAttribute("href", "publication.html?id="+data[i].id_publication);
+	link.setAttribute("href", "publication.php?id="+data[i].id_publication);
 	link.setAttribute("class", "voirPlus");
 	link.setAttribute("id", data[i].id_publication);
 	link.innerHTML = "→ Voir plus";
