@@ -64,6 +64,24 @@ CREATE TABLE IF NOT EXISTS `user_liked` (
   REFERENCES user(id_user)
 );
 
+DROP TABLE IF EXISTS `quotes`;
+CREATE TABLE IF NOT EXISTS  `quotes` (
+    `id_quotes` int(15) NOT NULL AUTO_INCREMENT,
+    `content_quotes` varchar(500) NOT NULL,
+    `firstname_author` varchar(500) NOT NULL,
+    `lastname_author` varchar(500) NOT NULL,
+    CONSTRAINT pk_quotes PRIMARY KEY (id_quotes)
+);
+
+
+INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
+(1, 'imac'),
+(2, 'projets_perso'),
+(3, 'aide'),
+(4, 'interets'),
+(5, 'divers');
+
+
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (1, 'imac'),
 (2, 'projets_perso'),
