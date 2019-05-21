@@ -9,7 +9,7 @@
 
 <body>
 <div id="mention">
-    <h1>MENTIONS LÉGALES</h1>
+    <h1 id="mentionTitle">MENTIONS LÉGALES</h1>
     <h2>Identification de l'éditeur et de l'hébergeur du site</h2>
     <p>Le site <a href="http://perso-etudiant.u-pem.fr/~llafonta/spottimac/">http://perso-etudiant.u-pem.fr/~llafonta/spottimac/</a>
     est édité par le groupe $random, issu du cours de web de HO Pascale. Réalisé dans le cadre d'un projet de cours.</p>
@@ -18,7 +18,7 @@
     Les informations concernant la collecte et le traitement des données personnelles (politique et déclaration) sont fournies dans la charte de données personnelles du site.
     </p>
 
-    <h2>POLITIQUE DE CONFIDENTIALITÉ ET D'UTILISATION DES DONNÉES PERSONNELLES</h2>
+    <h2 id="politique">POLITIQUE DE CONFIDENTIALITÉ ET D'UTILISATION DES DONNÉES PERSONNELLES</h2>
     <p> Définition des termes utilisés dans la politique de confidentialité
     On désignera par la suite :
     « Donnée personnelle » : se définit comme « toute information relative à une personne physique identifiée ou qui peut être identifiée, directement ou indirectement, par référence à un numéro d'identification ou à un ou plusieurs éléments qui lui sont propres », conformément à la loi Informatique et libertés du 6 janvier 1978.
@@ -26,7 +26,7 @@
     « Editeur » ou « Nous » : Fortus, personne morale ou physique responsable de l'édition et du contenu du Site.
     « Utilisateur » ou « Vous » : l'internaute visitant et utilisant les Services du Site.</p>
 
-    <p>Article 1 - Introduction et rôle de la Politique de confidentialité</p>
+    <p class="pinkTitle">Article 1 - Introduction et rôle de la Politique de confidentialité</p>
     <p>La présente charte vise à vous informer des engagements du Site eu égard au respect de votre vie privée et à la protection des Données personnelles vous concernant, collectées et traitées à l'occasion de votre utilisation du Service.
     Il est important que vous lisiez la présente politique de confidentialité afin que vous soyez conscient des raisons pour lesquelles nous utilisons vos données et comment nous le faisons.
     En vous inscrivant sur le Site, vous vous engagez à nous fournir des informations véritables vous concernant. La communication de fausses informations est contraire aux conditions générales figurant sur le Site.
@@ -36,7 +36,7 @@
     Si vous avez des questions concernant la présente politique de confidentialité ou si vous voulez exercer vos droits tels que décrit à l’article 10 de la présente Politique de confidentialité, veuillez nous contacter par e-mail à l’adresse :  llafonta@etud.u-pem.fr ou par courrier adressé à : 5 Boulevard Descartes, 77420 Champs-sur-Marne.
     </p>
 
-    <p>Article 2 - Données collectées sur le Site</p>
+    <p class="pinkTitle">Article 2 - Données collectées sur le Site</p>
     <p>Les Données collectées et ultérieurement traitées par le Site sont celles que vous nous transmettez volontairement en remplissant les différents formulaires présents au sein du Site. Pour certaines opérations sur les contenus, vous pourrez être amenés à transmettre des Données vous concernant à des tiers partenaires au travers de leurs propres services, plus spécifiquement lors des paiements que vous pourrez effectuer. Nous ne disposerons pas des dites données, leur collecte et leur traitement étant régis par les conditions propres à ces intervenants. 
     Nous vous invitons à consulter leurs conditions avant de communiquer vos Données dans ce cadre.</p>
 
@@ -49,16 +49,16 @@
     <p>La collecte des Données personnelles des Utilisateurs par l'Editeur ne nécessite pas de déclaration auprès de l’autorité française de protection 
     des Données personnelles (la Commission Nationale de l’Informatique et des Libertés – CNIL).</p>
 
-    <p>Article 3 - Identité du responsable du traitement</p>
+    <p class="pinkTitle">Article 3 - Identité du responsable du traitement</p>
     <p>Le responsable du traitement est le groupe $random, étudiantes à l'UPEM à l'adresse suivante :  5 Boulevard Descartes, 77420 Champs-sur-Marne.
 
     
-    <p>Article 4 - Fondements légaux régissant le traitement des données
+    <p class="pinkTitle">Article 4 - Fondements légaux régissant le traitement des données
     <p>Conformément au Règlement Général sur la Protection des Données (RGPD), 
     $random ne traite des données à caractère personnel que dans les situations suivantes : avec votre consentement ;
     lorsqu'il existe une obligation contractuelle (un contrat entre $random et vous) ; pour répondre à une obligation légale (en vertu de la législation UE ou nationale).</p>
 
-    <p>Article 5 - Sécurité des Données</p>
+    <p class="pinkTitle">Article 5 - Sécurité des Données</p>
     <p>Vous êtes informés que vos Données pourront être divulguées en application d'une loi, 
     d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente ou encore, 
     si cela s'avère nécessaire, aux fins, pour l'Editeur, de préserver ses droits et intérêts.
@@ -66,13 +66,13 @@
     accidentellement perdues, utilisées, modifiées, dévoilées ou consultées sans autorisation. 
     De plus, l’accès à vos données personnelles est soumis à une procédure de sécurité définie et documentée.</p>   
 
-    <p>Article 6 - Durée de conservation des Données</p>
+    <p class="pinkTitle">Article 6 - Durée de conservation des Données</p>
     <p>Les Données sont stockées chez l'hébergeur du site, 
     dont les coordonnées figurent dans les mentions légales du Site, et sont conservées pour la durée strictement nécessaire à la 
     réalisation des finalités visées ci-avant et ne saurait excéder 24 mois. Au-delà de cette durée, elles seront conservées à des
     fins exclusivement statistiques et ne donneront lieu à aucune exploitation, de quelque nature que ce soit.</p>
 
-   <p>Article 7 - Droits informatiques et libertés
+   <p class="pinkTitle">Article 7 - Droits informatiques et libertés
     Conformément à la législation sur la protection des données personnelles, vous avez 
     les droits détaillés ci-après que vous pouvez exercer, comme indiqué à l’Article 1 de la Présente Politique de 
     confidentialité en nous écrivant à l’adresse postale mentionnée en tête (28 bis rue du goulet ) ou en envoyant un courriel à 
@@ -112,7 +112,7 @@
    Ce délai d’un mois peut être dépassé dans le cas où votre demande est particulièrement complexe ou si vous 
    en avez fait plusieurs. Dans ce cas, nous vous préviendrons et vous tiendrons informé.</p>
 
-   <p>Article 8 - Plainte auprès de l’Autorité de protection des données</p>
+   <p class="pinkTitle">Article 8 - Plainte auprès de l’Autorité de protection des données</p>
     Si vous considérez que Fortus ne respecte pas ses obligations au regard de vos Informations Personnelles, vous pouvez adresser une plainte ou une demande auprès de l’autorité compétente. En France, l’autorité compétente est la CNIL à 
     laquelle vous pouvez adresser une demande par voie électronique à l'adresse suivante : <a href ="https://www.cnil.fr/fr/plaintes/internet">https://www.cnil.fr/fr/plaintes/internet.</a></p>
 

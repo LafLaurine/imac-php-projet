@@ -72,7 +72,7 @@
 	</article>
 </div>
 
-<p id="mentionLegales">Consultez les <a href="./mentions.php" target="_blank">mentions légales</a></p>
+<p id="mentionLegales">Consultez les <a id="mentionLink" href="./mentions.php" target="_blank">mentions légales</a></p>
 
 
 	<!-- Fenêtre pop up : écrire une nouvelle publication  -->

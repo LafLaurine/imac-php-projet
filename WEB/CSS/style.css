@@ -232,6 +232,19 @@ h1 {
     margin-left: 3%;
 }
 
+#mentionLegales {
+    font-family: 'FuturaExtended';
+    font-size: 0.8em;
+    position: absolute;
+    margin-left: 3%;
+    margin-top: 150px;
+}
+
+#mentionLink {
+    text-decoration: none;
+    text-decoration-color: black;
+}
+
 #choixtopic {
     font-family: 'FuturaLight';
     font-size: 1em;
@@ -722,6 +735,28 @@ label{
     margin-left: 22%;
 }
 
+/* Style mentions */
+
+#mention {
+    font-family: 'FuturaLight';
+    font-size: 0.9em;
+    text-align: center;
+    width: 800px;
+    margin-left: 25%;
+}
+
+#mentionTitle {
+    color: #B1F3E3;
+}
+
+.pinkTitle {
+    color: #FFBCB3;
+}
+
+#politique {
+   color : #CECECE;
+}
+
 @media (max-width: 1260px){
     #newPubText {
         font-size: 1.1em;
@@ -770,6 +805,11 @@ label{
     #pub_commentaire {
         margin-left: -8%;
     }
+
+    #mentionLegales {
+        margin-left: 2%;
+    }
+
 }
 
 @media (max-width: 1150px){
@@ -860,6 +900,12 @@ label{
 
     #login {
         margin-left: 42%;
+    }
+
+    #mentionLegales {
+        width: 80px;
+        font-size: 0.7em;
+        margin-left: 1.6%;
     }
 }
 
@@ -1053,12 +1099,12 @@ label{
     }
 
     #titrecategorie {
-        margin-top: -70px;
+        margin-top: -30px;
     }
 
     #trier {
         margin-left: 50%;
-        bottom: -30px;
+        bottom: -70px;
     }
 
     #choixcategorie {
@@ -1207,7 +1253,11 @@ label{
 
     #trier {
         margin-left: 52%;
-        bottom: -10px;
+        bottom: -70px;
+    }
+
+    #logo {
+        margin-top: 10%;
     }
 
     #txt_file {
@@ -1271,5 +1321,9 @@ label{
     #pub_commentaire {
         margin-left: -132%;
         width: 120%;
+    }
+
+    #mentionLegales {
+        margin-left: -0.5%;
     }
 }
