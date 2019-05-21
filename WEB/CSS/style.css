@@ -873,6 +873,13 @@ label{
         margin-top: -60px;
     }
 
+    #quote{
+        font-size: 3em;
+        position: relative;
+        margin-left: 45%;
+        margin-top: -80px;
+    }
+
     #trier {
         bottom: 10px;
         margin-left: 70%;

@@ -74,12 +74,11 @@ CREATE TABLE IF NOT EXISTS  `quotes` (
 );
 
 
-INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
-(1, 'imac'),
-(2, 'projets_perso'),
-(3, 'aide'),
-(4, 'interets'),
-(5, 'divers');
+INSERT INTO `quotes` (`id_quotes`, `content_quotes`, `firstname_author`,`lastname_author`) VALUES
+(1, 'On ne se marie pas avec une classe de CM2', 'Sylvain','Cherrier'),
+(2, 'A la manno','Antoine','Chevreuil'),
+(3, 'Si on prend comme exemple les mamifères','Jean-Christophe','Novelli'),
+(4, 'Vous avez 45 minutes pour le contrôle','Vinceslas','Biri');
 
 
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES

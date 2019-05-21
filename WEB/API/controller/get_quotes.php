@@ -15,24 +15,26 @@ include_once "../data/MyPDO.spottimac.include.php";
 
 // response status
 http_response_code(200);
-//requête pour selectionner tout ce qui se trouve dans la table publication
+//requête pour selectionner tout ce qui se trouve dans la table quotes
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
-	FROM publication;
+	FROM quotes
+	ORDER BY RAND()
+	LIMIT 1;
 SQL
 );
 
 $stmt->execute();
-$publi = [];
-//tant qu'il y a publi on ajoute au tableau
+$quotes = [];
+//tant qu'il y a une quote on ajoute au tableau
 while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($publi,$row); 
+	array_push($quotes,$row); 
 }
 //si vide, message d'erreur retourné
-if(empty($publi)) {
-	echo json_encode(array("error" => "Missing publications"));
+if(empty($quotes)) {
+	echo json_encode(array("error" => "Missing quotes"));
 	http_response_code(422);
 }
 //on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
-echo json_encode($publi,JSON_UNESCAPED_UNICODE);
+echo json_encode($quotes,JSON_UNESCAPED_UNICODE);
 exit();

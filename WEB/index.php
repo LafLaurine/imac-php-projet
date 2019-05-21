@@ -50,6 +50,10 @@
 				<option id="tri_like" name="tri_like">Plus populaire</option>
 			</select>
 			<h2 id="titrecategorie">Bienvenue</h2>
+			<div id="quoteDiv">
+				<h2 id="quote"></h2>
+				<h3 id="author"></h3>
+			</div>
 	</header>
 
 	<!-- Barre latérale fixe : menu de sélection -->

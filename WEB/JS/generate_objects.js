@@ -65,6 +65,19 @@ document.ready( () => {
 		})
 		.catch(error => { console.log(error) });
 
+		//récupérer et afficher une quote random
+		fetch("./API/controller/get_quotes.php")
+		.then( response => response.json() )
+		.then( data => {
+			console.log(data);
+			let quote = document.getElementById('quote');
+			let author = document.getElementById('author');
+			quote.innerHTML = data[0].content_quotes;
+			author.innerHTML = data[0].firstname_author + " " + data[0].lastname_author;
+
+		})
+		.catch(error => { console.log(error) });
+
 		//récupère le booléen like d'une publication : si publication liké, alors coeur reste rose
 		fetch("./API/controller/get_liked.php")
 		.then( response => response.json() )
