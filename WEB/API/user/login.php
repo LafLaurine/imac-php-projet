@@ -22,7 +22,8 @@ $input = file_get_contents('php://input');
 //si param vide, on renvoie un message d'erreur
 if (!isset($input) || empty($input)) {
 	echo json_encode(array("error" => "Missing params ".$input));
-	http_response_code(422);
+    http_response_code(422);
+    exit();
 }
 else {
     //on récupère et décode l'objet envoyé
@@ -31,14 +32,16 @@ else {
     //si on ne récupère pas l'username on renvoie une erreur
 	if(!isset($json_obj['username_log']))
 	{
-		echo json_encode(array("error" => "Missing username"));
+        echo json_encode(array("error" => "Missing username"));
+        http_response_code(422);
 		exit();
     }
     
     //si on ne récupère pas le password on renvoie une erreur
     if(!isset($json_obj['pwd_log']))
 	{
-		echo json_encode(array("error" => "Missing password"));
+        echo json_encode(array("error" => "Missing password"));
+        http_response_code(422);
 		exit();
     }
 

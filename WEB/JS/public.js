@@ -22,7 +22,8 @@ document.ready( () => {
 	fetch("./API/controller/get_one_publication.php?id="+id_publication)
 		.then( response => response.json() )
 		.then( data => {
-			//pour chaque publication on crée des éléments et on y associe les valeurd
+			if(data!=null) {
+				//pour chaque publication on crée des éléments et on y associe les valeurd
 			data.forEach( publi => {
 				//définitions des éléments
 				let titre_publi  = document.getElementById("titrepubli");
@@ -65,7 +66,6 @@ document.ready( () => {
 				img_reac.setAttribute("data-id_publication", publi.id_publication);
 				img_reac.setAttribute('onclick','chngimg()');
 				reac.appendChild(img_reac);
-				
 				//récupère le booléen like d'une publication : si publication liké, alors coeur reste rose
 				fetch("./API/controller/get_liked_one_publi.php?id="+id_publication)
 				.then( response => response.json() )
@@ -88,6 +88,7 @@ document.ready( () => {
 				content.innerHTML = publi.content;
 				date.innerHTML = publi.date_publication;
 			});
+		}				
 		})
 		.catch(error => { console.log(error) });
 
@@ -99,27 +100,27 @@ document.ready( () => {
 		.then( data => {
 			if(data!=null) {
 				//a chaque commentaire on crée des éléments et on lui associe des valeurs
-			data.forEach( comm => {
-				//div principale
-				let com_div = document.getElementById("commentaire");
-				//div écrit par
-				let com_from = document.createElement("h4");
-				com_from.setAttribute("id","comm_from");
-				//contenu du commentaire
-				let com_h3 = document.createElement("h3");
-				com_h3.setAttribute("id","comm_pub");
-				//date commentaire
-				let date_h3 = document.createElement("h3");
-				date_h3.setAttribute("id","date_comm");
-				//associations des éléments à la div principale
-				com_div.appendChild(com_from);
-				com_div.appendChild(com_h3);
-				com_div.appendChild(date_h3);
-				//insertion des valeurs dans l'html
-				com_h3.innerHTML = comm.content_com;
-				com_from.innerHTML = "De " + comm.username;
-				date_h3.innerHTML = comm.date_commentaire;
-			});
+				data.forEach( comm => {
+					//div principale
+					let com_div = document.getElementById("commentaire");
+					//div écrit par
+					let com_from = document.createElement("h4");
+					com_from.setAttribute("id","comm_from");
+					//contenu du commentaire
+					let com_h3 = document.createElement("h3");
+					com_h3.setAttribute("id","comm_pub");
+					//date commentaire
+					let date_h3 = document.createElement("h3");
+					date_h3.setAttribute("id","date_comm");
+					//associations des éléments à la div principale
+					com_div.appendChild(com_from);
+					com_div.appendChild(com_h3);
+					com_div.appendChild(date_h3);
+					//insertion des valeurs dans l'html
+					com_h3.innerHTML = comm.content_com;
+					com_from.innerHTML = "De " + comm.username;
+					date_h3.innerHTML = comm.date_commentaire;
+				});
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -168,7 +169,6 @@ function chngimg() {
 	var count = 0;
 	var liked = 0;		
 	if (img.indexOf('heart.png')!=-1) {
-		event.target.src  = './SRC/heart_pink.png';
 		count = count+1;
 		liked = 1;
 		event.preventDefault();
@@ -182,8 +182,12 @@ function chngimg() {
 		if(request.readyState == 4) {
 			if(request.status == 200)
 			{
+				event.target.src  = './SRC/heart_pink.png';
 				Array.prototype = true;
 				console.log(request);
+			}
+			else {
+				alert('Utilisateur non connecté');
 			}
 		}
 		else {
@@ -193,12 +197,10 @@ function chngimg() {
 		//appel php vers ajout like si coeur cliqué
 		request.open("POST", "./API/controller/add_like.php",true);
 		request.send(body);
-		console.log(liked);
 	}
 
 	else {
 		//si coeur est déjà rose donc déjà cliqué
-		event.target.src = './SRC/heart.png';
 		if(count !=0) {
 			count = count-1;
 		}
@@ -215,7 +217,10 @@ function chngimg() {
 			if(request.status == 200)
 			{
 				Array.prototype = true;
-				console.log(request);
+				event.target.src = './SRC/heart.png';
+			}
+			else {
+				alert('Utilisateur non connecté');
 			}
 		}
 		else {

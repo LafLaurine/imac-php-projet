@@ -41,6 +41,7 @@ SQL
 	if(empty($user_liked)) {
 		echo json_encode(array("error" => "Missing publications"));
 		http_response_code(422);
+		exit();
 	}
 
 	//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
@@ -50,5 +51,6 @@ SQL
 else {
 	echo json_encode(array("error" => "Missing id_user"));
 	http_response_code(422);
+	exit();
 }
 exit();

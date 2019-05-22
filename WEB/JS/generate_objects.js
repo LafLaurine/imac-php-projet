@@ -134,6 +134,7 @@ document.getElementById('publicategorie').onchange = event  => {
 					});
 				}
 				else {
+					alert('Aucun topic ne correspond à cette catégorie');
 					console.log("Erreur");
 				}
 			}
@@ -281,6 +282,7 @@ document.getElementById("validerpubli").onclick = event => {
 				var response = JSON.parse(request.responseText);
 			}
 			else {
+				alert('Utilisateur non connecté');
 				console.log("Erreur");
 			}
 		}
@@ -363,7 +365,6 @@ function chngimg() {
 	var count = 0;
 	var liked = 0;		
 	if (img.indexOf('heart.png')!=-1) {
-		event.target.src  = './SRC/heart_pink.png';
 		count = count+1;
 		liked = 1;
 		event.preventDefault();
@@ -377,8 +378,11 @@ function chngimg() {
 		if(request.readyState == 4) {
 			if(request.status == 200)
 			{
+				event.target.src  = './SRC/heart_pink.png';
 				Array.prototype = true;
-				console.log(request);
+			}
+			else {
+				alert('Utilisateur non connecté');
 			}
 		}
 		else {
@@ -393,7 +397,6 @@ function chngimg() {
 
 	else {
 		//si coeur est déjà rose donc déjà cliqué
-		event.target.src = './SRC/heart.png';
 		if(count !=0) {
 			count = count-1;
 		}
@@ -410,7 +413,10 @@ function chngimg() {
 			if(request.status == 200)
 			{
 				Array.prototype = true;
-				console.log(request);
+				event.target.src = './SRC/heart.png';
+			}
+			else {
+				alert('Utilisateur non connecté');
 			}
 		}
 		else {

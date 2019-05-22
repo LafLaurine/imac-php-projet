@@ -11,6 +11,7 @@ include_once "../data/MyPDO.spottimac.include.php";
 //si l'user n'est pas connecté on envoie un message d'erreur
 if (!isset($_SESSION['id_user'])){
 	echo json_encode(array('message' => 'User non connecté'));
+	http_response_code(422);
 	exit();
 }
 
@@ -32,6 +33,7 @@ $input = file_get_contents('php://input');
 if (!isset($input) || empty($input)) {
 	echo json_encode(array("error" => "Missing params ".$input));
 	http_response_code(422);
+	exit();
 }
 else {
 	//on récupère l'objet envoyé et on le décode
@@ -41,6 +43,7 @@ else {
 	if(!isset($json_obj['id_publication']))
 	{
 		echo json_encode(array("error" => "Missing id_publication"));
+		http_response_code(422);
 		exit();
 	}
 

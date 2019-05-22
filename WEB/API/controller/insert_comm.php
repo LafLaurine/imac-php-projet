@@ -33,6 +33,7 @@ $input = file_get_contents('php://input');
 if (!isset($input) || empty($input)) {
 	echo json_encode(array("error" => "Missing params ".$input));
 	http_response_code(422);
+	exit();
 }
 
 else {
@@ -43,12 +44,14 @@ else {
 	if(!isset($json_obj['publi_com']))
 	{
 		echo json_encode(array("error" => "Missing comm"));
+		http_response_code(422);
 		exit();
 	}
 	//si le serveur n'arrive pas à récupérer l'id de la publi on envoie message d'erreur
 	if(!isset($json_obj['id_publication']))
 	{
 		echo json_encode(array("error" => "Missing id publication"));
+		http_response_code(422);
 		exit();
 	}
 	//variables publication

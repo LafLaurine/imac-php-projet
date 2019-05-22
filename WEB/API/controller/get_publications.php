@@ -32,6 +32,7 @@ while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 if(empty($publi)) {
 	echo json_encode(array("error" => "Missing publications"));
 	http_response_code(422);
+	exit();
 }
 //on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
 echo json_encode($publi,JSON_UNESCAPED_UNICODE);

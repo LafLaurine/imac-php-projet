@@ -24,6 +24,7 @@ if(!empty($_GET['id'])){
 else {
     echo json_encode(array("error" => "Missing id categorie"));
 	http_response_code(422);
+	exit();
 }
 
 //par défaut, "tout" possède l'id 100, on imagine bien qu'on aura pas 100 catégories...
@@ -53,6 +54,7 @@ SQL
 	else {
 		echo json_encode(array("error" => "Missing publications"));
 		http_response_code(422);
+		exit();
 	}
 
 }

@@ -36,7 +36,8 @@ $input = file_get_contents('php://input');
 //si param vide, on renvoie un message d'erreur
 if (!isset($input) || empty($input)) {
 	echo json_encode(array("error" => "Missing params ".$input));
-	http_response_code(422);
+    http_response_code(422);
+    exit();
 }
 else {
     //on récupère et décode l'objet envoyé
@@ -45,14 +46,16 @@ else {
     //si username pas récupéré on envoie un message d'erreur
 	if(!isset($json_obj['username']))
 	{
-		echo json_encode(array("error" => "Missing username"));
+        echo json_encode(array("error" => "Missing username"));
+        http_response_code(422);
 		exit();
     }
     
     //si password non récupéré on envoie un message d'erreur
     if(!isset($json_obj['pwd']))
 	{
-		echo json_encode(array("error" => "Missing password"));
+        echo json_encode(array("error" => "Missing password"));
+        http_response_code(422);
 		exit();
     }
     
@@ -63,6 +66,7 @@ else {
     //s'il existe, on envoie un message d'erreur
     if ($pseudoValidity) {
         echo json_encode(array("message" => "Username already used"));
+        http_response_code(422);
         exit();
     }
     //on n'oublie pas de crypter le password
