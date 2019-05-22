@@ -71,7 +71,7 @@ h1 {
 
 #decorAccueil2{
     position: absolute;
-    top: 74.5%;
+    top: 75.7%;
     left: -5%;
     width: 500px;
 }
@@ -85,7 +85,7 @@ h1 {
 
 #decorAccueil4{
     position: absolute;
-    top: 77.6%;
+    top: 78.8%;
     right: -10%;
     width: 500px;
 }
@@ -961,6 +961,10 @@ label{
         left: 27%;
     }
 
+    #date_publi {
+        margin-top: -5%;
+    }
+
     #login {
         margin-left: 42%;
     }
@@ -1060,6 +1064,10 @@ label{
     #titrePub {
         top: 48px;
         left: 20%;
+    }
+
+    #quote {
+        width: 250px;
     }
 
     #titre {
@@ -1198,7 +1206,7 @@ label{
     }
 
     #decorAccueil4{
-        top: 89.7%;
+        top: 89.9%;
         right: -10%;
         width: 300px;
     }
@@ -1220,6 +1228,10 @@ label{
         margin-top: -75px;
         font-size: 0.6em;
         width: 180px;
+    }
+
+    #quote {
+        width: 190px;
     }
 
     #trier {
