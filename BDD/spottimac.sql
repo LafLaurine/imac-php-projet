@@ -74,13 +74,18 @@ CREATE TABLE IF NOT EXISTS  `quotes` (
     CONSTRAINT pk_quotes PRIMARY KEY (id_quotes)
 );
 
-
 INSERT INTO `quotes` (`id_quotes`, `content_quotes`, `firstname_author`,`lastname_author`) VALUES
 (1, 'On ne se marie pas avec une classe de CM2', 'Sylvain','Cherrier'),
 (2, 'A la manno','Antoine','Chevreuil'),
 (3, 'Si on prend comme exemple les mamifères','Jean-Christophe','Novelli'),
-(4, 'Vous avez 45 minutes pour le contrôle','Vinceslas','Biri');
-
+(4, 'Vous avez 45 minutes pour le contrôle','Vinceslas','Biri'),
+(5, "Il est encore temps d'aller vous inscrire dans une autre formation et aller gratouiller des mygales",'Jean-Christophe','Novelli'),
+(6, "Imagine que c’est toi...mais devenu fou par l’abus de LSD",'Sylvain','Cherrier'),
+(7, "Quoi ?! Vous connaissez pas ?!",'Émilie','Verger'),
+(8, "Il y a peut-être d'autres Sylvain Cherrier, ce que je ne souhaite à personne au monde.",'Sylvain','Cherrier'),
+(9, "Pourquoi protéger ses attributs ?",'Sylvain','Cherrier'),
+(10, "Ça prend moins de temps de dire non que de dire oui",'Jean-Christophe','Novelli'),
+(11, "Tout ne se résout pas avec du fric, on n’est pas aux Etats-Unis",'Didier','Frochot');
 
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (1, 'imac'),
