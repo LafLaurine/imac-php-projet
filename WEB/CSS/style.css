@@ -158,6 +158,18 @@ h1 {
     z-index: 5;
 }
 
+#quoteDiv {
+    font-family: 'FuturaLight';
+    font-size: 0.7em;
+    position: relative;
+    margin-left: 3%;
+    margin-top: -105px;
+}
+
+#quote {
+    margin-bottom: -0.6%;
+}
+
 #logo {
     width: 12%;
     position: relative;
@@ -453,6 +465,14 @@ a:hover {
     border-radius: 5px;
     width: 150px;
     height: 200px;
+    align-items: center;
+}
+
+#img_fichier {
+    max-width: 80%;
+    max-height: 289px;
+    margin-left: 16%;
+    margin-top: 1%;
 }
 
 #file {
@@ -547,6 +567,7 @@ label{
     font-family: 'FuturaExtended';
     font-size: 0.8em;
     color: #CECECE;
+    text-align: center;
 }
 
 #commentaire {
@@ -632,15 +653,6 @@ label{
     position: absolute;
     top: 250px;
     left: 370px;
-    background: #B1F3E3;
-}
-
-#rectVertPub2 {
-    width: 10px;
-    height: 460px;
-    position: absolute;
-    top: -30px;
-    right: 380px;
     background: #B1F3E3;
 }
 
@@ -912,11 +924,12 @@ label{
         margin-top: -60px;
     }
 
-    #quote{
-        font-size: 3em;
-        position: relative;
-        margin-left: 45%;
-        margin-top: -80px;
+    #quoteDiv {
+        margin-top: -75px;
+    }
+
+    #logo {
+        margin-top: 5%;
     }
 
     #trier {
@@ -1029,6 +1042,10 @@ label{
 
     #titrecategorie {
         margin-top: -40px;
+    }
+
+    #logo {
+        margin-top: 7%;
     }
 
     #trier {
@@ -1195,6 +1212,12 @@ label{
         margin-top: -30px;
     }
 
+    #quoteDiv {
+        margin-top: -75px;
+        font-size: 0.6em;
+        width: 180px;
+    }
+
     #trier {
         margin-left: 50%;
         bottom: -70px;
@@ -1278,6 +1301,11 @@ label{
 
     #content {
         left: -178px;
+    }
+
+    #img_fichier {
+        margin-left: 10%;
+        margin-top: 1%;
     }
 
     #closed_cross2{
@@ -1400,6 +1428,10 @@ label{
         left: -244px;
     }
 
+    #img_fichier {
+        margin-top: 5%;
+    }
+
     #closed_cross2{
         right: 70%;
     }
@@ -1430,3 +1462,35 @@ label{
         margin-left: 9%;
     }
 }
+
+/*@media (max-height: 712px){
+
+    #decorAccueil4 {
+        top: 78.8px;
+    }
+
+}
+
+@media (max-height: 690px){
+
+    #decorAccueil4 {
+        top: 83%;
+    }
+
+}
+
+@media (max-height: 680px){
+
+    #decorAccueil4 {
+        top: 82.7%;
+    }
+
+}
+
+@media (max-height: 640px){
+
+    #decorAccueil4 {
+        top: 87.7%;
+    }
+
+}*/

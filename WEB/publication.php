@@ -16,17 +16,17 @@
 		<div id="fondPub"></div>
 		<input type="image" id="closed_cross2" src="SRC/cross2.png" onclick="pubClose()" alt="Croix pour fermer la fenêtre"/>
 		<h2 id="titrepubli"></h2>
-		<h3 id="from_user"></h3>
 		<div id="content">
 			<p id="publicontent"></p>
+			<div id="fichier">
+			</div>
 		</div>
+		<h3 id="from_user"></h3>
 		<div id="dateContent">
 			<h3>Date :</h3>
 			<h3 id="date"></h3>
 		</div>
 		<div id="reaction">
-		</div>
-		<div id="fichier">
 		</div>
 		<div id="commentaire">
 			<h3>Commentaires :</h3>
@@ -38,7 +38,6 @@
 		</form>
 	</div>
 	<div id="rectVertPub"></div>
-	<div id="rectVertPub2"></div>
 	<script src="JS/public.js"></script>
 </body>
 </html>

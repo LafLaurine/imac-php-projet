@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `publication` (
   `id_topic` int(15) NOT NULL,
   `id_user` int(15) NOT NULL,
   `content` varchar(1500) NOT NULL,
+  `lien_fichier` text,
   CONSTRAINT pk_publication PRIMARY KEY (id_publication),
   CONSTRAINT fk_topic FOREIGN KEY (id_topic)
   REFERENCES topic(id_topic),
