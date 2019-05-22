@@ -70,12 +70,12 @@ document.ready( () => {
 				fetch("./API/controller/get_liked_one_publi.php?id="+id_publication)
 				.then( response => response.json() )
 				.then( data => {
-					
-					if (data[0].liked == 1){
-						console.log("oui");
-						img_reac.setAttribute("src", "./SRC/heart_pink.png");
+					if(data != null) {
+						if (data[0].liked == 1){
+							console.log("oui");
+							img_reac.setAttribute("src", "./SRC/heart_pink.png");
+						}	
 					}
-
 				}).catch(error => { console.log(error) });
 
 				//élément date

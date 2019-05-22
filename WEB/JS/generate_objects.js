@@ -14,6 +14,7 @@ document.ready( () => {
 	fetch("./API/controller/get_categories.php")
 		.then( response => response.json() )
 		.then( data => {
+			if(data != null) {
 			//créations des éléments qui vont contenir les catégories
 			let categories = document.getElementById('choixcategorie');
 			let att_cat = document.createElement("li");
@@ -50,7 +51,7 @@ document.ready( () => {
 				cat_publi.appendChild(option_pub);
 				
 			});
-			
+			}
 		})
 		.catch(error => { console.log(error) });
 
@@ -58,9 +59,11 @@ document.ready( () => {
 		fetch("./API/controller/get_publications.php")
 		.then( response => response.json() )
 		.then( data => {
-			//pour chaque publication, création des éléments
-			for(var i = 0; i<data.length; i++) {
-				createPublication(data,i);
+			if(data != null) {
+				//pour chaque publication, création des éléments
+				for(var i = 0; i<data.length; i++) {
+					createPublication(data,i);
+				}
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -69,12 +72,12 @@ document.ready( () => {
 		fetch("./API/controller/get_quotes.php")
 		.then( response => response.json() )
 		.then( data => {
-			console.log(data);
-			let quote = document.getElementById('quote');
-			let author = document.getElementById('author');
-			quote.innerHTML = data[0].content_quotes;
-			author.innerHTML = data[0].firstname_author + " " + data[0].lastname_author;
-
+			if(data!=null) {
+				let quote = document.getElementById('quote');
+				let author = document.getElementById('author');
+				quote.innerHTML = data[0].content_quotes;
+				author.innerHTML = data[0].firstname_author + " " + data[0].lastname_author;
+			}
 		})
 		.catch(error => { console.log(error) });
 
@@ -82,17 +85,19 @@ document.ready( () => {
 		fetch("./API/controller/get_liked.php")
 		.then( response => response.json() )
 		.then( data => {
-			var select = document.getElementsByClassName("reac");
-			//pour chaque coeur on vérif si c'est liké
-			for (var i = 0; i < select.length; i++) {
-				var id_publi = select[i].getAttribute("data-id_publication");
-				for (var j = 0; j<data.length; j++){
-				 	if(id_publi == data[j].id_publication){
-				 		if (data[j].liked == "1"){
-				 			select[i].setAttribute("src", "./SRC/heart_pink.png");
-				 		}
-				 	}
-				 }
+			if(data!=null) {
+				var select = document.getElementsByClassName("reac");
+				//pour chaque coeur on vérif si c'est liké
+				for (var i = 0; i < select.length; i++) {
+					var id_publi = select[i].getAttribute("data-id_publication");
+					for (var j = 0; j<data.length; j++){
+						if(id_publi == data[j].id_publication){
+							if (data[j].liked == "1"){
+								select[i].setAttribute("src", "./SRC/heart_pink.png");
+							}
+						}
+					}
+			}
 		}
 
 		}).catch(error => { console.log(error) });
@@ -145,15 +150,17 @@ document.getElementById("tri_default").onclick = event => {
 	fetch("./API/controller/get_publications.php")
 		.then( response => response.json() )
 		.then( data => {
-			//A chaque publication les éléments sont crées
-			let public = document.getElementById("publication");
-			//on supprime les publications qu'il y avait sur la page
-			while (public.firstChild) {
-				public.removeChild(public.firstChild);
-			}
-			//A chaque publication est crée les éléments + les valeurs correspondantes y sont associées
-			for(var i =0; i<data.length; i++) {
-				createPublication(data,i);
+			if(data!=null) {
+				//A chaque publication les éléments sont crées
+				let public = document.getElementById("publication");
+				//on supprime les publications qu'il y avait sur la page
+				while (public.firstChild) {
+					public.removeChild(public.firstChild);
+				}
+				//A chaque publication est crée les éléments + les valeurs correspondantes y sont associées
+				for(var i =0; i<data.length; i++) {
+					createPublication(data,i);
+				}
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -165,14 +172,16 @@ document.getElementById("tri_like").onclick = event => {
 	fetch("./API/controller/get_publication_from_like.php")
 		.then( response => response.json() )
 		.then( data => {
-			//supprime les publications déjà présentes sur la page
-			let public = document.getElementById("publication");
-			while (public.firstChild) {
-				public.removeChild(public.firstChild);
-			}
-			//a chaque publication est crée des éléments + leur valeur correspondantes sont associées
-			for(var i =0; i<data.length; i++) {
-				createPublication(data,i);
+			if(data!=null) {
+				//supprime les publications déjà présentes sur la page
+				let public = document.getElementById("publication");
+				while (public.firstChild) {
+					public.removeChild(public.firstChild);
+				}
+				//a chaque publication est crée des éléments + leur valeur correspondantes sont associées
+				for(var i =0; i<data.length; i++) {
+					createPublication(data,i);
+				}
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -185,25 +194,27 @@ document.getElementById("choixcategorie").onclick = event => {
 	fetch("./API/controller/get_publication_from_categorie.php?id="+id_categorie)
 		.then( response => response.json() )
 		.then( data => {
-			data.forEach(cat => {
-				//a chaque catégorie on remplace le titre "bienvenue" par le nom de la catégorie
-				document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
-				//si "tout" est choisi alors c'est "Tout" qui est mis en titre
-				if(id_categorie == 100) {
-					document.getElementById("titrecategorie").innerHTML  = "Tout";
-				}
-
-				let public = document.getElementById("publication");
-				//suppression précédentes publications
-				while (public.firstChild) {
-					public.removeChild(public.firstChild);
-				}
-				
-				//création élement publication + valeurs associées
-				for(var i =0; i<data.length; i++) {
-					createPublication(data,i);
-				}
-			});			
+			if(data!=null) {
+				data.forEach(cat => {
+					//a chaque catégorie on remplace le titre "bienvenue" par le nom de la catégorie
+					document.getElementById("titrecategorie").innerHTML = cat.nom_categorie;
+					//si "tout" est choisi alors c'est "Tout" qui est mis en titre
+					if(id_categorie == 100) {
+						document.getElementById("titrecategorie").innerHTML  = "Tout";
+					}
+	
+					let public = document.getElementById("publication");
+					//suppression précédentes publications
+					while (public.firstChild) {
+						public.removeChild(public.firstChild);
+					}
+					
+					//création élement publication + valeurs associées
+					for(var i =0; i<data.length; i++) {
+						createPublication(data,i);
+					}
+				});		
+			}	
 		})
 		.catch(error => { console.log(error) });
 };
@@ -282,16 +293,19 @@ document.getElementById("validerpubli").onclick = event => {
 
 function createPublication(data,i) {
 	let public = document.getElementById("publication");
+	let publi = document.createElement('div');
+	publi.setAttribute('class','publi');
+	public.appendChild(publi);
 	//titre publication
 	var title = document.createElement('h2');
 	title.setAttribute('class','titrepubli');
-	public.appendChild(title);
+	publi.appendChild(title);
 	title.innerHTML = data[i].titre_publication;
 
 	//date publication
 	var date_publi = document.createElement('h3');
 	date_publi.setAttribute('class','date_publi');
-	public.appendChild(date_publi);
+	publi.appendChild(date_publi);
 	date_publi.innerHTML = data[i].date_publication;
 
 	//coeur publication
@@ -302,7 +316,7 @@ function createPublication(data,i) {
 	reac.setAttribute("src", "./SRC/heart.png");
 	reac.setAttribute("id", data[i].id_publication);
 	reac.setAttribute('onclick','chngimg()'); 
-	public.appendChild(reac_div);
+	publi.appendChild(reac_div);
 	reac_div.appendChild(reac);
 
 	//voir plus publication
@@ -313,7 +327,7 @@ function createPublication(data,i) {
 	link.setAttribute("class", "voirPlus");
 	link.setAttribute("id", data[i].id_publication);
 	link.innerHTML = "→ Voir plus";
-	public.appendChild(para);
+	publi.appendChild(para);
 	para.appendChild(link);
 }
 
