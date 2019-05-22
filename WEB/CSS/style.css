@@ -757,6 +757,28 @@ label{
    color : #CECECE;
 }
 
+
+.nonDeco {
+    text-decoration: none;
+    color: black;
+}
+
+#decorAccueil2bis {
+    transform: rotate(90deg);
+    position: absolute;
+    bottom: -280%;
+    right: 81%;
+    width: 500px;
+}
+
+#decorAccueil4bis {
+    transform: rotate(-80deg);
+    position: absolute;
+    bottom: -280%;
+    right: -17%;
+    width: 500px;
+}
+
 @media (max-width: 1260px){
     #newPubText {
         font-size: 1.1em;
@@ -807,7 +829,24 @@ label{
     }
 
     #mentionLegales {
-        margin-left: 2%;
+        margin-left: -2%;
+    }
+    
+    #mention {
+        width: 700px;
+        left: 15%;
+    }
+
+    #decorAccueil2bis{
+        bottom: -314%;
+        right: 81%;
+        width: 400px;
+    }
+
+    #decorAccueil4bis{
+        bottom: -314%;
+        right: -16%;
+        width: 400px;
     }
 
 }
@@ -911,8 +950,25 @@ label{
 
     #mentionLegales {
         width: 80px;
-        font-size: 0.7em;
+        font-size: 0.6em;
         margin-left: 1.6%;
+    }
+
+    #decorAccueil2bis{
+        bottom: -318%;
+        right: 83%;
+        width: 340px;
+    }
+
+    #decorAccueil4bis{
+        bottom: -318%;
+        right: -23%;
+        width: 300px;
+    }
+
+    #mention {
+        width: 600px;
+        margin-left: 22%;
     }
 }
 
@@ -1069,6 +1125,36 @@ label{
         margin-left: -44%;
         width: 120%;
     }
+
+    #decorAccueil2bis{
+        bottom: -380%;
+        right: 78%;
+        width: 300px;
+    }
+
+    #decorAccueil4bis{
+        bottom: -380%;
+        right: -18%;
+        width: 300px;
+    }
+
+    #mention {
+        width: 500px;
+        margin-left: 20%;
+    }
+
+    #decorAccueil2bis{
+        display: none;
+    }
+
+    #decorAccueil4bis{
+        display: none;
+    }
+
+    #mention {
+        width: 500px;
+        margin-left: 13%;
+    }
 }
 
 @media (max-width: 650px){
@@ -1214,6 +1300,11 @@ label{
         margin-left: -80%;
         width: 120%;
     }
+
+    #mention {
+        width: 400px;
+        margin-left: 13%;
+    }
 }
 
 @media (max-width: 510px){
@@ -1332,5 +1423,10 @@ label{
 
     #mentionLegales {
         margin-left: -0.5%;
+    }
+
+    #mention {
+        width: 400px;
+        margin-left: 9%;
     }
 }

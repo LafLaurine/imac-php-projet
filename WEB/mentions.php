@@ -8,13 +8,17 @@
 </head>
 
 <body>
+  <img id="decorAccueil" alt="decor fond" src="SRC/accueil1.png"/>
+  <img id="decorAccueil2bis" alt="decor fond" src="SRC/accueil2.png"/>
+  <img id="decorAccueil3" alt="decor fond" src="SRC/accueil3.png"/>
+  <img id="decorAccueil4bis" alt="decor fond" src="SRC/accueil4.png"/>
 <div id="mention">
     <h1 id="mentionTitle">MENTIONS LÉGALES</h1>
     <h2>Identification de l'éditeur et de l'hébergeur du site</h2>
-    <p>Le site <a href="http://perso-etudiant.u-pem.fr/~llafonta/spottimac/">http://perso-etudiant.u-pem.fr/~llafonta/spottimac/</a>
+    <p>Le site <a class="nonDeco" href="http://perso-etudiant.u-pem.fr/~llafonta/spottimac/">http://perso-etudiant.u-pem.fr/~llafonta/spottimac/</a>
     est édité par le groupe $random, issu du cours de web de HO Pascale. Réalisé dans le cadre d'un projet de cours.</p>
     <p>Directeur de la publication : le groupe $random consituté de LAFONTAINE Laurine, MALLET Flora, MAUREL Victorine, RATHONIE Line et SÉGUY Margauxr, joignable à l'adresse llafonta@etud.u-pem.fr.</p>
-   <p> Le serveur est fourni par le Centre de Ressources Informatiques (CRI) de l'UPEM au 5 Boulevard Descartes, 77420 Champs-sur-Marne. Vous retrouverez leur site ci-joint : <a href="https://cri.u-pem.fr/">https://cri.u-pem.fr/</a>
+   <p> Le serveur est fourni par le Centre de Ressources Informatiques (CRI) de l'UPEM au 5 Boulevard Descartes, 77420 Champs-sur-Marne. Vous retrouverez leur site ci-joint : <a class="nonDeco" href="https://cri.u-pem.fr/">https://cri.u-pem.fr/</a>
     Les informations concernant la collecte et le traitement des données personnelles (politique et déclaration) sont fournies dans la charte de données personnelles du site.
     </p>
 
@@ -22,7 +26,7 @@
     <p> Définition des termes utilisés dans la politique de confidentialité
     On désignera par la suite :
     « Donnée personnelle » : se définit comme « toute information relative à une personne physique identifiée ou qui peut être identifiée, directement ou indirectement, par référence à un numéro d'identification ou à un ou plusieurs éléments qui lui sont propres », conformément à la loi Informatique et libertés du 6 janvier 1978.
-    « Site » ou « Service » : le site <a href="http://perso-etudiant.u-pem.fr/~llafonta/spottimac/">http://perso-etudiant.u-pem.fr/~llafonta/spottimac/</a> et l'ensemble de ses pages.
+    « Site » ou « Service » : le site <a class="nonDeco" href="http://perso-etudiant.u-pem.fr/~llafonta/spottimac/">http://perso-etudiant.u-pem.fr/~llafonta/spottimac/</a> et l'ensemble de ses pages.
     « Editeur » ou « Nous » : Fortus, personne morale ou physique responsable de l'édition et du contenu du Site.
     « Utilisateur » ou « Vous » : l'internaute visitant et utilisant les Services du Site.</p>
 
@@ -114,7 +118,7 @@
 
    <p class="pinkTitle">Article 8 - Plainte auprès de l’Autorité de protection des données</p>
     Si vous considérez que Fortus ne respecte pas ses obligations au regard de vos Informations Personnelles, vous pouvez adresser une plainte ou une demande auprès de l’autorité compétente. En France, l’autorité compétente est la CNIL à 
-    laquelle vous pouvez adresser une demande par voie électronique à l'adresse suivante : <a href ="https://www.cnil.fr/fr/plaintes/internet">https://www.cnil.fr/fr/plaintes/internet.</a></p>
+    laquelle vous pouvez adresser une demande par voie électronique à l'adresse suivante : <a class="nonDeco" href ="https://www.cnil.fr/fr/plaintes/internet">https://www.cnil.fr/fr/plaintes/internet.</a></p>
 
 </div>
 </body>
