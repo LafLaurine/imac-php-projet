@@ -153,7 +153,7 @@ document.getElementById("tri_default").onclick = event => {
 			}
 			//A chaque publication est crée les éléments + les valeurs correspondantes y sont associées
 			for(var i =0; i<data.length; i++) {
-				createPublication(data);
+				createPublication(data,i);
 			}
 		})
 		.catch(error => { console.log(error) });

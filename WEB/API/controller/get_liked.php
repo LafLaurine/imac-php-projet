@@ -20,27 +20,35 @@ http_response_code(200);
 
 //on récupère l'id de l'user
 //pour pouvoir récupèrer les publications que cette user a liké
-$id_user = $_SESSION['id_user'];
-$stmt = MyPDO::getInstance()->prepare(<<<SQL
-	SELECT *
-	FROM user_liked
-	WHERE id_user = :id_user;
+if(!empty($_SESSION['id_user']))
+{
+	$id_user = $_SESSION['id_user'];
+	$stmt = MyPDO::getInstance()->prepare(<<<SQL
+		SELECT *
+		FROM user_liked
+		WHERE id_user = :id_user;
 SQL
 );
-$stmt->bindParam(':id_user',$id_user);
-$stmt->execute();
-$user_liked = [];
+	$stmt->bindParam(':id_user',$id_user);
+	$stmt->execute();
+	$user_liked = [];
 
-//on met le résultat de la requête dans un tableau 
-//et on la renvoie
-while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
-	array_push($user_liked,$row); 
+	//on met le résultat de la requête dans un tableau 
+	//et on la renvoie
+	while (($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
+		array_push($user_liked,$row); 
+	}
+	if(empty($user_liked)) {
+		echo json_encode(array("error" => "Missing publications"));
+		http_response_code(422);
+	}
+
+	//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
+	echo json_encode($user_liked,JSON_UNESCAPED_UNICODE);
 }
-if(empty($user_liked)) {
-	echo json_encode(array("error" => "Missing publications"));
+
+else {
+	echo json_encode(array("error" => "Missing id_user"));
 	http_response_code(422);
 }
-
-//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
-echo json_encode($user_liked,JSON_UNESCAPED_UNICODE);
 exit();
