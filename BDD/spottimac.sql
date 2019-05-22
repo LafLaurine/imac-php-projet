@@ -111,5 +111,5 @@ INSERT INTO `commentaire` (`id_commentaire`, `date_commentaire`, `id_publication
 (3, '2019-05-04', 1, 1, 'Oui, va voir ce lien :');
 
 INSERT INTO `publication` (`id_publication`, `titre_publication`, `date_publication`, `id_topic`, `id_user`, `content`,`lien_fichier`) VALUES
-(1, 'Aide Tower Defense', '2019-05-04', 7, 1, 'Coucou ! Je ne comprends pas l\'algo de Bressenham, quelqu\'un peut-il m\'expliquer ?',https://images.assetsdelivery.com/compings_v2/ornitopter/ornitopter1509/ornitopter150900301.jpg'),
+(1, 'Aide Tower Defense', '2019-05-04', 7, 1, 'Coucou ! Je ne comprends pas l\'algo de Bressenham, quelqu\'un peut-il m\'expliquer ?','https://images.assetsdelivery.com/compings_v2/ornitopter/ornitopter1509/ornitopter150900301.jpg'),
 (2, 'Projet son', '2019-04-25', 5, 2, 'salut ! qqn sait quel matériel il faut ?');
