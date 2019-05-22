@@ -72,7 +72,6 @@ document.ready( () => {
 				.then( data => {
 					if(data != null) {
 						if (data[0].liked == 1){
-							console.log("oui");
 							img_reac.setAttribute("src", "./SRC/heart_pink.png");
 						}	
 					}
@@ -166,6 +165,7 @@ document.getElementById("valider_comm").onclick = event => {
 //fonction pour changer l'image du coeur en fonction du like ou non + requête like
 function chngimg() {
 	var img = event.target.src;
+	event.target.src  = './SRC/heart_pink.png';
 	var count = 0;
 	var liked = 0;		
 	if (img.indexOf('heart.png')!=-1) {
@@ -182,9 +182,7 @@ function chngimg() {
 		if(request.readyState == 4) {
 			if(request.status == 200)
 			{
-				event.target.src  = './SRC/heart_pink.png';
 				Array.prototype = true;
-				console.log(request);
 			}
 			else {
 				alert('Utilisateur non connecté');
@@ -197,6 +195,7 @@ function chngimg() {
 		//appel php vers ajout like si coeur cliqué
 		request.open("POST", "./API/controller/add_like.php",true);
 		request.send(body);
+		console.log(liked);
 	}
 
 	else {
@@ -207,17 +206,17 @@ function chngimg() {
 		liked = 0;
 		event.preventDefault();
 		let params = {};
+		event.target.src = './SRC/heart.png';
 		//param envoyé au serveur via url
 		params['id_publication'] = event.target.dataset.id_publication;
 		params['liked'] = liked;
 		var body = JSON.stringify(params);
-		var request = new XMLHttpRequest();
+		var request = new XMLHttpRequest();				
 		request.onreadystatechange = () => {
 		if(request.readyState == 4) {
 			if(request.status == 200)
 			{
 				Array.prototype = true;
-				event.target.src = './SRC/heart.png';
 			}
 			else {
 				alert('Utilisateur non connecté');
@@ -232,7 +231,6 @@ function chngimg() {
 		request.send(body);
 	}	
 }
-
 
 //ferme page, retour vers index
 function pubClose()
