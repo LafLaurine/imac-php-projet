@@ -25,6 +25,7 @@ if(!empty($_GET['id_publi'])){
 else {
     echo json_encode(array("error" => "Missing id publi"));
 	http_response_code(422);
+	exit();
 }
 
 //requête SQL pour récupérer un commentaire, jointure sur la table user afin de pouvoir afficher qui a publié le commentaire
@@ -44,6 +45,17 @@ while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($comm,$row); 
 }
 
-//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
-echo json_encode($comm,JSON_UNESCAPED_UNICODE);
+if(!empty($comm)) {
+	//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
+	echo json_encode($comm,JSON_UNESCAPED_UNICODE);
+}
+
+//si on ne le récupère pas, on envoie un message d'erreur
+else {
+    echo json_encode(array("error" => "Missing commentaires"));
+	http_response_code(422);
+	exit();
+}
+
+
 exit();

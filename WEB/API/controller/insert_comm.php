@@ -8,6 +8,7 @@ session_start();
 //si utilisateur pas connecté, message d'erreur
 if (!isset($_SESSION['id_user'])){
 	echo json_encode(array('message' => 'User non connecté'));
+	http_response_code(422);
 	exit();
 }
 

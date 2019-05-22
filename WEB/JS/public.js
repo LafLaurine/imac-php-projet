@@ -97,7 +97,8 @@ document.ready( () => {
 		fetch("./API/controller/get_comm.php?id_publi="+id_publication)
 		.then( response => response.json() )
 		.then( data => {
-			//a chaque commentaire on crée des éléments et on lui associe des valeurs
+			if(data!=null) {
+				//a chaque commentaire on crée des éléments et on lui associe des valeurs
 			data.forEach( comm => {
 				//div principale
 				let com_div = document.getElementById("commentaire");
@@ -119,6 +120,7 @@ document.ready( () => {
 				com_from.innerHTML = "De " + comm.username;
 				date_h3.innerHTML = comm.date_commentaire;
 			});
+			}
 		})
 		.catch(error => { console.log(error) });
 
@@ -145,6 +147,9 @@ document.getElementById("valider_comm").onclick = event => {
 				Array.prototype = true;
 				console.log(request);
 				alert("Commentaire ajouté !");
+			}
+			else {
+				alert("Utilisateur non connecté");
 			}
 		
 		}

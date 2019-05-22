@@ -30,6 +30,7 @@ $pub = [];
 while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($pub,$row);
 }
+
 //si tableau vide, envoie un message d'erreur
 if(empty($pub)) {
 	echo json_encode(array("error" => "Missing publications"));

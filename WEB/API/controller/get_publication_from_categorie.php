@@ -45,13 +45,16 @@ SQL
 	while(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 		array_push($cat,$row);
 	}
-	//si le tableau est vide, alors aucune publication ne correspond, on envoie un message d'erruer
-	if(empty($cat)) {
-		echo json_encode(array("error" => "Missing categorie"));
+	if(!empty($cat)) {
+		//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
+		echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+	}
+
+	else {
+		echo json_encode(array("error" => "Missing publications"));
 		http_response_code(422);
 	}
-	//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
-	echo json_encode($cat,JSON_UNESCAPED_UNICODE);
+
 }
 
 //si l'id n'est pas différent de 100, cela veut dire qu'on a besoin de toutes les publications. 

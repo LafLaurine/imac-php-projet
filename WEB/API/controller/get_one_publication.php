@@ -25,12 +25,14 @@ if(!empty($_GET['id'])){
 else {
     echo json_encode(array("error" => "Missing id publi"));
 	http_response_code(422);
+	exit();
 }
 
 //requête SQL pour récupérer les données de la table publication en fonction de son id
 $stmt = MyPDO::getInstance()->prepare(<<<SQL
 	SELECT *
     FROM publication
+	INNER JOIN user ON publication.id_user = user.id_user
     WHERE id_publication = :id_publi;
 SQL
 );
@@ -43,6 +45,14 @@ if(($row = $stmt->fetch(PDO::FETCH_ASSOC))) {
 	array_push($publi,$row);
 }
 
-//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
-echo json_encode($publi,JSON_UNESCAPED_UNICODE);
+if(!empty($publi)) {
+	//on renvoie les réponses de la requête en JSON pour que le client puisse récupérer les informations et les afficher
+	echo json_encode($publi,JSON_UNESCAPED_UNICODE);
+}
+
+else {
+	echo json_encode(array("error" => "Missing publi"));
+	http_response_code(422);
+	exit();
+}
 exit();

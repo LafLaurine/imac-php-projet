@@ -85,7 +85,20 @@ INSERT INTO `quotes` (`id_quotes`, `content_quotes`, `firstname_author`,`lastnam
 (8, "Il y a peut-être d'autres Sylvain Cherrier, ce que je ne souhaite à personne au monde.",'Sylvain','Cherrier'),
 (9, "Pourquoi protéger ses attributs ?",'Sylvain','Cherrier'),
 (10, "Ça prend moins de temps de dire non que de dire oui",'Jean-Christophe','Novelli'),
-(11, "Tout ne se résout pas avec du fric, on n’est pas aux Etats-Unis",'Didier','Frochot');
+(11, "Tout ne se résout pas avec du fric, on n’est pas aux Etats-Unis",'Didier','Frochot'),
+(12,"C’est un brave nombre",'Antoine','Chevreuil'),
+(13,"C’est un vieux problème...",'Antoine','Chevreuil'),
+(14,"C’est la vie",'Antoine','Chevreuil'),
+(15,"C’est vraiment trop fort de café",'Antoine','Chevreuil'),
+(16,"L’analyse, c’est jamais très commode!",'Antoine','Chevreuil'),
+(17,"Y’a rien de neuf sous le soleil",'Antoine','Chevreuil'),
+(18,"Alors, le meilleur horaire pour une réunion...",'Ettayeb','Tewfik'),
+(19,"Et π c'est tout",'Antoine','Chevreuil'),
+(20,"Se faire avoir comme dans un bois",'Antoine','Chevreuil'),
+(21,"On le laisse à la niche (le nombre)",'Antoine','Chevreuil'),
+(22,"Je saurai raccrocher les wagons",'Antoine','Chevreuil'),
+(23,"Et là vous resservez la soupe !",'Antoine','Chevreuil'),
+(24,"Ça compte pour peanuts ça en fait !",'Antoine','Chevreuil');
 
 INSERT INTO `categories` (`id_categorie`, `nom_categorie`) VALUES
 (1, 'imac'),

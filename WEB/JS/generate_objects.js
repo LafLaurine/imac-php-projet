@@ -225,17 +225,19 @@ document.getElementById("tri_date").onclick = event => {
 	fetch("./API/controller/get_publication_from_date.php")
 		.then( response => response.json() )
 		.then( data => {
-			data.forEach( publication => {
-				let public = document.getElementById("publication");
-				//supprime publication précédentes
-				while (public.firstChild) {
-					public.removeChild(public.firstChild);
-				}
-				//a chaque publication est crée un élément avec sa valeur associée
-				for(var i =0; i<data.length; i++) {
-					createPublication(data,i);
-				}
-			});			
+			if(data!=null) {
+				data.forEach( publication => {
+					let public = document.getElementById("publication");
+					//supprime publication précédentes
+					while (public.firstChild) {
+						public.removeChild(public.firstChild);
+					}
+					//a chaque publication est crée un élément avec sa valeur associée
+					for(var i =0; i<data.length; i++) {
+						createPublication(data,i);
+					}
+				});	
+			}
 		})
 		.catch(error => { console.log(error) });
 	
