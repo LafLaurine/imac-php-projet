@@ -71,7 +71,7 @@ h1 {
 
 #decorAccueil2{
     position: absolute;
-    top: 75.7%;
+    top: 74.7%;
     left: -5%;
     width: 500px;
 }
@@ -85,7 +85,7 @@ h1 {
 
 #decorAccueil4{
     position: absolute;
-    top: 78.8%;
+    top: 77.8%;
     right: -10%;
     width: 500px;
 }
@@ -474,7 +474,7 @@ a:hover {
 
 #img_fichier {
     max-width: 80%;
-    max-height: 289px;
+    max-height: 276px;
     margin-left: 16%;
     margin-top: 1%;
 }
@@ -569,21 +569,36 @@ label{
 
 #publicontent {
     font-family: 'FuturaExtended';
-    font-size: 0.8em;
+    font-size: 1em;
     color: #CECECE;
     text-align: center;
 }
 
 #commentaire {
     font-family: 'FuturaExtended';
-    font-size: 0.9em;
+    font-size: 1em;
     color: #FFBCB3;
     position: relative;
     margin-left: 115px;
 }
 
+#comm_from {
+    font-size: 0.9em;
+    color: #B1F3E3;
+}
+
+#comm_pub  {
+    font-size: 0.9em;
+    color: #CECECE;
+}
+
+#date_comm {
+    font-size: 0.7em;
+    color: #CECECE;
+}
+
 #pubComm {
-    font-size : 0.7;
+    font-size : 0.8em;
     margin-bottom: 2%;
 }
 
