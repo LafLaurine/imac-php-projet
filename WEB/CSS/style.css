@@ -1165,6 +1165,7 @@ label{
     #commentaire {
         margin-left: -18%;
     }
+
     #pub_commentaire {
         margin-left: -44%;
         width: 120%;
@@ -1198,6 +1199,10 @@ label{
     #mention {
         width: 500px;
         margin-left: 13%;
+    }
+
+    #publicontent {
+        font-size: 0.8em;
     }
 }
 
@@ -1364,6 +1369,10 @@ label{
         width: 400px;
         margin-left: 13%;
     }
+
+    #comm_pub {
+        width: 198px;
+    }
 }
 
 @media (max-width: 510px){
@@ -1491,6 +1500,10 @@ label{
     #mention {
         width: 400px;
         margin-left: 9%;
+    }
+
+    #comm_pub {
+        width: 150px;
     }
 }
 
