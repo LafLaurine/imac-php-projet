@@ -275,11 +275,13 @@ document.getElementById("validerpubli").onclick = event => {
 	var request = new XMLHttpRequest();
     request.onreadystatechange = () => {
         if(request.readyState == 4) {
-        	console.log(request.status);
             if(request.status == 200)
             {
 				Array.prototype = true;
+				console.log(request);
 				var response = JSON.parse(request.responseText);
+				console.log(response);
+				alert('Publication publiée !');
 			}
 			else {
 				alert('Utilisateur non connecté');

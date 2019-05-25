@@ -71,7 +71,7 @@ document.ready( () => {
 				.then( response => response.json() )
 				.then( data => {
 					if(data != null) {
-						if (data[0].liked == 1){
+						if (data.liked == 1){
 							img_reac.setAttribute("src", "./SRC/heart_pink.png");
 						}	
 					}
@@ -118,8 +118,9 @@ document.ready( () => {
 					//insertion des valeurs dans l'html
 					com_h3.innerHTML = comm.content_com;
 					com_from.innerHTML = "De " + comm.username;
-					date_h3.innerHTML = comm.date_commentaire;
+					date_h3.innerHTML = comm.date_commentaire;			
 				});
+				
 			}
 		})
 		.catch(error => { console.log(error) });
@@ -145,8 +146,27 @@ document.getElementById("valider_comm").onclick = event => {
 			if(request.status == 200)
 			{
 				Array.prototype = true;
-				console.log(request);
+				var comm = JSON.parse(request.responseText);
+				console.log(comm);
 				alert("Commentaire ajouté !");
+				let com_div = document.getElementById("commentaire");
+				//div écrit par
+				let com_from = document.createElement("h4");
+				com_from.setAttribute("id","comm_from");
+				//contenu du commentaire
+				let com_h3 = document.createElement("h3");
+				com_h3.setAttribute("id","comm_pub");
+				//date commentaire
+				let date_h3 = document.createElement("h3");
+				date_h3.setAttribute("id","date_comm");
+				//associations des éléments à la div principale
+				com_div.appendChild(com_from);
+				com_div.appendChild(com_h3);
+				com_div.appendChild(date_h3);
+				//insertion des valeurs dans l'html
+				com_h3.innerHTML = comm.content_com;
+				com_from.innerHTML = "De " + comm.username;
+				date_h3.innerHTML = comm.date_commentaire;			
 			}
 			else {
 				alert("Utilisateur non connecté");
@@ -158,7 +178,7 @@ document.getElementById("valider_comm").onclick = event => {
 		}
 	}
 	//appel vers requête php d'insertion
-	request.open("POST", "http://localhost/PHP/PROJET_NEW/imac-php-projet/WEB/API/controller/insert_comm.php",true);
+	request.open("POST", "./API/controller/insert_comm.php",true);
 	request.send(body);
 };
 

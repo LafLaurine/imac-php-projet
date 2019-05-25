@@ -70,7 +70,9 @@ else {
 	$id_user = $_SESSION['id_user'];
 	$username = $_SESSION['username'];
 	$content = $json_obj['content'];
-	$file = $json_obj['up_file'];
+	if(isset($json_obj['up_file'])) {
+		$file = $json_obj['up_file'];
+	}
 	$date = date('Y-m-d');
 
 	//requête SQL pour insérer dans la table publication les param que l'utilisateur envoie + la date et l'id récupéré de la publication
@@ -84,13 +86,24 @@ SQL
 	$stmt->bindParam(':id_topic',$id_topic);
 	$stmt->bindParam(':id_user',$id_user);
 	$stmt->bindParam(':content',$content);
-	$stmt->bindParam(':lien_fichier',$file);
+	if(isset($json_obj['up_file'])) {
+		$stmt->bindParam(':lien_fichier',$file);
+	}
+	else {
+		$stmt->bindValue(':lien_fichier',NULL);
+	}
 	$stmt->execute();
 	
 	//on récupère l'id de la dernière publi insérée
 	$id_publi = MyPDO::getInstance()->lastInsertId();
 
-	$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content, "lien_fichier" => $file);
+	if(isset($json_obj['up_file'])) {
+		$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content, "lien_fichier" => $file);
+	}
+
+	else {
+		$resp = array("id_publication" => $id_publi, "titre_publication" => $title, "date_publication" => $date, "id_user" => $id_user, "username" => $username, "content" => $content);
+	}
 	//on renvoie ce tableau en JSON pour que le client puisse récupérer les informations et les afficher
 	echo json_encode($resp);
 	exit();

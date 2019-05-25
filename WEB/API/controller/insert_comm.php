@@ -75,7 +75,7 @@ SQL
 	
 	//on récupère l'id du commentaire inséré
 	$id_commentaire = MyPDO::getInstance()->lastInsertId(); 
-	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "id_user" => $id_user, "username", $username, "content_com" => $commentaire);
+	$resp = array("id_commentaire" => $id_commentaire, "date_commentaire" => $date_comm, "id_publication" => $id_publication, "id_user" => $id_user, "username" => $username, "content_com" => $commentaire);
 	//on renvoie ce tableau en JSON pour que le client puisse récupérer les informations et les afficher
 	echo json_encode($resp);
 }
