@@ -4,6 +4,7 @@
 	<title>Publication</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+	<link rel="icon" href="SRC/favicon.png" />
 </head>
 
 <body>
