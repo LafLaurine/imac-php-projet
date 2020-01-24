@@ -9,8 +9,9 @@ Spottimac : https://spottimac.000webhostapp.com/index.php
 
 ## Auteurs
 
-* **Laurine LAFONTAINE** 
-* **Flroa MALLET**
-* **Victorine MAUREL**
-* **Line RATHONIE**
-* **Margaux SÉGUY**
+
+* **Laurine Lafontaine** - [Github](https://github.com/laflaurine)
+* **Flora Mallet** - [Github](https://github.com/floraMlt)
+* **Victorine Maurel** - [Github](https://github.com/victorinemrl)
+* **Line Rathonie** - [Github](https://github.com/lrathoni)
+* **Margaux Séguy** - [Github](https://github.com/margaux66/)
